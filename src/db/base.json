@@ -1,0 +1,108 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "alice",
+      "email": "alice@example.com",
+      "password": "qwe123",
+      "image": "profile1.jpg",
+      "admin": false
+    },
+    {
+      "id": "2",
+      "username": "bob",
+      "email": "bob@example.com",
+      "password": "qwe123",
+      "image": "profile2.jpg",
+      "admin": false
+    },
+    {
+      "id": "3",
+      "username": "Heverton L. Roieski",
+      "email": "hevertonlr@gmail.com",
+      "password": "qwe123",
+      "image": "profile3.jpg",
+      "admin": true
+    }
+  ],
+  "alunos": [
+    {
+      "id": "1",
+      "nomeCompleto": "Jão Miserávi da Silva",
+      "cpf": "123.456.789-00",
+      "email": "joao@gmail.com",
+      "celular": "99999-9999",
+      "curso": "4"
+    },
+    {
+      "id": "2",
+      "nomeCompleto": "Maria Chiquinha Jenovéva Siquera",
+      "cpf": "987.654.321-00",
+      "email": "maria@gmail.com",
+      "celular": "88888-8888",
+      "curso": "1"
+    },
+    {
+      "id": "0749",
+      "nomeCompleto": "teste",
+      "cpf": "asdq",
+      "email": "te@tt",
+      "celular": "adqsd",
+      "curso": "1"
+    }
+  ],
+  "cursos": [
+    {
+      "id": "1",
+      "nome": "Engenharia de Software"
+    },
+    {
+      "id": "2",
+      "nome": "Ciência da Computação"
+    },
+    {
+      "id": "3",
+      "nome": "Design Gráfico"
+    },
+    {
+      "id": "4",
+      "nome": "Administração"
+    },
+    {
+      "id": "5",
+      "nome": "Medicina"
+    }
+  ],
+  "disciplinas": [
+    {
+      "id": "101",
+      "nome": "Programação I",
+      "idcurso": "1",
+      "semestre": 1
+    },
+    {
+      "id": "102",
+      "nome": "Banco de Dados",
+      "idcurso": "1",
+      "semestre": 3
+    },
+    {
+      "id": "201",
+      "nome": "Algoritmos",
+      "idcurso": "2",
+      "semestre": 2
+    },
+    {
+      "id": "202",
+      "nome": "Redes de Computadores",
+      "idcurso": "2",
+      "semestre": 4
+    },
+    {
+      "id": "301",
+      "nome": "Design Digital",
+      "idcurso": "3",
+      "semestre": 1
+    }
+  ]
+}
