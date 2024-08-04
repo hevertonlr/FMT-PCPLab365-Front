@@ -1,0 +1,28 @@
+<!-- *ngIf="alertService.show" -->
+<div class="alert {{ alertService.type }}" [ngClass]="opactity()">
+  <div class="flex">
+    <div class="flex-shrink-0">
+      <svg class="alert-icon" alt="">
+        <use [attr.xlink:href]="icon"></use>
+      </svg>
+    </div>
+    <div class="ml-3">
+      <p class="alert-message">{{ alertService.message }}</p>
+      <div *ngIf="alertService.errors.length" class="mt-2 text-sm text-red-700">
+        <ul class="list-disc space-y-1 pl-5">
+          <li *ngFor="let error of alertService.errors">{{ error }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ml-auto pl-3">
+      <div class="-mx-1.5 -my-1.5">
+        <button type="button" class="alert-close" (click)="closeAlert()">
+          <span class="sr-only">Fechar</span>
+          <svg class="h-5 w-5" alt="">
+            <use xlink:href="assets/images/alerts.svg#close"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
