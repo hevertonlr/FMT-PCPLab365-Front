@@ -29,6 +29,7 @@ import { StorageService } from 'app/shared/services/storage.service';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
+  title = 'teste';
   bgimg: string = `assets/images/backgrounds/bg${Math.floor(
     Math.random() * 5 + 1,
   )}.jpg`;

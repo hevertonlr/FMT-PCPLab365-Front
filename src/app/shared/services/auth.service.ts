@@ -30,13 +30,13 @@ export class AuthService {
           id: user.id,
           username: user.username,
           email: user.email,
-          image: 'assets/images/' + user.image,
+          image: 'assets/images/profiles/' + user.image,
           admin: user.admin,
         });
         this.setToken(token);
         return true;
       }),
-      catchError(() => of(false))
+      catchError(() => of(false)),
     );
   };
 

@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.gradient-base {
+  @apply from-[#262B93] via-[#CE1B80] to-[#EE7812];
+}
