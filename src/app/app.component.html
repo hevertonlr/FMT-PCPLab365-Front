@@ -1,5 +1,4 @@
-<!-- [ngClass]="{ 'lg:pl-72': isPage() }" -->
-<div>
+<div [ngClass]="{ 'lg:pl-72': isPage() }">
   <app-header *ngIf="isPage()"></app-header>
   <main [ngClass]="{ 'py-10': isPage() }">
     <div [ngClass]="{ 'px-4 sm:px-6 lg:px-8': isPage() }">
