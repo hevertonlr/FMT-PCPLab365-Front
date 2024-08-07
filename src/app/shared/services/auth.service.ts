@@ -19,7 +19,7 @@ export class AuthService {
   logout = (): void => this.clearToken();
   isAuthenticatedUser = (): boolean => this.isAuthenticated;
   login = (email: string, password: string): Observable<boolean> => {
-    return this.userService.getUser(email).pipe(
+    return this.userService.findBy('email', email).pipe(
       map((response: any) => {
         const user = response[0];
         if (user.email !== email || user.password !== password) {

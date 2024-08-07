@@ -5,45 +5,49 @@ import { Injectable } from '@angular/core';
 })
 export class StorageService {
   setLocalStorage = (key: string, value: any): void =>
-    localStorage.setItem(key, JSON.stringify(value));
-  getLocalStorage = (key: string): any => {
-    const value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : null;
-  };
-  removeLocalStorage = (key: string): void => localStorage.removeItem(key);
+    this.setStorage(1, key, value);
+  getLocalStorage = (key: string): any => this.getStorage(1, key);
+  removeLocalStorage = (key: string): void => this.removeStorage(1, key);
   clearLocalStorage = (): void => localStorage.clear();
   setMultipleLocalStorage = (items: { key: string; value: any }[]): void =>
-    items.forEach((item) => {
-      this.setLocalStorage(item.key, item.value);
-    });
-
+    this.setMultipleStorage(1, items);
   getMultipleLocalStorage = (keys: string[]): any[] =>
-    keys.map((key) => this.getLocalStorage(key));
-
+    this.getMultipleStorage(1, keys);
   removeMultipleLocalStorage = (keys: string[]): void =>
-    keys.forEach((key) => {
-      this.removeLocalStorage(key);
-    });
+    this.removeMultipleStorage(1, keys);
 
   setSessionStorage = (key: string, value: any): void =>
-    sessionStorage.setItem(key, JSON.stringify(value));
-
-  getSessionStorage = (key: string): any => {
-    const value = sessionStorage.getItem(key);
-    return value ? JSON.parse(value) : null;
-  };
-  removeSessionStorage = (key: string): void => sessionStorage.removeItem(key);
+    this.setStorage(2, key, value);
+  getSessionStorage = (key: string): any => this.getStorage(2, key);
+  removeSessionStorage = (key: string): void => this.removeStorage(2, key);
   clearSessionStorage = (): void => sessionStorage.clear();
   setMultipleSessionStorage = (items: { key: string; value: any }[]): void =>
-    items.forEach((item) => {
-      this.setSessionStorage(item.key, item.value);
-    });
-
+    this.setMultipleStorage(2, items);
   getMultipleSessionStorage = (keys: string[]): any[] =>
-    keys.map((key) => this.getSessionStorage(key));
-
+    this.getMultipleStorage(2, keys);
   removeMultipleSessionStorage = (keys: string[]): void =>
+    this.removeMultipleStorage(2, keys);
+
+  private setStorage = (type: number, key: string, value: any): void =>
+    (type == 1 ? localStorage : sessionStorage).setItem(
+      key,
+      JSON.stringify(value),
+    );
+  private getStorage = (type: number, key: string): any => {
+    const value = (type == 1 ? localStorage : sessionStorage).getItem(key);
+    return value ? JSON.parse(value) : null;
+  };
+  private removeStorage = (type: number, key: string): void =>
+    (type == 1 ? localStorage : sessionStorage).removeItem(key);
+  private setMultipleStorage = (
+    type: number,
+    items: { key: string; value: any }[],
+  ): void =>
+    items.forEach((item) => this.setStorage(type, item.key, item.value));
+  private getMultipleStorage = (type: number, keys: string[]): any[] =>
+    keys.map((key) => this.getStorage(type, key));
+  private removeMultipleStorage = (type: number, keys: string[]): void =>
     keys.forEach((key) => {
-      this.removeSessionStorage(key);
+      this.removeStorage(type, key);
     });
 }
