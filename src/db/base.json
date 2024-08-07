@@ -1,108 +1,562 @@
 {
   "users": [
     {
-      "id": "1",
-      "username": "alice",
-      "email": "alice@example.com",
-      "password": "qwe123",
-      "image": "profile1.jpg",
-      "admin": false
+      "id": 1,
+      "username": "jose.silva",
+      "name": "José da Silva",
+      "email": "jose.silva@example.com",
+      "password": "P@ssw0rd1",
+      "image": "https://randomuser.me/api/portraits/men/1.jpg",
+      "profile": "Administrator"
     },
     {
-      "id": "2",
-      "username": "bob",
-      "email": "bob@example.com",
-      "password": "qwe123",
-      "image": "profile2.jpg",
-      "admin": false
+      "id": 2,
+      "username": "maria.souza",
+      "name": "Maria Souza",
+      "email": "maria.souza@example.com",
+      "password": "S3cur3P@ss",
+      "image": "https://randomuser.me/api/portraits/women/2.jpg",
+      "profile": "Teacher"
     },
     {
-      "id": "3",
-      "username": "Heverton L. Roieski",
-      "email": "hevertonlr@gmail.com",
-      "password": "qwe123",
-      "image": "profile3.jpg",
-      "admin": true
+      "id": 3,
+      "username": "joao.pereira",
+      "name": "João Pereira",
+      "email": "joao.pereira@example.com",
+      "password": "Jo@o1234",
+      "image": "https://randomuser.me/api/portraits/men/3.jpg",
+      "profile": "Student"
+    },
+    {
+      "id": 4,
+      "username": "ana.lima",
+      "name": "Ana Lima",
+      "email": "ana.lima@example.com",
+      "password": "An@L1ma",
+      "image": "https://randomuser.me/api/portraits/women/4.jpg",
+      "profile": "Teacher"
+    },
+    {
+      "id": 5,
+      "username": "carlos.oliveira",
+      "name": "Carlos Oliveira",
+      "email": "carlos.oliveira@example.com",
+      "password": "C@rl0sOl",
+      "image": "https://randomuser.me/api/portraits/men/5.jpg",
+      "profile": "Administrator"
+    },
+    {
+      "id": 6,
+      "username": "fernanda.alves",
+      "name": "Fernanda Alves",
+      "email": "fernanda.alves@example.com",
+      "password": "F3rn@nd@",
+      "image": "https://randomuser.me/api/portraits/women/6.jpg",
+      "profile": "Student"
+    },
+    {
+      "id": 7,
+      "username": "ricardo.santos",
+      "name": "Ricardo Santos",
+      "email": "ricardo.santos@example.com",
+      "password": "R1c@rd0S",
+      "image": "https://randomuser.me/api/portraits/men/7.jpg",
+      "profile": "Teacher"
+    },
+    {
+      "id": 8,
+      "username": "juliana.martins",
+      "name": "Juliana Martins",
+      "email": "juliana.martins@example.com",
+      "password": "Juli@M8",
+      "image": "https://randomuser.me/api/portraits/women/8.jpg",
+      "profile": "Administrator"
+    },
+    {
+      "id": 9,
+      "username": "pedro.fernandes",
+      "name": "Pedro Fernandes",
+      "email": "pedro.fernandes@example.com",
+      "password": "P3dr0F!",
+      "image": "https://randomuser.me/api/portraits/men/9.jpg",
+      "profile": "Student"
+    },
+    {
+      "id": 10,
+      "username": "luciana.rodrigues",
+      "name": "Luciana Rodrigues",
+      "email": "luciana.rodrigues@example.com",
+      "password": "Luci@R0d",
+      "image": "https://randomuser.me/api/portraits/women/10.jpg",
+      "profile": "Teacher"
     }
   ],
-  "alunos": [
+  "students": [
     {
-      "id": "1",
-      "nomeCompleto": "Jão Miserávi da Silva",
+      "id": 1,
+      "name": "Ana Silva",
+      "gender": "Feminino",
+      "birthday": "2000-05-15",
       "cpf": "123.456.789-00",
-      "email": "joao@gmail.com",
-      "celular": "99999-9999",
-      "curso": "4"
+      "rg": "MG-12.345.678",
+      "phone": "(31) 91234-5678",
+      "email": "ana.silva@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "30130-010",
+        "city": "Belo Horizonte",
+        "state": "MG",
+        "street": "Rua da Bahia",
+        "number": "1000",
+        "complement": "Apto 101",
+        "neighborhood": "Centro",
+        "referencePoint": "Próximo ao Mercado Central"
+      },
+      "class": [1, 4]
     },
     {
-      "id": "2",
-      "nomeCompleto": "Maria Chiquinha Jenovéva Siquera",
-      "cpf": "987.654.321-00",
-      "email": "maria@gmail.com",
-      "celular": "88888-8888",
-      "curso": "1"
+      "id": 2,
+      "name": "Bruno Souza",
+      "gender": "Masculino",
+      "birthday": "1998-11-23",
+      "cpf": "234.567.890-11",
+      "rg": "SP-23.456.789",
+      "phone": "(11) 92345-6789",
+      "email": "bruno.souza@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "01001-000",
+        "city": "São Paulo",
+        "state": "SP",
+        "street": "Avenida Paulista",
+        "number": "1578",
+        "complement": "Sala 202",
+        "neighborhood": "Bela Vista",
+        "referencePoint": "Próximo ao MASP"
+      },
+      "class": [2, 3]
     },
     {
-      "id": "0749",
-      "nomeCompleto": "teste",
-      "cpf": "asdq",
-      "email": "te@tt",
-      "celular": "adqsd",
-      "curso": "1"
+      "id": 3,
+      "name": "Carlos Pereira",
+      "gender": "Masculino",
+      "birthday": "2001-02-10",
+      "cpf": "345.678.901-22",
+      "rg": "RJ-34.567.890",
+      "phone": "(21) 93456-7890",
+      "email": "carlos.pereira@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "20040-020",
+        "city": "Rio de Janeiro",
+        "state": "RJ",
+        "street": "Rua do Ouvidor",
+        "number": "50",
+        "complement": "Cobertura",
+        "neighborhood": "Centro",
+        "referencePoint": "Próximo ao Paço Imperial"
+      },
+      "class": [3, 5]
+    },
+    {
+      "id": 4,
+      "name": "Daniela Costa",
+      "gender": "Feminino",
+      "birthday": "1999-07-30",
+      "cpf": "456.789.012-33",
+      "rg": "RS-45.678.901",
+      "phone": "(51) 94567-8901",
+      "email": "daniela.costa@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "90010-150",
+        "city": "Porto Alegre",
+        "state": "RS",
+        "street": "Rua dos Andradas",
+        "number": "1234",
+        "complement": "Loja 5",
+        "neighborhood": "Centro Histórico",
+        "referencePoint": "Próximo ao Mercado Público"
+      },
+      "class": [1, 2]
+    },
+    {
+      "id": 5,
+      "name": "Eduardo Lima",
+      "gender": "Masculino",
+      "birthday": "2002-03-18",
+      "cpf": "567.890.123-44",
+      "rg": "BA-56.789.012",
+      "phone": "(71) 95678-9012",
+      "email": "eduardo.lima@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "40020-000",
+        "city": "Salvador",
+        "state": "BA",
+        "street": "Avenida Sete de Setembro",
+        "number": "2000",
+        "complement": "Sala 303",
+        "neighborhood": "Campo Grande",
+        "referencePoint": "Próximo ao Teatro Castro Alves"
+      },
+      "class": [4, 5]
+    },
+    {
+      "id": 6,
+      "name": "Fernanda Oliveira",
+      "gender": "Feminino",
+      "birthday": "2000-12-05",
+      "cpf": "678.901.234-55",
+      "rg": "PE-67.890.123",
+      "phone": "(81) 96789-0123",
+      "email": "fernanda.oliveira@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "50030-230",
+        "city": "Recife",
+        "state": "PE",
+        "street": "Rua da Aurora",
+        "number": "789",
+        "complement": "Apto 405",
+        "neighborhood": "Boa Vista",
+        "referencePoint": "Próximo ao Parque 13 de Maio"
+      },
+      "class": [1, 3]
+    },
+    {
+      "id": 7,
+      "name": "Gabriel Santos",
+      "gender": "Masculino",
+      "birthday": "1997-09-12",
+      "cpf": "789.012.345-66",
+      "rg": "PR-78.901.234",
+      "phone": "(41) 97890-1234",
+      "email": "gabriel.santos@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "80010-000",
+        "city": "Curitiba",
+        "state": "PR",
+        "street": "Rua XV de Novembro",
+        "number": "456",
+        "complement": "Apto 12",
+        "neighborhood": "Centro",
+        "referencePoint": "Próximo ao Teatro Guaíra"
+      },
+      "class": [2, 5]
+    },
+    {
+      "id": 8,
+      "name": "Helena Martins",
+      "gender": "Feminino",
+      "birthday": "2003-04-22",
+      "cpf": "890.123.456-77",
+      "rg": "SC-89.012.345",
+      "phone": "(48) 98901-2345",
+      "email": "helena.martins@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "88010-400",
+        "city": "Florianópolis",
+        "state": "SC",
+        "street": "Rua Felipe Schmidt",
+        "number": "789",
+        "complement": "Apto 101",
+        "neighborhood": "Centro",
+        "referencePoint": "Próximo ao Mercado Público"
+      },
+      "class": [3, 4]
+    },
+    {
+      "id": 9,
+      "name": "Igor Almeida",
+      "gender": "Masculino",
+      "birthday": "1996-08-08",
+      "cpf": "901.234.567-88",
+      "rg": "GO-90.123.456",
+      "phone": "(62) 99012-3456",
+      "email": "igor.almeida@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "74000-000",
+        "city": "Goiânia",
+        "state": "GO",
+        "street": "Avenida Goiás",
+        "number": "123",
+        "complement": "Sala 10",
+        "neighborhood": "Setor Central",
+        "referencePoint": "Próximo ao Palácio das Esmeraldas"
+      },
+      "class": [1, 5]
+    },
+    {
+      "id": 10,
+      "name": "Juliana Rocha",
+      "gender": "Feminino",
+      "birthday": "1995-01-25",
+      "cpf": "012.345.678-99",
+      "rg": "CE-01.234.567",
+      "phone": "(85) 90123-4567",
+      "email": "juliana.rocha@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "60000-000",
+        "city": "Fortaleza",
+        "state": "CE",
+        "street": "Avenida Beira Mar",
+        "number": "456",
+        "complement": "Apto 202",
+        "neighborhood": "Meireles",
+        "referencePoint": "Próximo ao Mercado dos Peixes"
+      },
+      "class": [2, 3]
     }
   ],
-  "cursos": [
+  "schoolclass": [
     {
-      "id": "1",
-      "nome": "Engenharia de Software"
+      "id": 1,
+      "name": "Matemática",
+      "initialDate": "2024-02-01",
+      "endDate": "2024-12-15",
+      "classSchedule": "08:00",
+      "teacher": 1
     },
     {
-      "id": "2",
-      "nome": "Ciência da Computação"
+      "id": 2,
+      "name": "História",
+      "initialDate": "2024-02-01",
+      "endDate": "2024-12-15",
+      "classSchedule": "10:00",
+      "teacher": 2
     },
     {
-      "id": "3",
-      "nome": "Design Gráfico"
+      "id": 3,
+      "name": "Química",
+      "initialDate": "2024-02-01",
+      "endDate": "2024-12-15",
+      "classSchedule": "13:00",
+      "teacher": 3
     },
     {
-      "id": "4",
-      "nome": "Administração"
+      "id": 4,
+      "name": "Física",
+      "initialDate": "2024-02-01",
+      "endDate": "2024-12-15",
+      "classSchedule": "15:00",
+      "teacher": 4
     },
     {
-      "id": "5",
-      "nome": "Medicina"
+      "id": 5,
+      "name": "Inglês",
+      "initialDate": "2024-02-01",
+      "endDate": "2024-12-15",
+      "classSchedule": "17:00",
+      "teacher": 5
     }
   ],
-  "disciplinas": [
+  "teachers": [
     {
-      "id": "101",
-      "nome": "Programação I",
-      "idcurso": "1",
-      "semestre": 1
+      "id": 1,
+      "name": "João Silva",
+      "gender": "Masculino",
+      "birthday": "1975-03-10",
+      "cpf": "111.222.333-44",
+      "rg": "MG-11.222.333",
+      "civilState": "Casado(a)",
+      "phone": "(31) 91111-2222",
+      "email": "joao.silva@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "30130-010",
+        "city": "Belo Horizonte",
+        "state": "MG",
+        "street": "Rua da Bahia",
+        "number": "1000",
+        "complement": "Apto 101",
+        "neighborhood": "Centro",
+        "referencePoint": "Próximo ao Mercado Central"
+      },
+      "schoolSubjects": ["Matemática"]
     },
     {
-      "id": "102",
-      "nome": "Banco de Dados",
-      "idcurso": "1",
-      "semestre": 3
+      "id": 2,
+      "name": "Maria Oliveira",
+      "gender": "Feminino",
+      "birthday": "1980-07-22",
+      "cpf": "222.333.444-55",
+      "rg": "SP-22.333.444",
+      "civilState": "Solteiro(a)",
+      "phone": "(11) 92222-3333",
+      "email": "maria.oliveira@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "01001-000",
+        "city": "São Paulo",
+        "state": "SP",
+        "street": "Avenida Paulista",
+        "number": "1578",
+        "complement": "Sala 202",
+        "neighborhood": "Bela Vista",
+        "referencePoint": "Próximo ao MASP"
+      },
+      "schoolSubjects": ["História"]
     },
     {
-      "id": "201",
-      "nome": "Algoritmos",
-      "idcurso": "2",
-      "semestre": 2
+      "id": 3,
+      "name": "Carlos Pereira",
+      "gender": "Masculino",
+      "birthday": "1985-11-15",
+      "cpf": "333.444.555-66",
+      "rg": "RJ-33.444.555",
+      "civilState": "Divorciado(a)",
+      "phone": "(21) 93333-4444",
+      "email": "carlos.pereira@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "20040-020",
+        "city": "Rio de Janeiro",
+        "state": "RJ",
+        "street": "Rua do Ouvidor",
+        "number": "50",
+        "complement": "Cobertura",
+        "neighborhood": "Centro",
+        "referencePoint": "Próximo ao Paço Imperial"
+      },
+      "schoolSubjects": ["Química"]
     },
     {
-      "id": "202",
-      "nome": "Redes de Computadores",
-      "idcurso": "2",
-      "semestre": 4
+      "id": 4,
+      "name": "Ana Costa",
+      "gender": "Feminino",
+      "birthday": "1990-05-30",
+      "cpf": "444.555.666-77",
+      "rg": "RS-44.555.666",
+      "civilState": "Casado(a)",
+      "phone": "(51) 94444-5555",
+      "email": "ana.costa@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "90010-150",
+        "city": "Porto Alegre",
+        "state": "RS",
+        "street": "Rua dos Andradas",
+        "number": "1234",
+        "complement": "Loja 5",
+        "neighborhood": "Centro Histórico",
+        "referencePoint": "Próximo ao Mercado Público"
+      },
+      "schoolSubjects": ["Física"]
     },
     {
-      "id": "301",
-      "nome": "Design Digital",
-      "idcurso": "3",
-      "semestre": 1
+      "id": 5,
+      "name": "Eduardo Lima",
+      "gender": "Masculino",
+      "birthday": "1982-08-18",
+      "cpf": "555.666.777-88",
+      "rg": "BA-55.666.777",
+      "civilState": "Solteiro(a)",
+      "phone": "(71) 95555-6666",
+      "email": "eduardo.lima@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "40020-000",
+        "city": "Salvador",
+        "state": "BA",
+        "street": "Avenida Sete de Setembro",
+        "number": "2000",
+        "complement": "Sala 303",
+        "neighborhood": "Campo Grande",
+        "referencePoint": "Próximo ao Teatro Castro Alves"
+      },
+      "schoolSubjects": ["Inglês"]
+    },
+    {
+      "id": 6,
+      "name": "Fernanda Oliveira",
+      "gender": "Feminino",
+      "birthday": "1987-12-05",
+      "cpf": "666.777.888-99",
+      "rg": "PE-66.777.888",
+      "civilState": "Casado(a)",
+      "phone": "(81) 96666-7777",
+      "email": "fernanda.oliveira@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "50030-230",
+        "city": "Recife",
+        "state": "PE",
+        "street": "Rua da Aurora",
+        "number": "789",
+        "complement": "Apto 405",
+        "neighborhood": "Boa Vista",
+        "referencePoint": "Próximo ao Parque 13 de Maio"
+      },
+      "schoolSubjects": ["Educação Física"]
+    },
+    {
+      "id": 7,
+      "name": "Gabriel Santos",
+      "gender": "Masculino",
+      "birthday": "1992-09-12",
+      "cpf": "777.888.999-00",
+      "rg": "PR-77.888.999",
+      "civilState": "Solteiro(a)",
+      "phone": "(41) 97777-8888",
+      "email": "gabriel.santos@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "80010-000",
+        "city": "Curitiba",
+        "state": "PR",
+        "street": "Rua XV de Novembro",
+        "number": "456",
+        "complement": "Apto 12",
+        "neighborhood": "Centro",
+        "referencePoint": "Próximo ao Teatro Guaíra"
+      },
+      "schoolSubjects": ["Espanhol"]
+    },
+    {
+      "id": 8,
+      "name": "Helena Martins",
+      "gender": "Feminino",
+      "birthday": "1989-04-22",
+      "cpf": "888.999.000-11",
+      "rg": "SC-88.999.000",
+      "civilState": "Casado(a)",
+      "phone": "(48) 98888-9999",
+      "email": "helena.martins@example.com",
+      "password": "password123",
+      "nationality": "Brasileira",
+      "address": {
+        "cep": "88010-400",
+        "city": "Florianópolis",
+        "state": "SC",
+        "street": "Rua Felipe Schmidt",
+        "number": "789",
+        "complement": "Apto 101",
+        "neighborhood": "Centro",
+        "referencePoint": "Próximo ao Mercado Público"
+      },
+      "schoolSubjects": ["Ciências"]
     }
   ]
 }

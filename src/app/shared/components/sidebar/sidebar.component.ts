@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { routes } from 'app/app.routes';
+import { Profile } from 'app/shared/enums/profile';
 import { User } from 'app/shared/interfaces/user';
 import { AuthService } from 'app/shared/services/auth.service';
 
@@ -33,7 +34,8 @@ export class SidebarComponent {
     this.open = !this.open;
     this.sidebarToggled.emit();
   };
-  isAdm = () => this.authService.getTokenContent<User>()?.admin;
+  isAdm = () =>
+    this.authService.getTokenContent<User>()?.profile == Profile.Administrator;
   logout = () => {
     this.router.navigate(['/login']);
     this.authService.logout();

@@ -1,9 +1,12 @@
-<nav class="sticky z-10 top-0 lg:mx-auto lg:px-8 shadow-lg">
+<nav class="sticky bg-white z-10 top-0 lg:mx-auto lg:px-8 shadow-lg">
   <div
     class="flex h-16 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-0 lg:shadow-none"
   >
-    <!-- (click)="callToggleSidebar()" -->
-    <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
+    <button
+      (click)="callToggleSidebar()"
+      type="button"
+      class="-m-2.5 p-2.5 text-gray-700 lg:hidden"
+    >
       <span class="sr-only">Abrir barra lateral</span>
       <svg class="h-6 w-6" alt="">
         <use xlink:href="assets/images/icons.svg#bars"></use>
@@ -74,7 +77,8 @@
               role="menuitem"
               tabindex="-1"
               id="user-menu-item-0"
-              >Logout</a
+            >
+              Sair</a
             >
           </div>
         </div>

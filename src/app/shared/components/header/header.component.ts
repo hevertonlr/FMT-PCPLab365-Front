@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { routes } from 'app/app.routes';
 import { User } from 'app/shared/interfaces/user';
@@ -17,6 +17,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  @ViewChild(SidebarComponent) sidebarComponent!: SidebarComponent;
   routes: Routes = routes;
   profileOpen: boolean;
   isLogged: boolean;
@@ -52,9 +53,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.logout();
   };
   getLoggedUser = () => {
-    const { image, username } =
+    const { image, name } =
       this.authService.getTokenContent<User>() ?? ({} as User);
-    this.userName = username;
+    this.userName = name;
     this.userImage = image;
   };
+  callToggleSidebar = () => this.sidebarComponent.toggleSidebar();
 }

@@ -29,9 +29,10 @@ export class AuthService {
         const token = this.generateJwtToken({
           id: user.id,
           username: user.username,
+          name: user.name,
           email: user.email,
-          image: 'assets/images/profiles/' + user.image,
-          admin: user.admin,
+          image: user.image,
+          profile: user.profile,
         });
         this.setToken(token);
         return true;
