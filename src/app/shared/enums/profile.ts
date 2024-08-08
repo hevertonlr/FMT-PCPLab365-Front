@@ -1,5 +1,5 @@
 export enum Profile {
-  Administrator,
-  Teacher,
-  Student,
+  Administrator = 'Administrator',
+  Teacher = 'Teacher',
+  Student = 'Student',
 }

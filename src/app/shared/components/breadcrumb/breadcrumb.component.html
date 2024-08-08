@@ -11,10 +11,14 @@
   </ol>
 </nav> -->
 <div class="mb-2">
-  <nav aria-label="Back" class="sm:hidden">
+  <nav
+    *ngIf="breadcrumbService.breadcrumbs.length > 1"
+    aria-label="Back"
+    class="sm:hidden"
+  >
     <a
       href="#"
-      class="flex items-center text-sm font-medium text-white opacity-75 hover:opacity-100 transition-opacity duration-300"
+      class="flex items-center text-sm font-medium text-orange-600 opacity-75 hover:opacity-100 transition-opacity duration-300"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

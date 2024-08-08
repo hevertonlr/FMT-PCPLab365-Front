@@ -13,6 +13,7 @@ export interface Student {
   password: string;
   nationality: string;
   address?: Address;
+  image: string;
   class: string[];
 }
 

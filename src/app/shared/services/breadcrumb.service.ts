@@ -32,12 +32,10 @@ export class BreadcrumbService {
       if (routeURL !== '') url += `/${routeURL}`;
 
       const label = child.snapshot.data['breadcrumb'];
-      console.log(label);
       if (label) breadcrumbs.push({ label, url });
 
       return this.createBreadcrumbs(child, url, breadcrumbs);
     }
-    console.log(breadcrumbs);
     return breadcrumbs;
   };
 }

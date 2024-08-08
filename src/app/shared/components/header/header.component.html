@@ -1,4 +1,6 @@
-<nav class="sticky bg-white z-10 top-0 lg:mx-auto lg:px-8 shadow-lg">
+<nav
+  class="sticky bg-white z-10 top-0 lg:mx-auto lg:px-8 shadow-lg border-b-4 border-gradient-to-r gradient-base"
+>
   <div
     class="flex h-16 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-0 lg:shadow-none"
   >
@@ -14,19 +16,30 @@
     </button>
     <div aria-hidden="true" class="h-6 w-px bg-gray-200 lg:hidden"></div>
     <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
+      <form action="#" method="GET" class="relative flex flex-1">
+        <label for="search-field" class="sr-only">Search</label>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+        <input
+          id="search-field"
+          name="search"
+          type="search"
+          placeholder="Buscar..."
+          class="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
+        />
+      </form>
       <div class="relative flex flex-1"></div>
-      <!-- <form action="#" method="GET" class="relative flex flex-1">
-          <label for="search-field" class="sr-only">Search</label>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
-            class="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400">
-            <path fill-rule="evenodd"
-              d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-              clip-rule="evenodd">
-            </path>
-          </svg>
-          <input id="search-field" name="search" type="search" placeholder="Search..."
-            class="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm">
-        </form> -->
       <div class="flex items-center gap-x-4 lg:gap-x-6">
         <!-- <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
             <span class="sr-only">View notifications</span>
@@ -73,24 +86,29 @@
             <a
               [href]=""
               (click)="logout()"
-              class="transition-all block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              class="cursor-pointer group flex transition-colors duration-300 items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               role="menuitem"
               tabindex="-1"
-              id="user-menu-item-0"
             >
-              Sair</a
-            >
+              <svg
+                class="mr-3 transition-colors duration-300 text-gray-400 group-hover:text-indigo-600 h-5 w-5"
+                alt=""
+              >
+                <use xlink:href="assets/images/icons.svg#logout"></use>
+              </svg>
+              Sair
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </nav>
-<header class="bg-gradient-to-r gradient-base shadow-lg">
+<header class="sticky z-[9] top-[4.25rem] bg-gray-100 shadow">
   <div class="mx-auto px-4 py-6 sm:px-6 lg:px-8">
     <app-breadcrumb></app-breadcrumb>
     <div class="md:flex md:items-center md:justify-between">
-      <h1 class="text-3xl font-bold tracking-tight text-white">
+      <h1 class="text-3xl font-bold tracking-tight text-[#262B93]">
         {{ pageTitle }}
       </h1>
     </div>
