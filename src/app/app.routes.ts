@@ -12,6 +12,7 @@ import { StudentRegistrationComponent } from './pages/student-registration/stude
 import { Profile } from './shared/enums/profile';
 import { TeacherRegistrationComponent } from './pages/teacher-registration/teacher-registration.component';
 import { SchoolClassRegistrationComponent } from './pages/schoolclass-registration/schoolclass-registration.component';
+import { GradeRegistrationComponent } from './pages/grade-registration/grade-registration.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -66,7 +67,7 @@ export const routes: Routes = [
   },
   {
     path: 'grade',
-    component: GradesComponent,
+    component: GradeRegistrationComponent,
     title: 'Cadastro de Notas',
     canActivate: [AuthGuard],
     data: {

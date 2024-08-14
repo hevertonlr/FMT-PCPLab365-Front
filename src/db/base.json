@@ -19,33 +19,6 @@
       "profile": "Administrator"
     },
     {
-      "id": "2",
-      "username": "maria.souza",
-      "name": "Maria Souza",
-      "email": "maria.souza@example.com",
-      "password": "S3cur3P@ss",
-      "image": "https://randomuser.me/api/portraits/women/2.jpg",
-      "profile": "Teacher"
-    },
-    {
-      "id": "3",
-      "username": "joao.pereira",
-      "name": "João Pereira",
-      "email": "joao.pereira@example.com",
-      "password": "Jo@o1234",
-      "image": "https://randomuser.me/api/portraits/men/3.jpg",
-      "profile": "Student"
-    },
-    {
-      "id": "4",
-      "username": "ana.lima",
-      "name": "Ana Lima",
-      "email": "ana.lima@example.com",
-      "password": "An@L1ma",
-      "image": "https://randomuser.me/api/portraits/women/4.jpg",
-      "profile": "Teacher"
-    },
-    {
       "id": "5",
       "username": "carlos.oliveira",
       "name": "Carlos Oliveira",
@@ -53,24 +26,6 @@
       "password": "C@rl0sOl",
       "image": "https://randomuser.me/api/portraits/men/5.jpg",
       "profile": "Administrator"
-    },
-    {
-      "id": "6",
-      "username": "fernanda.alves",
-      "name": "Fernanda Alves",
-      "email": "fernanda.alves@example.com",
-      "password": "F3rn@nd@",
-      "image": "https://randomuser.me/api/portraits/women/6.jpg",
-      "profile": "Student"
-    },
-    {
-      "id": "7",
-      "username": "ricardo.santos",
-      "name": "Ricardo Santos",
-      "email": "ricardo.santos@example.com",
-      "password": "R1c@rd0S",
-      "image": "https://randomuser.me/api/portraits/men/7.jpg",
-      "profile": "Teacher"
     },
     {
       "id": "8",
@@ -82,22 +37,184 @@
       "profile": "Administrator"
     },
     {
-      "id": "9",
-      "username": "pedro.fernandes",
-      "name": "Pedro Fernandes",
-      "email": "pedro.fernandes@example.com",
-      "password": "P3dr0F!",
-      "image": "https://randomuser.me/api/portraits/men/9.jpg",
+      "id": "df966d22-d193-47e8-a740-e4f1be785a84",
+      "username": "joao.silva",
+      "name": "João Silva",
+      "email": "joao.silva@example.com",
+      "password": "password123",
+      "image": "",
+      "profile": "Teacher"
+    },
+    {
+      "id": "89daff44-208e-4bf1-9e2b-7922342b0e13",
+      "username": "maria.oliveira",
+      "name": "Maria Oliveira",
+      "email": "maria.oliveira@example.com",
+      "password": "password123",
+      "image": "",
+      "profile": "Teacher"
+    },
+    {
+      "id": "8b8f846d-01e6-4d4e-b443-a8376d79197e",
+      "username": "carlos.pereira",
+      "name": "Carlos Pereira",
+      "email": "carlos.pereira@example.com",
+      "password": "password123",
+      "image": "",
+      "profile": "Teacher"
+    },
+    {
+      "id": "15996ecb-57fe-4820-896d-411c7efd6cf6",
+      "username": "ana.costa",
+      "name": "Ana Costa",
+      "email": "ana.costa@example.com",
+      "password": "password123",
+      "image": "",
+      "profile": "Teacher"
+    },
+    {
+      "id": "72335994-fbcd-4182-9f53-72d1fbb85279",
+      "username": "eduardo.lima",
+      "name": "Eduardo Lima",
+      "email": "eduardo.lima@example.com",
+      "password": "password123",
+      "image": "",
+      "profile": "Teacher"
+    },
+    {
+      "id": "e17aadb1-534b-48fb-a89c-30955e60ac1a",
+      "username": "fernanda.oliveira",
+      "name": "Fernanda Oliveira",
+      "email": "fernanda.oliveira@example.com",
+      "password": "password123",
+      "image": "",
+      "profile": "Teacher"
+    },
+    {
+      "id": "25b97c59-2571-4ac6-9ef8-1d4d18f90249",
+      "username": "gabriel.santos",
+      "name": "Gabriel Santos",
+      "email": "gabriel.santos@example.com",
+      "password": "password123",
+      "image": "",
+      "profile": "Teacher"
+    },
+    {
+      "id": "ca54e0f1-0584-482a-a08b-5fdb481ce44d",
+      "username": "helena.martins",
+      "name": "Helena Martins",
+      "email": "helena.martins@example.com",
+      "password": "password123",
+      "image": "",
+      "profile": "Teacher"
+    },
+    {
+      "id": "6af56c55-266f-40c0-b56f-4a0e6a9c4b4c",
+      "username": "maria.souza",
+      "name": "Maria Souza",
+      "email": "maria.souza@example.com",
+      "password": "S3cur3P@ss",
+      "image": "",
+      "profile": "Teacher"
+    },
+    {
+      "id": "23fe22d4-0441-45f9-b0d0-1b75042b1cb3",
+      "username": "ana.silva",
+      "name": "Ana Silva",
+      "email": "ana.silva@example.com",
+      "password": "password123",
+      "image": "https://randomuser.me/api/portraits/women/1.jpg",
       "profile": "Student"
     },
     {
-      "id": "10",
-      "username": "luciana.rodrigues",
-      "name": "Luciana Rodrigues",
-      "email": "luciana.rodrigues@example.com",
-      "password": "Luci@R0d",
-      "image": "https://randomuser.me/api/portraits/women/10.jpg",
-      "profile": "Teacher"
+      "id": "f5134b0c-dc83-46b0-8c63-cb7f8931ffd7",
+      "username": "carlos.souza",
+      "name": "Carlos Souza",
+      "email": "carlos.souza@example.com",
+      "password": "password456",
+      "image": "https://randomuser.me/api/portraits/men/2.jpg",
+      "profile": "Student"
+    },
+    {
+      "id": "09552131-850f-4a4a-80c8-9ca7e9fd62eb",
+      "username": "beatriz.lima",
+      "name": "Beatriz Lima",
+      "email": "beatriz.lima@example.com",
+      "password": "password789",
+      "image": "https://randomuser.me/api/portraits/women/3.jpg",
+      "profile": "Student"
+    },
+    {
+      "id": "08682ad1-6f60-4a07-a4f9-572ab1017b8a",
+      "username": "daniel.oliveira",
+      "name": "Daniel Oliveira",
+      "email": "daniel.oliveira@example.com",
+      "password": "password321",
+      "image": "https://randomuser.me/api/portraits/men/4.jpg",
+      "profile": "Student"
+    },
+    {
+      "id": "5429e280-d179-4a76-a3b3-9a126c1f4599",
+      "username": "eduarda.santos",
+      "name": "Eduarda Santos",
+      "email": "eduarda.santos@example.com",
+      "password": "password654",
+      "image": "https://randomuser.me/api/portraits/women/5.jpg",
+      "profile": "Student"
+    },
+    {
+      "id": "ed93218d-5016-4f10-8d22-41f98416825e",
+      "username": "felipe.costa",
+      "name": "Felipe Costa",
+      "email": "felipe.costa@example.com",
+      "password": "password987",
+      "image": "https://randomuser.me/api/portraits/men/6.jpg",
+      "profile": "Student"
+    },
+    {
+      "id": "761cacfd-6ef8-4ec2-8cf9-7bf1782eeee5",
+      "username": "gabriela.almeida",
+      "name": "Gabriela Almeida",
+      "email": "gabriela.almeida@example.com",
+      "password": "password321",
+      "image": "https://randomuser.me/api/portraits/women/7.jpg",
+      "profile": "Student"
+    },
+    {
+      "id": "fe7eb0fd-cf65-4ced-8c56-78eba663b6d8",
+      "username": "henrique.pereira",
+      "name": "Henrique Pereira",
+      "email": "henrique.pereira@example.com",
+      "password": "password654",
+      "image": "https://randomuser.me/api/portraits/men/8.jpg",
+      "profile": "Student"
+    },
+    {
+      "id": "782c0809-2a2b-4d73-b2df-5ab91418e00b",
+      "username": "isabela.rocha",
+      "name": "Isabela Rocha",
+      "email": "isabela.rocha@example.com",
+      "password": "password987",
+      "image": "https://randomuser.me/api/portraits/women/9.jpg",
+      "profile": "Student"
+    },
+    {
+      "id": "0f85e1fd-7490-4474-8994-00ceed22cc4c",
+      "username": "joao.mendes",
+      "name": "João Mendes",
+      "email": "joao.mendes@example.com",
+      "password": "password123",
+      "image": "https://randomuser.me/api/portraits/men/10.jpg",
+      "profile": "Student"
+    },
+    {
+      "id": "498aca79-7b80-4fc8-966b-4fa5d02d6dec",
+      "username": "hevertonlr",
+      "name": "teste teste teste",
+      "email": "hevertonlr@gmail.com",
+      "password": "123123123123",
+      "image": "",
+      "profile": "Student"
     }
   ],
   "students": [
@@ -122,10 +239,7 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Mercado Central"
       },
-      "class": [
-        "1",
-        "4"
-      ],
+      "class": ["1", "4"],
       "image": "https://randomuser.me/api/portraits/women/1.jpg"
     },
     {
@@ -149,10 +263,7 @@
         "neighborhood": "Bela Vista",
         "referencePoint": "Próximo ao MASP"
       },
-      "class": [
-        "2",
-        "3"
-      ],
+      "class": ["2", "3"],
       "image": "https://randomuser.me/api/portraits/men/2.jpg"
     },
     {
@@ -176,10 +287,7 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Paço Imperial"
       },
-      "class": [
-        "1",
-        "2"
-      ],
+      "class": ["1", "2"],
       "image": "https://randomuser.me/api/portraits/women/3.jpg"
     },
     {
@@ -203,10 +311,7 @@
         "neighborhood": "Consolação",
         "referencePoint": "Próximo ao Shopping Frei Caneca"
       },
-      "class": [
-        "3",
-        "4"
-      ],
+      "class": ["3", "4"],
       "image": "https://randomuser.me/api/portraits/men/4.jpg"
     },
     {
@@ -230,10 +335,7 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Parque Municipal"
       },
-      "class": [
-        "2",
-        "3"
-      ],
+      "class": ["2", "3"],
       "image": "https://randomuser.me/api/portraits/women/5.jpg"
     },
     {
@@ -257,10 +359,7 @@
         "neighborhood": "Copacabana",
         "referencePoint": "Próximo ao Forte de Copacabana"
       },
-      "class": [
-        "1",
-        "4"
-      ],
+      "class": ["1", "4"],
       "image": "https://randomuser.me/api/portraits/men/6.jpg"
     },
     {
@@ -284,10 +383,7 @@
         "neighborhood": "Jardins",
         "referencePoint": "Próximo ao Hospital das Clínicas"
       },
-      "class": [
-        "2",
-        "4"
-      ],
+      "class": ["2", "4"],
       "image": "https://randomuser.me/api/portraits/women/7.jpg"
     },
     {
@@ -311,10 +407,7 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Palácio das Artes"
       },
-      "class": [
-        "1",
-        "3"
-      ],
+      "class": ["1", "3"],
       "image": "https://randomuser.me/api/portraits/men/8.jpg"
     },
     {
@@ -338,10 +431,7 @@
         "neighborhood": "Laranjeiras",
         "referencePoint": "Próximo ao Parque Guinle"
       },
-      "class": [
-        "2",
-        "3"
-      ],
+      "class": ["2", "3"],
       "image": "https://randomuser.me/api/portraits/women/9.jpg"
     },
     {
@@ -365,10 +455,7 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Teatro Municipal"
       },
-      "class": [
-        "1",
-        "4"
-      ],
+      "class": ["1", "4"],
       "image": "https://randomuser.me/api/portraits/men/10.jpg"
     },
     {
@@ -393,10 +480,7 @@
         "referencePoint": ""
       },
       "image": "",
-      "class": [
-        "2",
-        "3"
-      ]
+      "class": ["2", "3"]
     }
   ],
   "schoolclass": [
@@ -472,9 +556,7 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Mercado Central"
       },
-      "schoolSubjects": [
-        "Matemática"
-      ]
+      "schoolSubjects": ["Matemática"]
     },
     {
       "id": "2",
@@ -498,9 +580,7 @@
         "neighborhood": "Bela Vista",
         "referencePoint": "Próximo ao MASP"
       },
-      "schoolSubjects": [
-        "História"
-      ]
+      "schoolSubjects": ["História"]
     },
     {
       "id": "3",
@@ -524,9 +604,7 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Paço Imperial"
       },
-      "schoolSubjects": [
-        "Química"
-      ]
+      "schoolSubjects": ["Química"]
     },
     {
       "id": "4",
@@ -550,9 +628,7 @@
         "neighborhood": "Centro Histórico",
         "referencePoint": "Próximo ao Mercado Público"
       },
-      "schoolSubjects": [
-        "Física"
-      ]
+      "schoolSubjects": ["Física"]
     },
     {
       "id": "5",
@@ -576,9 +652,7 @@
         "neighborhood": "Campo Grande",
         "referencePoint": "Próximo ao Teatro Castro Alves"
       },
-      "schoolSubjects": [
-        "Inglês"
-      ]
+      "schoolSubjects": ["Inglês"]
     },
     {
       "id": "6",
@@ -602,9 +676,7 @@
         "neighborhood": "Boa Vista",
         "referencePoint": "Próximo ao Parque 13 de Maio"
       },
-      "schoolSubjects": [
-        "Educação Física"
-      ]
+      "schoolSubjects": ["Educação Física"]
     },
     {
       "id": "7",
@@ -628,9 +700,7 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Teatro Guaíra"
       },
-      "schoolSubjects": [
-        "Espanhol"
-      ]
+      "schoolSubjects": ["Espanhol"]
     },
     {
       "id": "8",
@@ -654,9 +724,7 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Mercado Público"
       },
-      "schoolSubjects": [
-        "Ciências"
-      ]
+      "schoolSubjects": ["Ciências"]
     },
     {
       "id": "9",
@@ -680,9 +748,810 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Mercado Público"
       },
-      "schoolSubjects": [
-        "Ciências"
-      ]
+      "schoolSubjects": ["Ciências"]
+    }
+  ],
+  "grades": [
+    {
+      "id": "15f2d789-d404-4655-845e-e7cfb969f29d",
+      "testname": "Mathematics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 5.22,
+      "teacher": "2",
+      "student": "1",
+      "schoolSubject": "Matemática"
+    },
+    {
+      "id": "107be381-479a-4227-ba37-982cc4740833",
+      "testname": "History Test",
+      "testdate": "2024-08-14",
+      "testgrade": 8.54,
+      "teacher": "6",
+      "student": "1",
+      "schoolSubject": "História"
+    },
+    {
+      "id": "8a730aae-db4f-4f73-bac3-585370407ede",
+      "testname": "Chemistry Test",
+      "testdate": "2024-08-14",
+      "testgrade": 0.64,
+      "teacher": "6",
+      "student": "1",
+      "schoolSubject": "Química"
+    },
+    {
+      "id": "0045b406-f82e-4b5b-a561-4f26f7c879a0",
+      "testname": "Physics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 3.88,
+      "teacher": "4",
+      "student": "1",
+      "schoolSubject": "Física"
+    },
+    {
+      "id": "e4d38f4f-5db7-40fe-8ffd-75e9b5c47758",
+      "testname": "English Test",
+      "testdate": "2024-08-14",
+      "testgrade": 4.99,
+      "teacher": "2",
+      "student": "1",
+      "schoolSubject": "Inglês"
+    },
+    {
+      "id": "bf47cf25-3ad9-4ab2-99f6-294646120385",
+      "testname": "Physical Education Test",
+      "testdate": "2024-08-14",
+      "testgrade": 7.47,
+      "teacher": "4",
+      "student": "1",
+      "schoolSubject": "Educação Física"
+    },
+    {
+      "id": "803d150a-e92e-4317-9132-e491043d0274",
+      "testname": "Spanish Test",
+      "testdate": "2024-08-14",
+      "testgrade": 6.64,
+      "teacher": "1",
+      "student": "1",
+      "schoolSubject": "Espanhol"
+    },
+    {
+      "id": "e7dadeda-17fd-49d8-a8df-535889ef83ee",
+      "testname": "Science Test",
+      "testdate": "2024-08-14",
+      "testgrade": 5.25,
+      "teacher": "5",
+      "student": "1",
+      "schoolSubject": "Ciências"
+    },
+    {
+      "id": "34ebe742-d342-403f-aff5-b4acb5a2296c",
+      "testname": "Mathematics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 7.56,
+      "teacher": "5",
+      "student": "2",
+      "schoolSubject": "Matemática"
+    },
+    {
+      "id": "d65cf8d6-c4ca-4319-8d98-ed3aa984f7ce",
+      "testname": "History Test",
+      "testdate": "2024-08-14",
+      "testgrade": 5.06,
+      "teacher": "5",
+      "student": "2",
+      "schoolSubject": "História"
+    },
+    {
+      "id": "f35ed530-fd75-45d7-9667-525647bb431e",
+      "testname": "Chemistry Test",
+      "testdate": "2024-08-14",
+      "testgrade": 7.23,
+      "teacher": "9",
+      "student": "2",
+      "schoolSubject": "Química"
+    },
+    {
+      "id": "bf1cfcf1-9cab-483f-aeb6-67a3eb6f6cff",
+      "testname": "Physics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 8.41,
+      "teacher": "8",
+      "student": "2",
+      "schoolSubject": "Física"
+    },
+    {
+      "id": "546d1e98-40e0-4a63-beb0-d52473c4a490",
+      "testname": "English Test",
+      "testdate": "2024-08-14",
+      "testgrade": 2.94,
+      "teacher": "3",
+      "student": "2",
+      "schoolSubject": "Inglês"
+    },
+    {
+      "id": "133816ac-229d-40e9-af0c-2aaa42a54b43",
+      "testname": "Physical Education Test",
+      "testdate": "2024-08-14",
+      "testgrade": 6.39,
+      "teacher": "7",
+      "student": "2",
+      "schoolSubject": "Educação Física"
+    },
+    {
+      "id": "03855dd3-d722-4a45-9a92-624403b358f8",
+      "testname": "Spanish Test",
+      "testdate": "2024-08-14",
+      "testgrade": 10,
+      "teacher": "3",
+      "student": "2",
+      "schoolSubject": "Espanhol"
+    },
+    {
+      "id": "ae9e21d8-8ffc-475d-a633-30b765eeaa29",
+      "testname": "Science Test",
+      "testdate": "2024-08-14",
+      "testgrade": 9.59,
+      "teacher": "8",
+      "student": "2",
+      "schoolSubject": "Ciências"
+    },
+    {
+      "id": "40f74bff-53a1-49cf-966c-44397ada44a7",
+      "testname": "Mathematics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 6.04,
+      "teacher": "6",
+      "student": "3",
+      "schoolSubject": "Matemática"
+    },
+    {
+      "id": "1aa45ed3-5566-4052-830c-2f1c3af68314",
+      "testname": "History Test",
+      "testdate": "2024-08-14",
+      "testgrade": 8.35,
+      "teacher": "1",
+      "student": "3",
+      "schoolSubject": "História"
+    },
+    {
+      "id": "3e8a2603-624a-4f87-b0c8-cd1e5a54449b",
+      "testname": "Chemistry Test",
+      "testdate": "2024-08-14",
+      "testgrade": 1.98,
+      "teacher": "6",
+      "student": "3",
+      "schoolSubject": "Química"
+    },
+    {
+      "id": "bd386f73-debb-4871-9745-4f10d3a0695f",
+      "testname": "Physics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 0.17,
+      "teacher": "1",
+      "student": "3",
+      "schoolSubject": "Física"
+    },
+    {
+      "id": "1a4a5b16-d384-44d5-ad17-5cc624b85c78",
+      "testname": "English Test",
+      "testdate": "2024-08-14",
+      "testgrade": 7.09,
+      "teacher": "8",
+      "student": "3",
+      "schoolSubject": "Inglês"
+    },
+    {
+      "id": "5b916d62-29b4-4cfd-83a1-0f35d84f0a28",
+      "testname": "Physical Education Test",
+      "testdate": "2024-08-14",
+      "testgrade": 6.42,
+      "teacher": "6",
+      "student": "3",
+      "schoolSubject": "Educação Física"
+    },
+    {
+      "id": "464afb31-b681-4bd7-84d3-7f1af4f6f6b4",
+      "testname": "Spanish Test",
+      "testdate": "2024-08-14",
+      "testgrade": 3.28,
+      "teacher": "8",
+      "student": "3",
+      "schoolSubject": "Espanhol"
+    },
+    {
+      "id": "e88fe06c-644f-4938-97e2-b2adee6a7d7c",
+      "testname": "Science Test",
+      "testdate": "2024-08-14",
+      "testgrade": 3.79,
+      "teacher": "2",
+      "student": "3",
+      "schoolSubject": "Ciências"
+    },
+    {
+      "id": "9523368d-a221-4e69-a93d-1565eb1afb8e",
+      "testname": "Mathematics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 9.07,
+      "teacher": "6",
+      "student": "4",
+      "schoolSubject": "Matemática"
+    },
+    {
+      "id": "fab36b7d-16b0-4224-8be7-11ff1f85bf89",
+      "testname": "History Test",
+      "testdate": "2024-08-14",
+      "testgrade": 8.43,
+      "teacher": "4",
+      "student": "4",
+      "schoolSubject": "História"
+    },
+    {
+      "id": "1e13d4df-e57f-43f3-8bc7-007893bb169c",
+      "testname": "Chemistry Test",
+      "testdate": "2024-08-14",
+      "testgrade": 5.47,
+      "teacher": "6",
+      "student": "4",
+      "schoolSubject": "Química"
+    },
+    {
+      "id": "8494ddc7-f6c1-4421-8686-90489580acca",
+      "testname": "Physics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 3.58,
+      "teacher": "1",
+      "student": "4",
+      "schoolSubject": "Física"
+    },
+    {
+      "id": "97d23995-e8e7-4631-802c-3e6dd5524b5b",
+      "testname": "English Test",
+      "testdate": "2024-08-14",
+      "testgrade": 0.93,
+      "teacher": "2",
+      "student": "4",
+      "schoolSubject": "Inglês"
+    },
+    {
+      "id": "9216b8f1-c82d-4d13-b66e-e8a5b4b0a01c",
+      "testname": "Physical Education Test",
+      "testdate": "2024-08-14",
+      "testgrade": 8.51,
+      "teacher": "3",
+      "student": "4",
+      "schoolSubject": "Educação Física"
+    },
+    {
+      "id": "5f42eb36-febe-4a23-82d0-71a59f1351ae",
+      "testname": "Spanish Test",
+      "testdate": "2024-08-14",
+      "testgrade": 4.45,
+      "teacher": "7",
+      "student": "4",
+      "schoolSubject": "Espanhol"
+    },
+    {
+      "id": "649d0822-a92b-4f53-bc89-f47659b642f6",
+      "testname": "Science Test",
+      "testdate": "2024-08-14",
+      "testgrade": 7.75,
+      "teacher": "2",
+      "student": "4",
+      "schoolSubject": "Ciências"
+    },
+    {
+      "id": "25dbfe7f-f614-4b29-b1fe-6505135f59b9",
+      "testname": "Mathematics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 0.57,
+      "teacher": "6",
+      "student": "5",
+      "schoolSubject": "Matemática"
+    },
+    {
+      "id": "bdd49e2e-484e-4a12-8185-503cb22459d0",
+      "testname": "History Test",
+      "testdate": "2024-08-14",
+      "testgrade": 4.59,
+      "teacher": "6",
+      "student": "5",
+      "schoolSubject": "História"
+    },
+    {
+      "id": "5882b6fb-908c-4ff7-a8cf-5ca8bb9cad7e",
+      "testname": "Chemistry Test",
+      "testdate": "2024-08-14",
+      "testgrade": 9.49,
+      "teacher": "4",
+      "student": "5",
+      "schoolSubject": "Química"
+    },
+    {
+      "id": "2bf6ae75-576a-4250-ae8c-ac0992621013",
+      "testname": "Physics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 9.2,
+      "teacher": "3",
+      "student": "5",
+      "schoolSubject": "Física"
+    },
+    {
+      "id": "a1454cbd-63b7-4134-ba7e-a9ec4712066b",
+      "testname": "English Test",
+      "testdate": "2024-08-14",
+      "testgrade": 5.72,
+      "teacher": "8",
+      "student": "5",
+      "schoolSubject": "Inglês"
+    },
+    {
+      "id": "1ef13032-2b22-4f5b-8166-6cb319044c03",
+      "testname": "Physical Education Test",
+      "testdate": "2024-08-14",
+      "testgrade": 0.62,
+      "teacher": "3",
+      "student": "5",
+      "schoolSubject": "Educação Física"
+    },
+    {
+      "id": "65d8bef8-418e-4084-8b7a-bea56e1544b8",
+      "testname": "Spanish Test",
+      "testdate": "2024-08-14",
+      "testgrade": 0.62,
+      "teacher": "6",
+      "student": "5",
+      "schoolSubject": "Espanhol"
+    },
+    {
+      "id": "11996fcb-180c-4c93-9e82-a58be6729bb4",
+      "testname": "Science Test",
+      "testdate": "2024-08-14",
+      "testgrade": 5.2,
+      "teacher": "8",
+      "student": "5",
+      "schoolSubject": "Ciências"
+    },
+    {
+      "id": "0403df78-593c-48ce-aee6-38a178ef666c",
+      "testname": "Mathematics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 0.91,
+      "teacher": "7",
+      "student": "6",
+      "schoolSubject": "Matemática"
+    },
+    {
+      "id": "2f252eeb-da6c-4a03-8049-9e729e9eda34",
+      "testname": "History Test",
+      "testdate": "2024-08-14",
+      "testgrade": 8.61,
+      "teacher": "1",
+      "student": "6",
+      "schoolSubject": "História"
+    },
+    {
+      "id": "24bc6cad-fbf2-4ef1-b760-a9f7d8a290b1",
+      "testname": "Chemistry Test",
+      "testdate": "2024-08-14",
+      "testgrade": 8.43,
+      "teacher": "9",
+      "student": "6",
+      "schoolSubject": "Química"
+    },
+    {
+      "id": "72ec1ba2-8f47-4817-8b84-922183f38efd",
+      "testname": "Physics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 8.87,
+      "teacher": "3",
+      "student": "6",
+      "schoolSubject": "Física"
+    },
+    {
+      "id": "e502b215-9785-4e3d-8740-6557ec74539e",
+      "testname": "English Test",
+      "testdate": "2024-08-14",
+      "testgrade": 5.28,
+      "teacher": "5",
+      "student": "6",
+      "schoolSubject": "Inglês"
+    },
+    {
+      "id": "7b53b3c9-295b-46e9-968c-4502b5ad02e7",
+      "testname": "Physical Education Test",
+      "testdate": "2024-08-14",
+      "testgrade": 8.38,
+      "teacher": "6",
+      "student": "6",
+      "schoolSubject": "Educação Física"
+    },
+    {
+      "id": "a023bc85-7979-4179-b3c1-f7869fa9b90b",
+      "testname": "Spanish Test",
+      "testdate": "2024-08-14",
+      "testgrade": 7.12,
+      "teacher": "2",
+      "student": "6",
+      "schoolSubject": "Espanhol"
+    },
+    {
+      "id": "43c4c16e-2da9-4577-9321-0157132ceed4",
+      "testname": "Science Test",
+      "testdate": "2024-08-14",
+      "testgrade": 5.17,
+      "teacher": "3",
+      "student": "6",
+      "schoolSubject": "Ciências"
+    },
+    {
+      "id": "4a43fe5e-57b7-431e-86c9-1d8da03f5b64",
+      "testname": "Mathematics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 9.77,
+      "teacher": "2",
+      "student": "7",
+      "schoolSubject": "Matemática"
+    },
+    {
+      "id": "d316eee7-f589-4ffd-a81d-0c61abaf7bf2",
+      "testname": "History Test",
+      "testdate": "2024-08-14",
+      "testgrade": 9.87,
+      "teacher": "6",
+      "student": "7",
+      "schoolSubject": "História"
+    },
+    {
+      "id": "b434aa71-dcad-4752-b90b-b54a6411edf7",
+      "testname": "Chemistry Test",
+      "testdate": "2024-08-14",
+      "testgrade": 2.72,
+      "teacher": "5",
+      "student": "7",
+      "schoolSubject": "Química"
+    },
+    {
+      "id": "7d5ed8b3-cad7-4327-ba69-b211493f7dcd",
+      "testname": "Physics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 1.35,
+      "teacher": "4",
+      "student": "7",
+      "schoolSubject": "Física"
+    },
+    {
+      "id": "fe6e4463-1bf1-4fb5-9e5c-7b3827f1ac80",
+      "testname": "English Test",
+      "testdate": "2024-08-14",
+      "testgrade": 3.24,
+      "teacher": "3",
+      "student": "7",
+      "schoolSubject": "Inglês"
+    },
+    {
+      "id": "a07fb386-3abf-42a1-a4c5-fe938428e71e",
+      "testname": "Physical Education Test",
+      "testdate": "2024-08-14",
+      "testgrade": 6.53,
+      "teacher": "8",
+      "student": "7",
+      "schoolSubject": "Educação Física"
+    },
+    {
+      "id": "20988d2f-cfff-41b7-b498-c872bdac7f22",
+      "testname": "Spanish Test",
+      "testdate": "2024-08-14",
+      "testgrade": 4.86,
+      "teacher": "5",
+      "student": "7",
+      "schoolSubject": "Espanhol"
+    },
+    {
+      "id": "f2ebc73f-8e60-473a-9ac8-e0d7d543f51f",
+      "testname": "Science Test",
+      "testdate": "2024-08-14",
+      "testgrade": 6.23,
+      "teacher": "7",
+      "student": "7",
+      "schoolSubject": "Ciências"
+    },
+    {
+      "id": "8826af1b-92d1-4bb0-9fa7-9b73705578b0",
+      "testname": "Mathematics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 2.57,
+      "teacher": "3",
+      "student": "8",
+      "schoolSubject": "Matemática"
+    },
+    {
+      "id": "7d0c18c3-52dc-4bc6-9186-b4bf2be73662",
+      "testname": "History Test",
+      "testdate": "2024-08-14",
+      "testgrade": 3.84,
+      "teacher": "5",
+      "student": "8",
+      "schoolSubject": "História"
+    },
+    {
+      "id": "a7f20061-ac11-4d53-902c-fe8801f7b509",
+      "testname": "Chemistry Test",
+      "testdate": "2024-08-14",
+      "testgrade": 4.07,
+      "teacher": "8",
+      "student": "8",
+      "schoolSubject": "Química"
+    },
+    {
+      "id": "6d627dda-893e-4455-92f0-10df92731880",
+      "testname": "Physics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 3.79,
+      "teacher": "3",
+      "student": "8",
+      "schoolSubject": "Física"
+    },
+    {
+      "id": "2052d56e-48f0-4f1c-be14-df9ae9218f0f",
+      "testname": "English Test",
+      "testdate": "2024-08-14",
+      "testgrade": 7.33,
+      "teacher": "4",
+      "student": "8",
+      "schoolSubject": "Inglês"
+    },
+    {
+      "id": "b07e83a1-1388-45f0-bca3-ce1574f487d6",
+      "testname": "Physical Education Test",
+      "testdate": "2024-08-14",
+      "testgrade": 3.47,
+      "teacher": "2",
+      "student": "8",
+      "schoolSubject": "Educação Física"
+    },
+    {
+      "id": "0dcdc5aa-dbea-47e9-a5a0-78acbf6191c6",
+      "testname": "Spanish Test",
+      "testdate": "2024-08-14",
+      "testgrade": 4.74,
+      "teacher": "2",
+      "student": "8",
+      "schoolSubject": "Espanhol"
+    },
+    {
+      "id": "f29c1706-40d0-4d73-801a-7bacafca41ed",
+      "testname": "Science Test",
+      "testdate": "2024-08-14",
+      "testgrade": 7.65,
+      "teacher": "9",
+      "student": "8",
+      "schoolSubject": "Ciências"
+    },
+    {
+      "id": "8e0b7631-f29c-4b52-b630-10d65d2043c2",
+      "testname": "Mathematics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 4.63,
+      "teacher": "7",
+      "student": "9",
+      "schoolSubject": "Matemática"
+    },
+    {
+      "id": "0afe65a2-23ed-4fe1-b074-1a54745711b8",
+      "testname": "History Test",
+      "testdate": "2024-08-14",
+      "testgrade": 7.7,
+      "teacher": "4",
+      "student": "9",
+      "schoolSubject": "História"
+    },
+    {
+      "id": "c2c292ca-94fc-4ae4-80d1-a74fef10b395",
+      "testname": "Chemistry Test",
+      "testdate": "2024-08-14",
+      "testgrade": 6.64,
+      "teacher": "9",
+      "student": "9",
+      "schoolSubject": "Química"
+    },
+    {
+      "id": "accc9418-5f8c-44cf-980c-73988b086f32",
+      "testname": "Physics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 9.71,
+      "teacher": "8",
+      "student": "9",
+      "schoolSubject": "Física"
+    },
+    {
+      "id": "cd7b40f5-e7a9-4382-8790-9d77562c901e",
+      "testname": "English Test",
+      "testdate": "2024-08-14",
+      "testgrade": 6.53,
+      "teacher": "4",
+      "student": "9",
+      "schoolSubject": "Inglês"
+    },
+    {
+      "id": "1816c52d-c074-4fa5-8898-0e08eda180b6",
+      "testname": "Physical Education Test",
+      "testdate": "2024-08-14",
+      "testgrade": 0,
+      "teacher": "5",
+      "student": "9",
+      "schoolSubject": "Educação Física"
+    },
+    {
+      "id": "b94cafdf-b30a-43f1-948c-b361b90fdae3",
+      "testname": "Spanish Test",
+      "testdate": "2024-08-14",
+      "testgrade": 3.04,
+      "teacher": "9",
+      "student": "9",
+      "schoolSubject": "Espanhol"
+    },
+    {
+      "id": "daade165-7f87-49df-8653-2fc579e1d5ea",
+      "testname": "Science Test",
+      "testdate": "2024-08-14",
+      "testgrade": 6.69,
+      "teacher": "9",
+      "student": "9",
+      "schoolSubject": "Ciências"
+    },
+    {
+      "id": "a27c6bcb-fddb-42ae-a7be-d0f16f4146fd",
+      "testname": "Mathematics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 4.64,
+      "teacher": "4",
+      "student": "10",
+      "schoolSubject": "Matemática"
+    },
+    {
+      "id": "54b04bee-80ed-4d34-ac91-c7081da9e554",
+      "testname": "History Test",
+      "testdate": "2024-08-14",
+      "testgrade": 3.21,
+      "teacher": "3",
+      "student": "10",
+      "schoolSubject": "História"
+    },
+    {
+      "id": "ace41b95-627c-49ba-8345-72be42391e18",
+      "testname": "Chemistry Test",
+      "testdate": "2024-08-14",
+      "testgrade": 2.74,
+      "teacher": "3",
+      "student": "10",
+      "schoolSubject": "Química"
+    },
+    {
+      "id": "4789eb74-5cd0-473f-9797-8da4371ec147",
+      "testname": "Physics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 8.29,
+      "teacher": "7",
+      "student": "10",
+      "schoolSubject": "Física"
+    },
+    {
+      "id": "7fde05e1-bf26-44a6-ad78-4172485a6a82",
+      "testname": "English Test",
+      "testdate": "2024-08-14",
+      "testgrade": 4.73,
+      "teacher": "2",
+      "student": "10",
+      "schoolSubject": "Inglês"
+    },
+    {
+      "id": "e02bae69-2342-4f21-892b-30f688eb0d9a",
+      "testname": "Physical Education Test",
+      "testdate": "2024-08-14",
+      "testgrade": 6.13,
+      "teacher": "2",
+      "student": "10",
+      "schoolSubject": "Educação Física"
+    },
+    {
+      "id": "1124b0f0-4d99-4a3c-afd4-ed2e8d603e74",
+      "testname": "Spanish Test",
+      "testdate": "2024-08-14",
+      "testgrade": 7.94,
+      "teacher": "3",
+      "student": "10",
+      "schoolSubject": "Espanhol"
+    },
+    {
+      "id": "c599482d-f988-4139-9b78-2f9b39718f07",
+      "testname": "Science Test",
+      "testdate": "2024-08-14",
+      "testgrade": 0.96,
+      "teacher": "9",
+      "student": "10",
+      "schoolSubject": "Ciências"
+    },
+    {
+      "id": "11fee82a-c43c-4780-9272-c4243bbd7b8f",
+      "testname": "Mathematics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 1.08,
+      "teacher": "2",
+      "student": "7078",
+      "schoolSubject": "Matemática"
+    },
+    {
+      "id": "bc0725a1-cafe-4002-9c89-0425c08dea3e",
+      "testname": "History Test",
+      "testdate": "2024-08-14",
+      "testgrade": 6.76,
+      "teacher": "4",
+      "student": "7078",
+      "schoolSubject": "História"
+    },
+    {
+      "id": "3f06b9e5-5ade-4975-a157-774fa4b777a7",
+      "testname": "Chemistry Test",
+      "testdate": "2024-08-14",
+      "testgrade": 9.98,
+      "teacher": "4",
+      "student": "7078",
+      "schoolSubject": "Química"
+    },
+    {
+      "id": "ace73683-986c-45ab-a5fc-940157bbc19f",
+      "testname": "Physics Test",
+      "testdate": "2024-08-14",
+      "testgrade": 4.42,
+      "teacher": "8",
+      "student": "7078",
+      "schoolSubject": "Física"
+    },
+    {
+      "id": "8e2c53d7-67f1-4281-8300-d37a9d730507",
+      "testname": "English Test",
+      "testdate": "2024-08-14",
+      "testgrade": 4.64,
+      "teacher": "3",
+      "student": "7078",
+      "schoolSubject": "Inglês"
+    },
+    {
+      "id": "85ab68a8-c34d-4b42-bd62-1905bb143709",
+      "testname": "Physical Education Test",
+      "testdate": "2024-08-14",
+      "testgrade": 7.82,
+      "teacher": "3",
+      "student": "7078",
+      "schoolSubject": "Educação Física"
+    },
+    {
+      "id": "c1cad920-6f2f-472d-b56b-b13b5b0578aa",
+      "testname": "Spanish Test",
+      "testdate": "2024-08-14",
+      "testgrade": 8.78,
+      "teacher": "6",
+      "student": "7078",
+      "schoolSubject": "Espanhol"
+    },
+    {
+      "id": "ad09cf73-2443-4104-8d55-6bab4dc13630",
+      "testname": "Science Test",
+      "testdate": "2024-08-14",
+      "testgrade": 9.78,
+      "teacher": "4",
+      "student": "7078",
+      "schoolSubject": "Ciências"
+    },
+    {
+      "id": "451b",
+      "teacher": "1",
+      "schoolSubject": "Português",
+      "student": "1",
+      "testname": "teste teste teste ",
+      "testdate": "2024-08-14",
+      "testgrade": 6
     }
   ]
 }

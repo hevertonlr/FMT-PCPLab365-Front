@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { CommonModule, formatDate } from '@angular/common';
+import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -10,10 +10,11 @@ import {
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
   heroUsers,
+  heroFolder,
   heroEnvelope,
   heroHomeModern,
   heroCog6Tooth,
-  heroFolder,
+  heroArrowTrendingUp,
 } from '@ng-icons/heroicons/outline';
 import {
   heroUserCircleSolid,
@@ -22,21 +23,22 @@ import {
 } from '@ng-icons/heroicons/solid';
 import { ValidationStyleDirective } from 'app/shared/directives/validation-style.directive';
 import { Profile } from 'app/shared/enums/profile';
-import { SchoolClass } from 'app/shared/interfaces/schoolclass';
+import { Grade } from 'app/shared/interfaces/grade';
+import { Student } from 'app/shared/interfaces/student';
 import { Teacher } from 'app/shared/interfaces/teacher';
 import { User } from 'app/shared/interfaces/user';
 import { AuthService } from 'app/shared/services/auth.service';
 import { FormUtilsService } from 'app/shared/services/form-utils.service';
-import SchoolClassService from 'app/shared/services/schoolclass.service';
+import { GradeService } from 'app/shared/services/grade.service';
+import { StudentService } from 'app/shared/services/student.service';
 import { TeacherService } from 'app/shared/services/teacher.service';
 import { ToastService } from 'app/shared/services/toast.service';
 import { ValidationService } from 'app/shared/services/validation.service';
-import { ViaCepService } from 'app/shared/services/via-cep.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-schoolclass-registration',
+  selector: 'app-grade-registration',
   standalone: true,
   imports: [
     CommonModule,
@@ -47,12 +49,13 @@ import { Observable } from 'rxjs';
     NgxMaskDirective,
     NgxMaskPipe,
   ],
-  templateUrl: './schoolclass-registration.component.html',
-  styleUrl: './schoolclass-registration.component.scss',
+  templateUrl: './grade-registration.component.html',
+  styleUrl: './grade-registration.component.scss',
   providers: [
     provideIcons({
       heroUsers,
       heroFolder,
+      heroArrowTrendingUp,
       heroEnvelope,
       heroHomeModern,
       heroCog6Tooth,
@@ -62,26 +65,36 @@ import { Observable } from 'rxjs';
     }),
   ],
 })
-export class SchoolClassRegistrationComponent implements OnInit {
+export class GradeRegistrationComponent {
+  schoolSubjects: { key: string; value: string }[];
+  civilStates: { key: string; value: string }[];
   tabs: { label: string; icon: string }[] = [];
+  genders: { key: string; value: string }[];
   fieldAliases: { [key: string]: string };
+  students: Student[] = [];
   teachers: Teacher[] = [];
   currentUser: User;
+  today: string;
 
   isLoading: boolean = false;
-  editObject: SchoolClass;
+  editObject: Grade;
   form: FormGroup;
   selectedTab = 0;
 
   constructor(
     private fb: FormBuilder,
-    private service: SchoolClassService,
+    private service: GradeService,
     private toastService: ToastService,
     private formUtilsService: FormUtilsService,
     private validationService: ValidationService,
     private teachersService: TeacherService,
+    private studentsService: StudentService,
     private authService: AuthService,
   ) {
+    this.today = formatDate(Date.now(), 'yyyy-MM-dd', 'en-US');
+    this.genders = this.formUtilsService.getAllGenders();
+    this.civilStates = this.formUtilsService.getAllCivilStates();
+    this.schoolSubjects = this.formUtilsService.getAllSchoolSubjects();
     this.currentUser = this.authService.getCurrentUser();
     const observable =
       this.currentUser.profile === Profile.Administrator
@@ -95,29 +108,50 @@ export class SchoolClassRegistrationComponent implements OnInit {
         this.toastService.showToast(
           'error',
           'Erro!',
-          'Ocorreu um erro ao buscar as Turmas',
+          'Ocorreu um erro ao buscar os Professores',
         );
-        console.error('SchoolClass fetching error:', error);
+        console.error('Teacher fetching error:', error);
+      },
+    });
+
+    this.studentsService.getAll().subscribe({
+      next: (data) => {
+        this.students = data;
+      },
+      error: (error) => {
+        this.toastService.showToast(
+          'error',
+          'Erro!',
+          'Ocorreu um erro ao buscar os Alunos',
+        );
+        console.error('Student fetching error:', error);
       },
     });
 
     this.fieldAliases = {
-      name: 'Nome',
-      initialDate: 'Data de Início',
-      endDate: 'Data de Término',
-      classSchedule: 'Horário da Turma',
       teacher: 'Professor',
+      schoolSubject: 'Matéria',
+      student: 'Aluno',
+      testname: 'Nome da Avaliação',
+      testdate: 'Data da Avaliação',
+      testgrade: 'Nota da Avaliação',
     };
     this.tabs = [
       {
-        label: 'Turma',
-        icon: 'heroFolder',
+        label: 'Nota',
+        icon: 'heroArrowTrendingUp',
       },
     ];
 
     this.form = this.fb.group({
       id: [''],
-      name: [
+      teacher: [
+        { value: '', disabled: this.currentUser.profile === Profile.Teacher },
+        Validators.required,
+      ],
+      schoolSubject: ['', Validators.required],
+      student: ['', Validators.required],
+      testname: [
         '',
         [
           Validators.required,
@@ -125,19 +159,20 @@ export class SchoolClassRegistrationComponent implements OnInit {
           Validators.maxLength(64),
         ],
       ],
-      initialDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-      classSchedule: ['', Validators.required],
-      teacher: [
-        { value: '', disabled: this.currentUser.profile === Profile.Teacher },
+      testdate: [
+        formatDate(Date.now(), 'yyyy-MM-dd', 'en-US'),
         Validators.required,
+      ],
+      testgrade: [
+        '',
+        [Validators.required, Validators.min(0), Validators.max(10)],
       ],
     });
   }
   ngOnInit(): void {
     const state = history.state;
-    if (state?.schoolclass) {
-      this.editObject = state?.schoolclass as SchoolClass;
+    if (state?.grade) {
+      this.editObject = state?.grade as Grade;
       this.form.patchValue(this.editObject);
       this.formUtilsService.markAllAsDirty(this.form);
     }
@@ -176,6 +211,7 @@ export class SchoolClassRegistrationComponent implements OnInit {
             'Registro criado com sucesso.',
           );
         });
+        this.form.reset();
       }
     } catch (error) {
       console.error('Form submit error:', error);

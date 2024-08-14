@@ -85,7 +85,6 @@ export class ValidationService {
   isValid = (form: FormGroup, inputName: string) => {
     const invalid = this.checkIsInvalid(form, inputName);
     const valid = this.checkIsValid(form, inputName);
-
     if (invalid && !valid) return false;
     if (!invalid && valid) return true;
     return undefined;
@@ -97,7 +96,7 @@ export class ValidationService {
   };
   private checkIsValid = (form: FormGroup, controlName: string): boolean => {
     const control = form.get(controlName);
-    return (control?.valid && control?.dirty) ?? false;
+    return (control?.valid && (control?.dirty || control?.touched)) ?? false;
   };
 
   private getErrorMessage = (
@@ -112,8 +111,13 @@ export class ValidationService {
         return `Informe um endereço de e-mail válido.`;
       case 'minlength':
         return `${alias} deve ter ao menos ${errorValue.requiredLength} caracteres.`;
+
       case 'maxLength':
         return `${alias} deve no máximo ${errorValue.requiredLength} caracteres.`;
+      case 'min':
+        return `${alias} deve ser maior ou igual a ${errorValue.min}.`;
+      case 'max':
+        return `${alias} deve ser menor ou igual a ${errorValue.max}.`;
       case 'pattern':
         if (alias === 'CPF') {
           return `O campo ${alias} deve estar no formato 000.000.000-00.`;

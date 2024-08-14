@@ -35,173 +35,7 @@
         </div>
       </div>
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-6 md:col-span-3">
-        <div class="col-span-full">
-          <label
-            for="name"
-            class="block text-sm font-medium leading-6 text-gray-900"
-            >Nome da Turma</label
-          >
-          <div class="relative mt-2">
-            <input
-              id="name"
-              name="name"
-              appValidationStyle
-              formControlName="name"
-              type="text"
-              class="form-input"
-            />
-            <div
-              *ngIf="isValid('name') !== undefined"
-              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
-            >
-              <ng-icon
-                className="{{
-                  isValid('name') === true ? 'text-green-500' : 'text-red-500'
-                }}"
-                size="1.25rem"
-                name="
-                          {{
-                  isValid('name') === true
-                    ? 'heroCheckCircleSolid'
-                    : 'heroExclamationCircleSolid'
-                }}"
-              ></ng-icon>
-            </div>
-          </div>
-          <p
-            *ngIf="isValid('name') === false"
-            class="pt-2 -mb-2 text-sm text-red-600"
-          >
-            {{ getInputErrors("name") }}
-          </p>
-        </div>
         <div class="sm:col-span-3">
-          <label
-            for="initialDate"
-            class="block text-sm font-medium leading-6 text-gray-900"
-            >Data de Início</label
-          >
-          <div class="relative mt-2">
-            <input
-              id="initialDate"
-              name="initialDate"
-              appValidationStyle
-              formControlName="initialDate"
-              type="date"
-              class="form-input"
-            />
-            <div
-              *ngIf="isValid('initialDate') !== undefined"
-              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
-            >
-              <ng-icon
-                className="{{
-                  isValid('initialDate') === true
-                    ? 'text-green-500'
-                    : 'text-red-500'
-                }}"
-                size="1.25rem"
-                name="
-                          {{
-                  isValid('initialDate') === true
-                    ? 'heroCheckCircleSolid'
-                    : 'heroExclamationCircleSolid'
-                }}"
-              ></ng-icon>
-            </div>
-          </div>
-          <p
-            *ngIf="isValid('initialDate') === false"
-            class="pt-2 -mb-2 text-sm text-red-600"
-          >
-            {{ getInputErrors("initialDate") }}
-          </p>
-        </div>
-        <div class="sm:col-span-3">
-          <label
-            for="endDate"
-            class="block text-sm font-medium leading-6 text-gray-900"
-            >Data de Término</label
-          >
-          <div class="relative mt-2">
-            <input
-              id="endDate"
-              name="endDate"
-              appValidationStyle
-              formControlName="endDate"
-              type="date"
-              class="form-input"
-            />
-            <div
-              *ngIf="isValid('endDate') !== undefined"
-              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
-            >
-              <ng-icon
-                className="{{
-                  isValid('endDate') === true
-                    ? 'text-green-500'
-                    : 'text-red-500'
-                }}"
-                size="1.25rem"
-                name="
-                          {{
-                  isValid('endDate') === true
-                    ? 'heroCheckCircleSolid'
-                    : 'heroExclamationCircleSolid'
-                }}"
-              ></ng-icon>
-            </div>
-          </div>
-          <p
-            *ngIf="isValid('endDate') === false"
-            class="pt-2 -mb-2 text-sm text-red-600"
-          >
-            {{ getInputErrors("endDate") }}
-          </p>
-        </div>
-        <div class="sm:col-span-2 sm:col-start-1">
-          <label
-            for="classSchedule"
-            class="block text-sm font-medium leading-6 text-gray-900"
-            >Horário da Turma</label
-          >
-          <div class="relative mt-2">
-            <input
-              id="classSchedule"
-              name="classSchedule"
-              appValidationStyle
-              formControlName="classSchedule"
-              type="time"
-              class="form-input"
-            />
-            <div
-              *ngIf="isValid('classSchedule') !== undefined"
-              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
-            >
-              <ng-icon
-                className="{{
-                  isValid('classSchedule') === true
-                    ? 'text-green-500'
-                    : 'text-red-500'
-                }}"
-                size="1.25rem"
-                name="
-                          {{
-                  isValid('classSchedule') === true
-                    ? 'heroCheckCircleSolid'
-                    : 'heroExclamationCircleSolid'
-                }}"
-              ></ng-icon>
-            </div>
-          </div>
-          <p
-            *ngIf="isValid('endDate') === false"
-            class="pt-2 -mb-2 text-sm text-red-600"
-          >
-            {{ getInputErrors("endDate") }}
-          </p>
-        </div>
-        <div class="sm:col-span-4">
           <label
             for="teacher"
             class="block text-sm font-medium leading-6 text-gray-900"
@@ -226,6 +60,191 @@
             class="pt-2 -mb-2 text-sm text-red-600"
           >
             {{ getInputErrors("teacher") }}
+          </p>
+        </div>
+        <div class="sm:col-span-3">
+          <label
+            for="schoolSubject"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Matéria</label
+          >
+          <div class="relative mt-2">
+            <select
+              id="schoolSubject"
+              name="schoolSubject"
+              appValidationStyle
+              formControlName="schoolSubject"
+              class="form-input"
+            >
+              <option value="" disabled>Selecione a matéria</option>
+              <option
+                *ngFor="let schoolSubject of schoolSubjects"
+                [value]="schoolSubject.value"
+              >
+                {{ schoolSubject.value }}
+              </option>
+            </select>
+          </div>
+          <p
+            *ngIf="isValid('schoolSubject') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("schoolSubject") }}
+          </p>
+        </div>
+        <div class="col-span-full">
+          <label
+            for="testname"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Nome da Avaliação</label
+          >
+          <div class="relative mt-2">
+            <input
+              id="testname"
+              name="testname"
+              appValidationStyle
+              formControlName="testname"
+              type="text"
+              class="form-input"
+            />
+            <div
+              *ngIf="isValid('testname') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('testname') === true
+                    ? 'text-green-500'
+                    : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                            {{
+                  isValid('testname') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('testname') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("testname") }}
+          </p>
+        </div>
+        <div class="sm:col-span-2">
+          <label
+            for="testdate"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Data da Avaliação</label
+          >
+          <div class="relative mt-2">
+            <input
+              id="testdate"
+              name="testdate"
+              appValidationStyle
+              formControlName="testdate"
+              type="date"
+              class="form-input"
+            />
+            <div
+              *ngIf="isValid('testdate') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('testdate') === true
+                    ? 'text-green-500'
+                    : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                              {{
+                  isValid('testdate') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('testdate') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("testdate") }}
+          </p>
+        </div>
+        <div class="sm:col-span-2">
+          <label
+            for="student"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Aluno</label
+          >
+          <div class="relative mt-2">
+            <select
+              id="student"
+              name="student"
+              appValidationStyle
+              formControlName="student"
+              class="form-input"
+            >
+              <option value="" disabled>Selecione o Aluno</option>
+              <option *ngFor="let student of students" [value]="student.id">
+                {{ student.name }}
+              </option>
+            </select>
+          </div>
+          <p
+            *ngIf="isValid('student') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("student") }}
+          </p>
+        </div>
+        <div class="sm:col-span-2">
+          <label
+            for="testgrade"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Nota da Avaliação</label
+          >
+          <div class="relative mt-2">
+            <input
+              id="testgrade"
+              name="testgrade"
+              appValidationStyle
+              formControlName="testgrade"
+              max="10"
+              min="0"
+              type="number"
+              class="form-input"
+            />
+            <div
+              *ngIf="isValid('testgrade') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('testgrade') === true
+                    ? 'text-green-500'
+                    : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                              {{
+                  isValid('testgrade') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('testgrade') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("testgrade") }}
           </p>
         </div>
       </div>

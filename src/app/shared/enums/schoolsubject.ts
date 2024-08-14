@@ -15,6 +15,7 @@ export enum SchoolSubject {
   Spanish = 'Espanhol',
   ComputerScience = 'Informática',
   Technology = 'Tecnologia',
+  Science = 'Ciências',
   Music = 'Música',
   Theater = 'Teatro',
 }
