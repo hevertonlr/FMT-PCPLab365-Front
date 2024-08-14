@@ -5,11 +5,12 @@
     >
       <div class="mx-auto w-full max-w-96 lg:w-96">
         <div>
-          <img
-            alt="Your Company"
-            src="assets/images/logo.svg"
-            class="h-10 w-auto"
-          />
+          <svg class="h-10 w-10 mr-3 inline-flex" alt="">
+            <use xlink:href="assets/images/icons.svg#logo-icon"></use>
+          </svg>
+          <svg class="h-6 w-28 text-gray-600 inline-flex" alt="">
+            <use xlink:href="assets/images/icons.svg#logo-name"></use>
+          </svg>
           <h2
             class="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900"
           >
@@ -34,52 +35,51 @@
               class="space-y-6"
               (ngSubmit)="onSubmit()"
             >
-              <!-- <div>
-                <label
-                  for="email"
-                  class="block text-sm font-medium leading-6 text-gray-900"
-                  >Email</label
-                >
-                <div class="relative mt-2 rounded-md shadow-sm">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="you@example.com"
-                    aria-invalid="true"
-                    aria-describedby="email-error"
-                    class="block w-full rounded-md border-0 py-1.5 pr-10 text-red-900 ring-1 ring-inset ring-red-300 bgj focus:ring-2 focus:ring-inset focus:ring-red-500 sm:text-sm sm:leading-6"
-                    value="adamwathan"
-                  />
-                  <div
-                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
-                  >
-                    <svg class="h-5 w-5 text-red-500" alt="">
-                      <use xlink:href="assets/images/alerts.svg#error"></use>
-                    </svg>
-                  </div>
-                </div>
-                <p id="email-error" class="mt-2 text-sm text-red-600">
-                  Not a valid email address.
-                </p>
-              </div> -->
               <div>
                 <label
                   for="email"
                   class="block text-sm font-medium leading-6 text-gray-900"
                   >E-mail</label
                 >
-                <div class="mt-2">
+                <div class="relative mt-2 rounded-md shadow-sm">
                   <input
                     id="email"
                     name="email"
                     type="email"
                     formControlName="email"
-                    appValidationStyle
-                    required=""
+                    placeholder="you@example.com"
                     autocomplete="email"
-                    class="block w-full rounded-md border border-gray-50 form-input py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    appValidationStyle
+                    class="form-input"
+                    required="true"
                   />
+                  <div
+                    *ngIf="isValid('email') !== undefined"
+                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+                  >
+                    <ng-icon
+                      className="{{
+                        isValid('email') === true
+                          ? 'text-green-500'
+                          : 'text-red-500'
+                      }}"
+                      size="1.25rem"
+                      name="
+                      {{
+                        isValid('email') === true
+                          ? 'heroCheckCircleSolid'
+                          : 'heroExclamationCircleSolid'
+                      }}"
+                    ></ng-icon>
+                  </div>
+                </div>
+                <div class="h-5">
+                  <p
+                    *ngIf="isValid('email') === false"
+                    class="leading-10 text-sm text-red-600"
+                  >
+                    {{ getInputErrors("email") }}
+                  </p>
                 </div>
               </div>
               <div>
@@ -88,17 +88,44 @@
                   class="block text-sm font-medium leading-6 text-gray-900"
                   >Senha</label
                 >
-                <div class="mt-2">
+                <div class="relative mt-2 rounded-md shadow-sm">
                   <input
                     id="password"
                     name="password"
                     type="password"
                     formControlName="password"
                     appValidationStyle
-                    required=""
                     autocomplete="current-password"
-                    class="block w-full rounded-md border border-gray-50 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="form-input"
+                    required="true"
                   />
+                  <div
+                    *ngIf="isValid('password') !== undefined"
+                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+                  >
+                    <ng-icon
+                      className="{{
+                        isValid('password') === true
+                          ? 'text-green-500'
+                          : 'text-red-500'
+                      }}"
+                      size="1.25rem"
+                      name="
+                      {{
+                        isValid('password') === true
+                          ? 'heroCheckCircleSolid'
+                          : 'heroExclamationCircleSolid'
+                      }}"
+                    ></ng-icon>
+                  </div>
+                </div>
+                <div class="h-5">
+                  <p
+                    *ngIf="isValid('password') === false"
+                    class="leading-10 text-sm text-red-600"
+                  >
+                    {{ getInputErrors("password") }}
+                  </p>
                 </div>
               </div>
 
@@ -120,7 +147,7 @@
                   <a
                     [href]=""
                     (click)="notImplemented()"
-                    class="font-semibold text-indigo-600 hover:text-indigo-500"
+                    class="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-500"
                     >Esqueceu sua senha?</a
                   >
                 </div>

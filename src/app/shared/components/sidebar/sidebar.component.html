@@ -37,17 +37,20 @@
         </button>
       </div>
       <div
-        class="flex flex-grow flex-col gap-y-5 overflow-y-auto bg-gray-100 px-6 pb-4 lg:border lg:border-gray-200"
+        class="flex flex-grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4 lg:border-r lg:border-gray-200 border-gradient-to-b gradient-base"
       >
         <div
-          class="flex h-16 flex-shrink-0 items-center text-gray-700 gap-x-3 font-semibold text-base border-b-4 border-gradient-to-r gradient-base"
+          class="flex py-5 flex-shrink-0 items-center text-gray-700 gap-x-3 font-semibold text-base border-b-4 border-gradient-to-r gradient-base"
         >
-          <img alt="labPCP" src="assets/images/logo.svg" class="h-8 w-auto" />
+          <img alt="labPCP" src="assets/images/logo.svg" class="h-6 w-auto" />
+          <!-- <svg class="h-6 w-24 text-gray-700 inline-flex" alt="">
+            <use xlink:href="assets/images/icons.svg#logo-name"></use>
+          </svg> -->
           <span>LabPCP</span>
         </div>
         <nav class="flex flex-1 flex-col">
           <ul class="flex flex-1 flex-col gap-y-7">
-            <li>
+            <!-- <li>
               <ul class="-m-2 space-y-1">
                 <li>
                   <a
@@ -92,29 +95,29 @@
                   </a>
                 </li>
               </ul>
-            </li>
+            </li> -->
             <li>
-              <div class="text-xs font-semibold leading-6 text-gray-400">
+              <!-- <div class="text-xs font-semibold leading-6 text-gray-400">
                 Páginas
-              </div>
+              </div> -->
               <ul class="-m-2 mt-2 space-y-1">
                 <li *ngFor="let route of routes">
                   <a
                     [ngClass]="
                       rla.isActive
-                        ? 'bg-gray-50 text-indigo-600'
+                        ? 'bg-gray-50 text-blue-800'
                         : 'text-gray-700'
                     "
                     [routerLink]="route.path"
-                    [routerLinkActive]="['bg-gray-50', 'text-indigo-600']"
+                    [routerLinkActive]="['bg-gray-50', 'text-blue-800']"
                     #rla="routerLinkActive"
-                    class="transition-colors duration-300 hover:bg-gray-50 hover:text-indigo-600 group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
+                    class="transition-colors duration-300 hover:bg-gray-50 hover:text-blue-800 group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
                   >
                     <svg
                       [ngClass]="
-                        rla.isActive ? 'text-indigo-600' : 'text-gray-400'
+                        rla.isActive ? 'text-orange-500' : 'text-gray-400'
                       "
-                      class="transition-colors duration-300 text-gray-400 group-hover:text-indigo-600 h-6 w-6 flex-shrink-0"
+                      class="transition-colors duration-300 text-gray-400 group-hover:text-orange-500 h-6 w-6 flex-shrink-0"
                       alt=""
                     >
                       <use
@@ -132,10 +135,10 @@
               <a
                 [href]=""
                 (click)="logout()"
-                class="transition-colors duration-300 group -m-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+                class="transition-colors duration-300 group -m-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600 cursor-pointer"
               >
                 <svg
-                  class="transition-colors duration-300 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-indigo-600"
+                  class="transition-colors duration-300 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-orange-500"
                   alt=""
                 >
                   <use xlink:href="assets/images/icons.svg#logout"></use>

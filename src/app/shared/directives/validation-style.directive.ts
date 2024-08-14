@@ -1,29 +1,38 @@
-import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 @Directive({
   selector: '[appValidationStyle]',
   standalone: true,
 })
-export class ValidationStyleDirective implements OnInit {
+export class ValidationStyleDirective {
   constructor(
     private el: ElementRef,
     private renderer: Renderer2,
     private control: NgControl,
   ) {}
-  ngOnInit(): void {
-    this.control.statusChanges?.subscribe(() => {
-      if (this.control.dirty || this.control.touched) {
-        if (this.control.invalid) {
-          this.renderer.addClass(this.el.nativeElement, 'border-red-500');
-          this.renderer.removeClass(this.el.nativeElement, 'border-gray-50');
-          this.renderer.removeClass(this.el.nativeElement, 'border-green-500');
-          return;
-        }
-        this.renderer.addClass(this.el.nativeElement, 'border-green-500');
-        this.renderer.removeClass(this.el.nativeElement, 'border-gray-50');
-        this.renderer.removeClass(this.el.nativeElement, 'border-red-500');
-      }
-    });
+  @HostListener('input') onInputChange() {
+    this.updateStyles();
+  }
+
+  @HostListener('blur') onBlur() {
+    this.updateStyles();
+  }
+
+  private updateStyles() {
+    const control = this.control.control;
+    if (!control) return;
+    if (!control.invalid || !control.valid) {
+      this.renderer.removeClass(this.el.nativeElement, 'invalid');
+      this.renderer.removeClass(this.el.nativeElement, 'valid');
+    }
+
+    if (control.invalid && (control.dirty || control.touched)) {
+      this.renderer.addClass(this.el.nativeElement, 'invalid');
+      this.renderer.removeClass(this.el.nativeElement, 'valid');
+    } else if (control.valid && (control.dirty || control.touched)) {
+      this.renderer.addClass(this.el.nativeElement, 'valid');
+      this.renderer.removeClass(this.el.nativeElement, 'invalid');
+    }
   }
 }

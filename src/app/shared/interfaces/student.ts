@@ -11,7 +11,7 @@ export interface Student {
   phone: string;
   email?: string;
   password: string;
-  nationality: string;
+  placeofbirth: string;
   address?: Address;
   image: string;
   class: string[];

@@ -1,8 +1,9 @@
-<div [ngClass]="{ 'lg:pl-72': isPage() }">
+<div [ngClass]="{ 'lg:pl-72': isPage() }" class="transition-all duration-300">
   <app-header *ngIf="isPage()"></app-header>
-  <main class="bg-white" [ngClass]="{ 'py-10': isPage() }">
+  <main class="bg-white">
     <div [ngClass]="{ 'px-4 sm:px-6 lg:px-8': isPage() }">
       <router-outlet></router-outlet>
     </div>
   </main>
+  <app-toast></app-toast>
 </div>

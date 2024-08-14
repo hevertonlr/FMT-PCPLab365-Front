@@ -3,5 +3,19 @@
 @tailwind utilities;
 
 .gradient-base {
-  @apply from-[#262B93] via-[#CE1B80] to-[#EE7812];
+  @apply from-[#262b93] via-[#CE1B80] to-[#EE7812];
+}
+.form-input {
+  @apply block w-full rounded-md border-0 py-1.5 shadow-inner ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6;
+  &.blocked {
+    @apply read-only:bg-slate-50 read-only:text-slate-500 read-only:border-slate-200 read-only:shadow-none read-only:focus:ring-gray-300 read-only:focus:ring-1 cursor-not-allowed;
+  }
+  &.invalid,
+  &.ng-invalid:not(.ng-untouched) {
+    @apply pr-10 text-red-900 ring-red-300 focus:ring-red-500;
+  }
+  &.valid:not(.blocked, .ng-pristine),
+  &.ng-valid:not(.ng-untouched) {
+    @apply pr-10 text-green-900 ring-green-300 focus:ring-green-500;
+  }
 }

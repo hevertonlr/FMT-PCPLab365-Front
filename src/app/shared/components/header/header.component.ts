@@ -4,7 +4,6 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { routes } from 'app/app.routes';
 import { User } from 'app/shared/interfaces/user';
 import { AuthService } from 'app/shared/services/auth.service';
-import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { TitleService } from 'app/shared/services/title.service';
 import { Subscription } from 'rxjs';
 import { SidebarComponent } from '../sidebar/sidebar.component';
@@ -12,7 +11,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, CommonModule, BreadcrumbComponent, SidebarComponent],
+  imports: [RouterModule, CommonModule, SidebarComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

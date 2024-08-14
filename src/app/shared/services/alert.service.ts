@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +8,7 @@ export class AlertService {
   type: 'success' | 'error' | 'warning' | 'info' = 'info';
   message: string = '';
   errors: string[] = [];
+  alertShown = new EventEmitter<void>();
 
   showAlert(
     type: 'success' | 'error' | 'warning' | 'info',
@@ -18,6 +19,7 @@ export class AlertService {
     this.message = message;
     this.errors = errors;
     this.show = true;
+    this.alertShown.emit();
   }
 
   hideAlert = () => {

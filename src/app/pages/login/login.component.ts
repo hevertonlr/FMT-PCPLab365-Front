@@ -14,6 +14,13 @@ import { AlertComponent } from 'app/shared/components/alert/alert.component';
 import { ValidationService } from 'app/shared/services/validation.service';
 import { AlertService } from 'app/shared/services/alert.service';
 import { StorageService } from 'app/shared/services/storage.service';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+
+import {
+  heroCheckCircleSolid,
+  heroExclamationCircleSolid,
+} from '@ng-icons/heroicons/solid';
+import { ToastService } from 'app/shared/services/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -24,24 +31,36 @@ import { StorageService } from 'app/shared/services/storage.service';
     ReactiveFormsModule,
     ValidationStyleDirective,
     AlertComponent,
+    NgIconComponent,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
+  providers: [
+    provideIcons({
+      heroExclamationCircleSolid,
+      heroCheckCircleSolid,
+    }),
+  ],
 })
 export class LoginComponent implements OnInit {
-  title = 'teste';
   bgimg: string = `assets/images/backgrounds/bg${Math.floor(
     Math.random() * 5 + 1,
   )}.jpg`;
   form: FormGroup;
+  fieldAliases: { [key: string]: string } = {
+    email: 'E-mail',
+    password: 'Senha',
+  };
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    public validationService: ValidationService,
+    private validationService: ValidationService,
     private alertService: AlertService,
     private storageService: StorageService,
+
+    private toastService: ToastService,
   ) {}
 
   ngOnInit(): void {
@@ -59,33 +78,48 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {
+  onSubmit = () => {
     if (this.form.invalid) {
-      const alertProperties = this.validationService.getAlertProperties(
-        this.form,
-      );
-      this.alertService.showAlert(
+      this.toastService.showToast(
         'error',
-        alertProperties.alertMessage,
-        alertProperties.alertErrors,
+        'Erro',
+        'Revise os campos e tente novamente!',
       );
       return;
     }
-    this.alertService.hideAlert();
+
     const { email, password, rememberMe } = this.form.value;
     rememberMe ? this.remember() : this.forget();
     this.authService.login(email, password).subscribe((isLoggedIn: boolean) => {
       if (isLoggedIn) {
-        this.alertService.showAlert('success', 'Usuário logado com Sucesso!');
+        this.toastService.showToast(
+          'success',
+          'Sucesso!',
+          'Usuário logado com Sucesso!',
+        );
         this.router.navigate(['/home']);
         return;
       }
-      this.alertService.showAlert('error', 'Usuário e/ou senha incorretos');
+      this.toastService.showToast(
+        'error',
+        'Erro!',
+        'Usuário e/ou senha incorretos',
+      );
     });
-  }
+  };
 
   notImplemented = () =>
     this.alertService.showAlert('info', 'Funcionalidade não implementada!');
+
+  getInputErrors = (inputName: string) =>
+    this.validationService.getControlErrors(
+      this.form,
+      inputName,
+      this.fieldAliases,
+    );
+
+  isValid = (inputName: string) =>
+    this.validationService.isValid(this.form, inputName);
 
   private remember = () => {
     const { email, password, rememberMe } = this.form.value;

@@ -1,10 +1,11 @@
-<!-- *ngIf="alertService.show" -->
-<div class="alert {{ alertService.type }}" [ngClass]="opactity()">
+<div class="alert {{ alertService.type }} " [ngClass]="opactity()">
   <div class="flex">
     <div class="flex-shrink-0">
-      <svg class="alert-icon" alt="">
-        <use [attr.xlink:href]="icon"></use>
-      </svg>
+      <ng-icon
+        [className]="'alert-icon'"
+        size="1.25rem"
+        [name]="icon"
+      ></ng-icon>
     </div>
     <div class="ml-3">
       <p class="alert-message">{{ alertService.message }}</p>
@@ -18,9 +19,7 @@
       <div class="-mx-1.5 -my-1.5">
         <button type="button" class="alert-close" (click)="closeAlert()">
           <span class="sr-only">Fechar</span>
-          <svg class="h-5 w-5" alt="">
-            <use xlink:href="assets/images/alerts.svg#close"></use>
-          </svg>
+          <ng-icon size="1.25rem" name="heroXMark"></ng-icon>
         </button>
       </div>
     </div>

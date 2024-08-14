@@ -16,7 +16,8 @@
     </button>
     <div aria-hidden="true" class="h-6 w-px bg-gray-200 lg:hidden"></div>
     <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-      <form action="#" method="GET" class="relative flex flex-1">
+      <div class="relative flex flex-1"></div>
+      <!-- <form action="#" method="GET" class="relative flex flex-1">
         <label for="search-field" class="sr-only">Search</label>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -38,8 +39,8 @@
           placeholder="Buscar..."
           class="block h-full w-full border-0 py-0 pl-8 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
         />
-      </form>
-      <div class="relative flex flex-1"></div>
+      </form> -->
+
       <div class="flex items-center gap-x-4 lg:gap-x-6">
         <!-- <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
             <span class="sr-only">View notifications</span>
@@ -86,12 +87,12 @@
             <a
               [href]=""
               (click)="logout()"
-              class="cursor-pointer group flex transition-colors duration-300 items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              class="cursor-pointer group flex transition-colors duration-300 items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-blue-800"
               role="menuitem"
               tabindex="-1"
             >
               <svg
-                class="mr-3 transition-colors duration-300 text-gray-400 group-hover:text-indigo-600 h-5 w-5"
+                class="mr-3 transition-colors duration-300 text-gray-400 group-hover:text-orange-500 h-5 w-5"
                 alt=""
               >
                 <use xlink:href="assets/images/icons.svg#logout"></use>
@@ -104,14 +105,17 @@
     </div>
   </div>
 </nav>
-<header class="sticky z-[9] top-[4.25rem] bg-gray-100 shadow">
+<!-- sticky top-[4.25rem] -->
+<header class="z-[9]">
   <div class="mx-auto px-4 py-6 sm:px-6 lg:px-8">
-    <app-breadcrumb></app-breadcrumb>
-    <div class="md:flex md:items-center md:justify-between">
+    <div
+      class="md:flex md:items-center md:justify-between border-b border-gradient-to-r gradient-base pb-6"
+    >
       <h1 class="text-3xl font-bold tracking-tight text-[#262B93]">
         {{ pageTitle }}
       </h1>
     </div>
   </div>
 </header>
+
 <app-sidebar></app-sidebar>

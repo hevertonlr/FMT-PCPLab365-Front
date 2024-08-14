@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AlertComponent } from 'app/shared/components/alert/alert.component';
 import { Profile } from 'app/shared/enums/profile';
 import { Student } from 'app/shared/interfaces/student';
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
   filterText: string = '';
   searchText: string = '';
   constructor(
+    private router: Router,
     private studentService: StudentService,
     private teacherService: TeacherService,
     private schoolclassService: SchoolClassService,
@@ -69,4 +71,7 @@ export class HomeComponent implements OnInit {
   onSearch = () => {
     this.searchService.updateSearchTerm(this.searchText);
   };
+  edit(student: Student): void {
+    this.router.navigate(['/student'], { state: { student } });
+  }
 }

@@ -2,8 +2,19 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:rgb(38,43,147);stop-opacity:1" />
+            <stop offset="50%" style="stop-color:rgb(206,27,128);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(238,120,18);stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:rgb(38,43,147);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(206,27,128);stop-opacity:1" />
+        </linearGradient>
+    </defs>
     <symbol id="close" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
     </symbol>
     <symbol id="home" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
@@ -41,10 +52,10 @@
         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"/>
     </symbol>
     <symbol id="arrow-down" fill="currentColor" viewBox="0 0 20 20">
-        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
     </symbol>
     <symbol id="bars" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
     </symbol>
     <symbol id="logout" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
@@ -64,7 +75,34 @@
     <symbol id="user-circle" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
     </symbol>
-
-
-
+    <symbol id="logo-icon" viewBox="0 0 200 200" fill-rule="nonzero">
+        <path d="M100,0l100,100l-100,100l-2.6534,-2.6534l97.3466,-97.3466l-97.3466,-97.3466z" fill="url(#grad1)"/>
+        <path d="M0,100l5.61405,-5.61405h128.79564v11.2281h-128.79564z" fill="url(#grad2)"/>
+        <path d="M111.31514,80.91476h-92.2299l11.22557,-11.22557h81.00434z" fill="url(#grad2)"/>
+        <path d="M111.31514,119.08776v11.22305h-81.00434l-11.22305,-11.22305z" fill="url(#grad2)"/>
+    </symbol>
+    <symbol id="logo-name" viewBox="0 0 421 75" fill-rule="nonzero" fill="currentColor">
+        <g transform="matrix(1.25 0 0 1.43 25.31 38.06)">
+            <path transform=" translate(-169.85, -235)" d="M 163.75998 208.60528 h -13.84368 l 13.67689 39.27935 c 2.50187 7.25542 10.00748 13.51009 17.84667 13.51009 h 8.33956 v -13.09312 h -8.33956 c -3.25243 0 -4.50336 -1.9181 -5.58751 -4.83695 z" stroke-linecap="round" />
+        </g>
+        <g transform="matrix(1.25 0 0 1.43 89.31 38.06)">
+            <path transform=" translate(-221.05, -235)" d="M 208.62684 241.62995 h 19.76477 l 6.92184 19.76477 h 14.01047 l -13.67689 -39.02916 c -2.58526 -7.33882 -10.09087 -13.76028 -18.09685 -13.76028 h -20.26514 v 13.25991 h 20.26514 c 4.00299 0 5.17053 3.16903 6.25467 6.50486 h -15.17801 c -8.67315 0 -15.84517 7.17203 -15.84517 15.92857 v 1.25093 c 0 8.67315 7.17203 15.84517 15.84517 15.84517 h 18.51383 v -13.25991 h -18.51383 c -2.41847 0 -2.58526 -2.08489 -2.58526 -3.8362 c 0 -1.41773 1.16754 -2.66866 2.58526 -2.66866 z" stroke-linecap="round" />
+        </g>
+        <g transform="matrix(1.25 0 0 1.43 161.24 38.06)">
+            <path transform=" translate(-278.6, -235)" d="M 287.8527 208.60528 h -34.359 v 52.78944 h 34.359 c 8.75654 0 15.84517 -7.17203 15.84517 -15.84517 v -1.25093 c 0 -3.33583 -1.08414 -6.58826 -3.00224 -9.25692 c 2.41847 -3.33583 3.00224 -6.50486 3.00224 -10.50785 c 0 -8.75654 -7.08863 -15.92857 -15.84517 -15.92857 z M 290.52136 245.54955 c 0 1.41773 -1.25093 2.58526 -2.66866 2.58526 h -21.0991 v -26.26963 h 21.0991 c 2.41847 0 2.66866 2.08489 2.66866 3.9196 c 0 1.41773 -1.25093 2.58526 -2.66866 2.58526 h -13.17651 v 13.25991 h 13.17651 c 2.41847 0 2.66866 2.08489 2.66866 3.9196 z" stroke-linecap="round" />
+        </g>
+        <g transform="matrix(1.25 0 0 1.43 262.36 38.34)">
+            <path transform=" translate(-359.49, -235.21)" d="M 364.24311 209.02226 h -29.27187 v 52.37246 h 13.09312 v -11.09162 h 16.17875 c 11.34181 0 19.76477 -9.5905 19.76477 -20.59872 c 0 -11.00822 -8.42296 -20.68212 -19.76477 -20.68212 z M 364.24311 237.20998 h -16.17875 v -15.09461 h 16.17875 c 4.00299 0 6.67165 3.9196 6.67165 7.589 c 0 3.66941 -2.66866 7.50561 -6.67165 7.50561 z" stroke-linecap="round" />
+        </g>
+        <g transform="matrix(1.25 0 0 1.43 324.54 38.06)">
+            <path transform=" translate(-409.24, -235)" d="M 387.4271 235.0417 c 0 14.51084 11.25841 26.35302 25.10209 26.35302 h 18.51383 v -13.25991 h -18.51383 c -6.50486 0 -11.84218 -5.8377 -11.84218 -13.09312 c 0 -7.25542 5.33732 -13.17651 11.84218 -13.17651 h 18.51383 v -13.25991 h -18.51383 c -13.84368 0 -25.10209 11.84218 -25.10209 26.43642 z" stroke-linecap="round" />
+        </g>
+        <g transform="matrix(1.25 0 0 1.43 388.59 38.34)">
+            <path transform=" translate(-460.48, -235.21)" d="M 465.23523 209.02226 h -29.27187 v 52.37246 h 13.09312 v -11.09162 h 16.17875 c 11.34181 0 19.76477 -9.5905 19.76477 -20.59872 c 0 -11.00822 -8.42296 -20.68212 -19.76477 -20.68212 z M 465.23523 237.20998 h -16.17875 v -15.09461 h 16.17875 c 4.00299 0 6.67165 3.9196 6.67165 7.589 c 0 3.66941 -2.66866 7.50561 -6.67165 7.50561 z" stroke-linecap="round" />
+        </g>
+    </symbol>
+    <symbol id="loading" fill="none" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill-opacity="0.25" style="opacity:0.25;"/>
+        <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill-opacity="0.75" style="opacity:0.75;"/>
+    </symbol>
 </svg>

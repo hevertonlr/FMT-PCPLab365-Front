@@ -4,6 +4,7 @@ import sign from 'jwt-encode';
 import { UserService } from './user.service';
 import { jwtDecode } from 'jwt-decode';
 import { environment } from 'environments/environment';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root',
@@ -52,6 +53,7 @@ export class AuthService {
     if (!storageContent) return null;
     return this.readJwtToken<T>(storageContent);
   };
+  getCurrentUser = (): User => this.getTokenContent<User>() ?? ({} as User);
   private setToken = (token: string) => {
     this.isAuthenticated = true;
     sessionStorage.setItem(this.TOKEN_KEY, token);
