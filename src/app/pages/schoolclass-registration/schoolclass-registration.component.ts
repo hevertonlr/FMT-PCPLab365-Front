@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -10,31 +9,35 @@ import {
 } from '@angular/forms';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
-  heroCog6Tooth,
+  heroUsers,
+  heroIdentification,
   heroEnvelope,
   heroHomeModern,
-  heroIdentification,
-  heroUsers,
+  heroCog6Tooth,
+  heroFolder,
 } from '@ng-icons/heroicons/outline';
 import {
+  heroUserCircleSolid,
   heroCheckCircleSolid,
   heroExclamationCircleSolid,
-  heroUserCircleSolid,
 } from '@ng-icons/heroicons/solid';
 import { ValidationStyleDirective } from 'app/shared/directives/validation-style.directive';
-import { Gender } from 'app/shared/enums/gender';
+import { Profile } from 'app/shared/enums/profile';
 import { SchoolClass } from 'app/shared/interfaces/schoolclass';
-import { Student } from 'app/shared/interfaces/student';
+import { Teacher } from 'app/shared/interfaces/teacher';
+import { User } from 'app/shared/interfaces/user';
+import { AuthService } from 'app/shared/services/auth.service';
 import { FormUtilsService } from 'app/shared/services/form-utils.service';
 import SchoolClassService from 'app/shared/services/schoolclass.service';
-import { StudentService } from 'app/shared/services/student.service';
+import { TeacherService } from 'app/shared/services/teacher.service';
 import { ToastService } from 'app/shared/services/toast.service';
 import { ValidationService } from 'app/shared/services/validation.service';
 import { ViaCepService } from 'app/shared/services/via-cep.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-student-registration',
+  selector: 'app-schoolclass-registration',
   standalone: true,
   imports: [
     CommonModule,
@@ -45,12 +48,12 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
     NgxMaskDirective,
     NgxMaskPipe,
   ],
-  templateUrl: './student-registration.component.html',
-  styleUrl: './student-registration.component.scss',
+  templateUrl: './schoolclass-registration.component.html',
+  styleUrl: './schoolclass-registration.component.scss',
   providers: [
     provideIcons({
       heroUsers,
-      heroIdentification,
+      heroFolder,
       heroEnvelope,
       heroHomeModern,
       heroCog6Tooth,
@@ -60,30 +63,41 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
     }),
   ],
 })
-export class StudentRegistrationComponent implements OnInit {
-  imagePreview: string | ArrayBuffer | null = null;
+export class SchoolClassRegistrationComponent implements OnInit {
+  schoolSubjects: { key: string; value: string }[];
+  civilStates: { key: string; value: string }[];
   tabs: { label: string; icon: string }[] = [];
   genders: { key: string; value: string }[];
   fieldAliases: { [key: string]: string };
-  schoolClasses: SchoolClass[] = [];
+  teachers: Teacher[] = [];
+  currentUser: User;
+
   isLoading: boolean = false;
-  editObject: Student;
+  editObject: SchoolClass;
   form: FormGroup;
   selectedTab = 0;
 
   constructor(
     private fb: FormBuilder,
-    private service: StudentService,
+    private service: SchoolClassService,
     private toastService: ToastService,
     private viaCepService: ViaCepService,
     private formUtilsService: FormUtilsService,
     private validationService: ValidationService,
-    private schoolclassService: SchoolClassService,
+    private teachersService: TeacherService,
+    private authService: AuthService,
   ) {
     this.genders = this.formUtilsService.getAllGenders();
-    this.schoolclassService.getAll().subscribe({
-      next: (data) => {
-        this.schoolClasses = data;
+    this.civilStates = this.formUtilsService.getAllCivilStates();
+    this.schoolSubjects = this.formUtilsService.getAllSchoolSubjects();
+    this.currentUser = this.authService.getCurrentUser();
+    const observable =
+      this.currentUser.profile === Profile.Administrator
+        ? this.teachersService.getAll()
+        : this.teachersService.findBy('email', this.currentUser.email);
+    (observable as Observable<Teacher | Teacher[]>).subscribe({
+      next: (data: Teacher | Teacher[]) => {
+        this.teachers = Array.isArray(data) ? data : [data];
       },
       error: (error) => {
         this.toastService.showToast(
@@ -94,26 +108,21 @@ export class StudentRegistrationComponent implements OnInit {
         console.error('SchoolClass fetching error:', error);
       },
     });
+
     this.fieldAliases = {
       name: 'Nome',
-      gender: 'Gênero',
-      birthday: 'Data de Nascimento',
-      cpf: 'CPF',
-      rg: 'RG',
-      phone: 'Telefone',
-      email: 'E-mail',
-      password: 'Senha',
-      placeofbirth: 'Naturalidade',
-      'address.cep': 'CEP',
-      'address.city': 'Cidade',
-      'address.uf': 'UF',
-      'address.street': 'Endereço',
-      'address.complement': 'Complemento',
-      'address.neighborhood': 'Bairro',
-      'address.referencePoint': 'Ponto de Referência',
-      image: 'Imagem do Perfil',
-      class: 'Turma',
+      initialDate: 'Data de Início',
+      endDate: 'Data de Término',
+      classSchedule: 'Horário da Turma',
+      teacher: 'Professor',
     };
+    this.tabs = [
+      {
+        label: 'Turma',
+        icon: 'heroFolder',
+      },
+    ];
+
     this.form = this.fb.group({
       id: [''],
       name: [
@@ -124,75 +133,26 @@ export class StudentRegistrationComponent implements OnInit {
           Validators.maxLength(64),
         ],
       ],
-      gender: ['', Validators.required],
-      birthday: ['', Validators.required],
-      cpf: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(/^(\d{3})(\d{3})(\d{3})(\d{2})$/),
-        ],
+      initialDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+      classSchedule: ['', Validators.required],
+      teacher: [
+        { value: '', disabled: this.currentUser.profile === Profile.Teacher },
+        Validators.required,
       ],
-      rg: ['', [Validators.required, Validators.maxLength(20)]],
-      phone: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(/^(\d{2})\D*(\d{5}|\d{4})\D*(\d{4})$/),
-        ],
-      ],
-      email: ['', Validators.email],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      placeofbirth: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(64),
-        ],
-      ],
-      address: this.fb.group({
-        cep: ['', Validators.required],
-        city: [{ value: '', disabled: true }],
-        state: [{ value: '', disabled: true }],
-        street: [{ value: '', disabled: true }],
-        number: [''],
-        complement: [''],
-        neighborhood: [{ value: '', disabled: true }],
-        referencePoint: [''],
-      }),
-      image: ['', Validators.required],
-      class: [[], Validators.required],
     });
-    this.tabs = [
-      {
-        label: 'Perfil',
-        icon: 'heroIdentification',
-      },
-      {
-        label: 'Endereço',
-        icon: 'heroHomeModern',
-      },
-      {
-        label: 'Configurações',
-        icon: 'heroCog6Tooth',
-      },
-    ];
   }
   ngOnInit(): void {
     const state = history.state;
-    if (state?.student) {
-      this.editObject = state?.student as Student;
-      this.imagePreview = this.editObject.image;
+    if (state?.schoolclass) {
+      this.editObject = state?.schoolclass as SchoolClass;
       this.form.patchValue(this.editObject);
       this.formUtilsService.markAllAsDirty(this.form);
     }
   }
-
   onSubmit = () => {
-    this.formUtilsService.enableAllFields(
-      this.form.get('address') as FormGroup,
-    );
+    this.formUtilsService.enableAllFields(this.form);
+
     if (this.form.invalid) {
       this.toastService.showToast(
         'warning',
@@ -200,13 +160,8 @@ export class StudentRegistrationComponent implements OnInit {
         'Revise o formulário!',
       );
       this.formUtilsService.markAllAsDirty(this.form);
-      this.formUtilsService.disableAllFields(this.form, [
-        'uf',
-        'city',
-        'state',
-        'street',
-        'neighborhood',
-      ]);
+      if (this.currentUser.profile === Profile.Teacher)
+        this.formUtilsService.disableAllFields(this.form, ['teacher']);
       return;
     }
     try {
@@ -238,13 +193,8 @@ export class StudentRegistrationComponent implements OnInit {
         'Ocorreu um erro ao manipular o Registro',
       );
     }
-    this.formUtilsService.disableAllFields(this.form, [
-      'uf',
-      'city',
-      'state',
-      'street',
-      'neighborhood',
-    ]);
+    if (this.currentUser.profile === Profile.Teacher)
+      this.formUtilsService.disableAllFields(this.form, ['teacher']);
   };
 
   getInputErrors = (inputName: string) =>
@@ -290,19 +240,20 @@ export class StudentRegistrationComponent implements OnInit {
     });
   };
 
-  handleFileInput = (event: Event) => {
-    const file = (event.target as HTMLInputElement).files?.item(0);
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imagePreview = reader.result;
-        this.form.get('image')?.setValue(reader.result?.toString());
-      };
-      reader.readAsDataURL(file);
-    } else {
-      this.imagePreview = null;
-    }
-  };
+  // handleFileInput = (event: Event) => {
+  //   const file = (event.target as HTMLInputElement).files?.item(0);
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       this.imagePreview = reader.result;
+  //       this.form.get('image')?.setValue(reader.result?.toString());
+  //     };
+  //     reader.readAsDataURL(file);
+  //   } else {
+  //     this.imagePreview = null;
+  //   }
+  // }
+
   inputTransformFn = (value: unknown): string =>
     typeof value === 'string' ? value.toUpperCase() : String(value);
 

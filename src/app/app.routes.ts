@@ -11,6 +11,7 @@ import { GradesListComponent } from './pages/grades-list/grades-list.component';
 import { StudentRegistrationComponent } from './pages/student-registration/student-registration.component';
 import { Profile } from './shared/enums/profile';
 import { TeacherRegistrationComponent } from './pages/teacher-registration/teacher-registration.component';
+import { SchoolClassRegistrationComponent } from './pages/schoolclass-registration/schoolclass-registration.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -53,7 +54,7 @@ export const routes: Routes = [
   },
   {
     path: 'schoolclasse',
-    component: SchoolClassesComponent,
+    component: SchoolClassRegistrationComponent,
     title: 'Cadastro de Turma',
     canActivate: [AuthGuard],
     data: {

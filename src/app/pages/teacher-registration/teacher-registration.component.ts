@@ -187,7 +187,13 @@ export class TeacherRegistrationComponent implements OnInit {
         'Revise o formulário!',
       );
       this.formUtilsService.markAllAsDirty(this.form);
-      this.formUtilsService.disableAllFields(this.form);
+      this.formUtilsService.disableAllFields(this.form, [
+        'uf',
+        'city',
+        'state',
+        'street',
+        'neighborhood',
+      ]);
       return;
     }
     try {
@@ -219,7 +225,13 @@ export class TeacherRegistrationComponent implements OnInit {
         'Ocorreu um erro ao manipular o Registro',
       );
     }
-    this.formUtilsService.disableAllFields(this.form);
+    this.formUtilsService.disableAllFields(this.form, [
+      'uf',
+      'city',
+      'state',
+      'street',
+      'neighborhood',
+    ]);
   };
 
   getInputErrors = (inputName: string) =>

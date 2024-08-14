@@ -13,6 +13,11 @@ export class BaseService<T> {
   getAll = (): Observable<T[]> =>
     this.http.get<T[]>(this.API_URL).pipe(catchError(this.handleError));
 
+  getAllBy = (field: string, value: string): Observable<T[]> =>
+    this.http
+      .get<T[]>(this.API_URL + `?${field}=${encodeURIComponent(value)}`)
+      .pipe(catchError(this.handleError));
+
   findBy = (field: string, value: string): Observable<T> =>
     this.http
       .get<T>(this.API_URL + `?${field}=${encodeURIComponent(value)}`)

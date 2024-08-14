@@ -122,7 +122,10 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Mercado Central"
       },
-      "class": ["1", "4"],
+      "class": [
+        "1",
+        "4"
+      ],
       "image": "https://randomuser.me/api/portraits/women/1.jpg"
     },
     {
@@ -146,7 +149,10 @@
         "neighborhood": "Bela Vista",
         "referencePoint": "Próximo ao MASP"
       },
-      "class": ["2", "3"],
+      "class": [
+        "2",
+        "3"
+      ],
       "image": "https://randomuser.me/api/portraits/men/2.jpg"
     },
     {
@@ -170,7 +176,10 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Paço Imperial"
       },
-      "class": ["1", "2"],
+      "class": [
+        "1",
+        "2"
+      ],
       "image": "https://randomuser.me/api/portraits/women/3.jpg"
     },
     {
@@ -194,7 +203,10 @@
         "neighborhood": "Consolação",
         "referencePoint": "Próximo ao Shopping Frei Caneca"
       },
-      "class": ["3", "4"],
+      "class": [
+        "3",
+        "4"
+      ],
       "image": "https://randomuser.me/api/portraits/men/4.jpg"
     },
     {
@@ -218,7 +230,10 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Parque Municipal"
       },
-      "class": ["2", "3"],
+      "class": [
+        "2",
+        "3"
+      ],
       "image": "https://randomuser.me/api/portraits/women/5.jpg"
     },
     {
@@ -242,7 +257,10 @@
         "neighborhood": "Copacabana",
         "referencePoint": "Próximo ao Forte de Copacabana"
       },
-      "class": ["1", "4"],
+      "class": [
+        "1",
+        "4"
+      ],
       "image": "https://randomuser.me/api/portraits/men/6.jpg"
     },
     {
@@ -266,7 +284,10 @@
         "neighborhood": "Jardins",
         "referencePoint": "Próximo ao Hospital das Clínicas"
       },
-      "class": ["2", "4"],
+      "class": [
+        "2",
+        "4"
+      ],
       "image": "https://randomuser.me/api/portraits/women/7.jpg"
     },
     {
@@ -290,7 +311,10 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Palácio das Artes"
       },
-      "class": ["1", "3"],
+      "class": [
+        "1",
+        "3"
+      ],
       "image": "https://randomuser.me/api/portraits/men/8.jpg"
     },
     {
@@ -314,7 +338,10 @@
         "neighborhood": "Laranjeiras",
         "referencePoint": "Próximo ao Parque Guinle"
       },
-      "class": ["2", "3"],
+      "class": [
+        "2",
+        "3"
+      ],
       "image": "https://randomuser.me/api/portraits/women/9.jpg"
     },
     {
@@ -338,7 +365,10 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Teatro Municipal"
       },
-      "class": ["1", "4"],
+      "class": [
+        "1",
+        "4"
+      ],
       "image": "https://randomuser.me/api/portraits/men/10.jpg"
     },
     {
@@ -363,7 +393,10 @@
         "referencePoint": ""
       },
       "image": "",
-      "class": ["2", "3"]
+      "class": [
+        "2",
+        "3"
+      ]
     }
   ],
   "schoolclass": [
@@ -406,6 +439,14 @@
       "endDate": "2024-12-15",
       "classSchedule": "17:00",
       "teacher": "5"
+    },
+    {
+      "id": "c7c9",
+      "name": "teste turma",
+      "initialDate": "2024-08-05",
+      "endDate": "2024-08-14",
+      "classSchedule": "18:00",
+      "teacher": "3"
     }
   ],
   "teachers": [
@@ -431,7 +472,9 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Mercado Central"
       },
-      "schoolSubjects": ["Matemática"]
+      "schoolSubjects": [
+        "Matemática"
+      ]
     },
     {
       "id": "2",
@@ -455,7 +498,9 @@
         "neighborhood": "Bela Vista",
         "referencePoint": "Próximo ao MASP"
       },
-      "schoolSubjects": ["História"]
+      "schoolSubjects": [
+        "História"
+      ]
     },
     {
       "id": "3",
@@ -479,7 +524,9 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Paço Imperial"
       },
-      "schoolSubjects": ["Química"]
+      "schoolSubjects": [
+        "Química"
+      ]
     },
     {
       "id": "4",
@@ -503,7 +550,9 @@
         "neighborhood": "Centro Histórico",
         "referencePoint": "Próximo ao Mercado Público"
       },
-      "schoolSubjects": ["Física"]
+      "schoolSubjects": [
+        "Física"
+      ]
     },
     {
       "id": "5",
@@ -527,7 +576,9 @@
         "neighborhood": "Campo Grande",
         "referencePoint": "Próximo ao Teatro Castro Alves"
       },
-      "schoolSubjects": ["Inglês"]
+      "schoolSubjects": [
+        "Inglês"
+      ]
     },
     {
       "id": "6",
@@ -551,7 +602,9 @@
         "neighborhood": "Boa Vista",
         "referencePoint": "Próximo ao Parque 13 de Maio"
       },
-      "schoolSubjects": ["Educação Física"]
+      "schoolSubjects": [
+        "Educação Física"
+      ]
     },
     {
       "id": "7",
@@ -575,7 +628,9 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Teatro Guaíra"
       },
-      "schoolSubjects": ["Espanhol"]
+      "schoolSubjects": [
+        "Espanhol"
+      ]
     },
     {
       "id": "8",
@@ -599,7 +654,35 @@
         "neighborhood": "Centro",
         "referencePoint": "Próximo ao Mercado Público"
       },
-      "schoolSubjects": ["Ciências"]
+      "schoolSubjects": [
+        "Ciências"
+      ]
+    },
+    {
+      "id": "9",
+      "name": "Maria Souza",
+      "gender": "Feminino",
+      "birthday": "1989-04-22",
+      "cpf": "888.999.000-11",
+      "rg": "SC-88.999.000",
+      "civilState": "Casado(a)",
+      "phone": "(48) 98888-9999",
+      "email": "maria.souza@example.com",
+      "password": "S3cur3P@ss",
+      "placeofbirth": "Brasileira",
+      "address": {
+        "cep": "88010-400",
+        "city": "Florianópolis",
+        "state": "SC",
+        "street": "Rua Felipe Schmidt",
+        "number": "789",
+        "complement": "Apto 101",
+        "neighborhood": "Centro",
+        "referencePoint": "Próximo ao Mercado Público"
+      },
+      "schoolSubjects": [
+        "Ciências"
+      ]
     }
   ]
 }

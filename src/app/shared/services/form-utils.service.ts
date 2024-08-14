@@ -21,14 +21,20 @@ export class FormUtilsService {
       }
     });
 
-  disableAllFields = (form: FormGroup) =>
+  disableAllFields = (
+    form: FormGroup,
+    includes?: string[],
+    except?: string[],
+  ) =>
     Object.keys(form.controls).forEach((key) => {
       const control = form.get(key);
       if (control instanceof FormGroup) {
         Object.keys(control.controls).forEach((subKey) => {
+          if (except?.includes(subKey) || !includes?.includes(subKey)) return;
           control.get(subKey)?.disable();
         });
       } else {
+        if (except?.includes(key) || !includes?.includes(key)) return;
         control?.disable();
       }
     });
@@ -47,6 +53,7 @@ export class FormUtilsService {
     const addressGroup = form.get('address') as FormGroup;
     Object.keys(addressGroup.controls).forEach((field) => {
       const control = addressGroup.get(field);
+      console.log(field);
       if (field === 'cep' || field === 'referencePoint') return;
 
       control?.value ? control?.disable() : control?.enable();
