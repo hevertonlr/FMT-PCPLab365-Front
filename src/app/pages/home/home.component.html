@@ -1,94 +1,365 @@
-<div class="mb-8">
-  <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-    <div
-      class="relative overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:px-6 sm:pt-6"
-    >
-      <dt>
-        <div class="absolute rounded-md bg-indigo-500 p-3">
-          <svg class="h-6 w-6 text-white" alt="">
-            <use xlink:href="assets/images/icons.svg#user-circle"></use>
-          </svg>
+<div *ngIf="isAdmin(); else studentTemplate">
+  <div class="mb-8">
+    <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        class="relative overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:px-6 sm:pt-6"
+      >
+        <dt>
+          <div class="absolute rounded-md bg-indigo-500 p-3">
+            <svg class="h-6 w-6 text-white" alt="">
+              <use xlink:href="assets/images/icons.svg#user-circle"></use>
+            </svg>
+          </div>
+          <p class="ml-16 truncate text-sm font-medium text-gray-500">
+            Total de Alunos
+          </p>
+        </dt>
+        <dd class="ml-16 flex items-baseline">
+          <p class="text-2xl font-semibold text-gray-900">
+            {{ studentsCount }}
+          </p>
+        </dd>
+      </div>
+      <div
+        class="relative overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:px-6 sm:pt-6"
+      >
+        <dt>
+          <div class="absolute rounded-md bg-indigo-500 p-3">
+            <svg class="h-6 w-6 text-white" alt="">
+              <use xlink:href="assets/images/icons.svg#user-group"></use>
+            </svg>
+          </div>
+          <p class="ml-16 truncate text-sm font-medium text-gray-500">
+            Total de Docentes
+          </p>
+        </dt>
+        <dd class="ml-16 flex items-baseline">
+          <p class="text-2xl font-semibold text-gray-900">
+            {{ teachersCount }}
+          </p>
+        </dd>
+      </div>
+      <div
+        class="relative overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:px-6 sm:pt-6"
+      >
+        <dt>
+          <div class="absolute rounded-md bg-indigo-500 p-3">
+            <svg class="h-6 w-6 text-white" alt="">
+              <use xlink:href="assets/images/icons.svg#folder"></use>
+            </svg>
+          </div>
+          <p class="ml-16 truncate text-sm font-medium text-gray-500">
+            Total de Turmas
+          </p>
+        </dt>
+        <dd class="ml-16 flex items-baseline">
+          <p class="text-2xl font-semibold text-gray-900">
+            {{ schoolclassCount }}
+          </p>
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  <div>
+    <div class="bg-white pt-4">
+      <div class="mx-auto">
+        <div class="relative">
+          <div aria-hidden="true" class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-gray-300"></div>
+          </div>
+          <div class="relative flex items-center justify-between">
+            <span
+              class="bg-white pr-3 text-base font-semibold leading-6 text-gray-900"
+              >Alunos</span
+            ><button
+              type="button"
+              class="group transition-all duration-300 inline-flex items-center gap-x-1.5 rounded-full bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-[#EE7812] hover:text-white hover:bg-[#EE7812]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+                class="-ml-1 -mr-0.5 h-5 w-5 transition-all duration-300 text-gray-400 group-hover:text-white"
+              >
+                <path
+                  d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
+                ></path>
+              </svg>
+              <span> Ver todos</span>
+            </button>
+          </div>
         </div>
-        <p class="ml-16 truncate text-sm font-medium text-gray-500">
-          Total de Alunos
-        </p>
-      </dt>
-      <dd class="ml-16 flex items-baseline">
-        <p class="text-2xl font-semibold text-gray-900">{{ studentsCount }}</p>
-      </dd>
+      </div>
     </div>
+
     <div
-      class="relative overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:px-6 sm:pt-6"
+      class="mt-5 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl"
     >
-      <dt>
-        <div class="absolute rounded-md bg-indigo-500 p-3">
-          <svg class="h-6 w-6 text-white" alt="">
-            <use xlink:href="assets/images/icons.svg#user-group"></use>
-          </svg>
+      <div
+        class="px-4 py-5 flex items-center md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none drn"
+      >
+        <div class="w-full">
+          <label for="search" class="sr-only">Search</label>
+          <div class="relative">
+            <div
+              class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+                class="h-5 w-5 text-gray-400"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </div>
+            <input
+              [(ngModel)]="searchText"
+              (input)="onSearch()"
+              id="search"
+              name="search"
+              type="search"
+              placeholder="Buscar Alunos"
+              class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+            />
+          </div>
         </div>
-        <p class="ml-16 truncate text-sm font-medium text-gray-500">
-          Total de Docentes
-        </p>
-      </dt>
-      <dd class="ml-16 flex items-baseline">
-        <p class="text-2xl font-semibold text-gray-900">{{ teachersCount }}</p>
-      </dd>
-    </div>
-    <div
-      class="relative overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:px-6 sm:pt-6"
-    >
-      <dt>
-        <div class="absolute rounded-md bg-indigo-500 p-3">
-          <svg class="h-6 w-6 text-white" alt="">
-            <use xlink:href="assets/images/icons.svg#folder"></use>
-          </svg>
-        </div>
-        <p class="ml-16 truncate text-sm font-medium text-gray-500">
-          Total de Turmas
-        </p>
-      </dt>
-      <dd class="ml-16 flex items-baseline">
-        <p class="text-2xl font-semibold text-gray-900">
-          {{ schoolclassCount }}
-        </p>
-      </dd>
-    </div>
-  </dl>
-</div>
-<!-- xl:grid-cols-4 -->
-<div>
-  <div class="bg-white pt-4">
-    <div class="mx-auto">
-      <div class="relative">
-        <div aria-hidden="true" class="absolute inset-0 flex items-center">
-          <div class="w-full border-t border-gray-300"></div>
-        </div>
-        <div class="relative flex items-center justify-between">
-          <span
-            class="bg-white pr-3 text-base font-semibold leading-6 text-gray-900"
-            >Alunos</span
-          ><button
-            type="button"
-            class="group transition-all duration-300 inline-flex items-center gap-x-1.5 rounded-full bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-[#EE7812] hover:text-white hover:bg-[#EE7812]"
-          >
+      </div>
+      <!-- overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl -->
+      <ul class="divide-y divide-gray-100">
+        <li
+          *ngFor="let student of filteredStudents | async | slice: 0 : 6"
+          class="relative transition-colors duration-300 flex justify-between gap-x-6 px-4 py-5 sm:px-6 hover:bg-gray-50 cursor-pointer"
+          [title]="getStudentTitle()"
+          (click)="edit(student)"
+        >
+          <div class="flex min-w-0 gap-x-4">
+            <img
+              alt=""
+              [src]="student.image"
+              class="h-12 w-12 flex-none rounded-full bg-gray-50"
+            />
+            <div class="min-w-0 flex-auto">
+              <p class="text-sm font-semibold leading-6 text-gray-900">
+                <a [href]=""
+                  ><span class="absolute inset-x-0 -top-px bottom-0"></span
+                  >{{ student.name }}</a
+                >
+              </p>
+              <p class="mt-1 flex text-xs leading-5 text-gray-500">
+                <a
+                  href="mailto:leslie.alexanderexample.com"
+                  class="relative truncate hover:underline"
+                  >{{ student.email }}</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-shrink-0 items-center gap-x-4">
+            <div class="hidden sm:flex sm:flex-col sm:items-end">
+              <p class="text-sm leading-6 text-gray-900">
+                {{ student.address?.city }} / {{ student.address?.state }}
+              </p>
+              <p class="mt-1 text-xs leading-5 text-gray-500">
+                {{ student.phone }}
+              </p>
+            </div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
               aria-hidden="true"
-              class="-ml-1 -mr-0.5 h-5 w-5 transition-all duration-300 text-gray-400 group-hover:text-white"
+              class="h-5 w-5 flex-none text-gray-400"
             >
               <path
-                d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
+                fill-rule="evenodd"
+                d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                clip-rule="evenodd"
               ></path>
             </svg>
-            <span> Ver todos</span>
-          </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<ng-template #studentTemplate>
+  <div class="grid grid-cols-6">
+    <div class="col-span-full">
+      <div class="p-4 shadow-md rounded-md bg-white mb-4">
+        <div class="mb-2">
+          <div class="mx-auto">
+            <div class="relative">
+              <div
+                aria-hidden="true"
+                class="absolute inset-0 flex items-center"
+              >
+                <div class="w-full border-t border-gray-300"></div>
+              </div>
+              <div class="relative flex items-center justify-between">
+                <span
+                  class="bg-white pr-3 text-base font-semibold leading-6 text-gray-900"
+                  >Minhas Notas</span
+                ><button
+                  type="button"
+                  class="group transition-all duration-300 inline-flex items-center gap-x-1.5 rounded-full bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-[#EE7812] hover:text-white hover:bg-[#EE7812]"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    class="-ml-1 -mr-0.5 h-5 w-5 transition-all duration-300 text-gray-400 group-hover:text-white"
+                  >
+                    <path
+                      d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"
+                    ></path>
+                  </svg>
+                  <span>Ver todas</span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
+        <ul class="divide-y divide-gray-100">
+          <li
+            *ngFor="let grade of grades | async | slice: 0 : 3"
+            class="relative transition-colors duration-300 flex justify-between gap-x-6 px-2 py-3 sm:px-2 hover:bg-gray-50 cursor-pointer"
+            title="Ver Mais"
+            (click)="editGrade(grade)"
+          >
+            <div class="flex min-w-0 gap-x-4">
+              <div class="min-w-0 flex-auto">
+                <p class="text-sm font-semibold leading-6 text-gray-900">
+                  <a [href]=""
+                    ><span class="absolute inset-x-0 -top-px bottom-0"></span
+                    >{{ grade.testname }}</a
+                  >
+                </p>
+                <p class="mt-1 flex text-xs leading-5 text-gray-500">
+                  <a [href]="" class="relative truncate hover:underline">{{
+                    grade.testdate
+                  }}</a>
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-shrink-0 items-center gap-x-4">
+              <div class="hidden sm:flex sm:flex-col sm:items-end">
+                <p class="text-sm leading-6 text-gray-900">
+                  {{ grade.teacher.name }}
+                </p>
+                <p class="mt-1 text-xs leading-5 text-gray-500">
+                  {{ grade.testgrade }}
+                </p>
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+                class="h-5 w-5 flex-none text-gray-400"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-span-full md:col-span-3 md:pr-2">
+      <div class="p-4 mb-4 shadow-md rounded-md bg-white">
+        <div class="mb-2">
+          <div class="mx-auto">
+            <div class="relative">
+              <div
+                aria-hidden="true"
+                class="absolute inset-0 flex items-center"
+              >
+                <div class="w-full border-t border-gray-300"></div>
+              </div>
+              <div class="relative flex items-center justify-between">
+                <span
+                  class="bg-white pr-3 text-base font-semibold leading-6 text-gray-900"
+                  >Minhas Máterias</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="divide-y divide-gray-100">
+          <li
+            *ngFor="let subject of currentSubjects"
+            class="flex justify-between gap-x-6 py-5"
+          >
+            <div class="flex min-w-0 gap-x-4">
+              <div class="min-w-0 flex-auto">
+                <p class="text-sm font-semibold leading-6 text-gray-900">
+                  {{ subject.name }}
+                </p>
+                <p class="mt-1 truncate text-xs leading-5 text-gray-500">
+                  {{ subject.description }}
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-span-full md:col-span-3 md:pl-2">
+      <div class="p-4 mb-4 shadow-md rounded-md bg-white">
+        <div class="mb-2">
+          <div class="mx-auto">
+            <div class="relative">
+              <div
+                aria-hidden="true"
+                class="absolute inset-0 flex items-center"
+              >
+                <div class="w-full border-t border-gray-300"></div>
+              </div>
+              <div class="relative flex items-center justify-between">
+                <span
+                  class="bg-white pr-3 text-base font-semibold leading-6 text-gray-900"
+                  >Cursos Extras</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="divide-y divide-gray-100">
+          <li
+            *ngFor="let extraCourse of extraCourses"
+            class="flex justify-between gap-x-6 py-5"
+          >
+            <div class="flex min-w-0 gap-x-4">
+              <div class="min-w-0 flex-auto">
+                <p class="text-sm font-semibold leading-6 text-gray-900">
+                  {{ extraCourse.name }}
+                </p>
+                <p class="mt-1 truncate text-xs leading-5 text-gray-500">
+                  {{ extraCourse.description }}
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-  <!-- <ul
+  <div class="isolate px-6 lg:px-0"></div>
+</ng-template>
+<!-- <ul
     class="grid grid-cols-1 mt-5 gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
   >
     <li
@@ -163,157 +434,3 @@
       </div>
     </li>
   </ul> -->
-  <!-- <ul class="divide-y divide-gray-100">
-    <li
-      *ngFor="let student of students | async | slice: 0 : 6"
-      class="flex justify-between gap-x-6 py-5"
-    >
-      <div class="flex min-w-0 gap-x-4">
-        <img
-          alt=""
-          [src]="student.image"
-          class="h-12 w-12 flex-none rounded-full bg-gray-50"
-        />
-        <div class="min-w-0 flex-auto">
-          <p class="text-sm font-semibold leading-6 text-gray-900">
-            <a href="#" class="hover:underline">{{ student.name }}</a>
-          </p>
-          <p class="mt-1 flex text-xs leading-5 text-gray-500">
-            <a
-              href="mailto:leslie.alexanderexample.com"
-              class="truncate hover:underline"
-              >{{ student.email }}</a
-            >
-          </p>
-        </div>
-      </div>
-      <div class="flex flex-shrink-0 items-center gap-x-6">
-        <div class="hidden sm:flex sm:flex-col sm:items-end">
-          <p class="text-sm leading-6 text-gray-900">
-            {{ student.address?.city }} / {{ student.address?.state }}
-          </p>
-          <p class="mt-1 text-xs leading-5 text-gray-500">
-            {{ student.phone }}
-          </p>
-        </div>
-        <div class="relative flex-none" data-headlessui-state="">
-          <button
-            class="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900"
-            id="headlessui-menu-button-:r2:"
-            type="button"
-            aria-haspopup="menu"
-            aria-expanded="false"
-            data-headlessui-state=""
-          >
-            <span class="sr-only">Open options</span
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-              class="h-5 w-5"
-            >
-              <path
-                d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM11.5 15.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z"
-              ></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </li>
-  </ul> -->
-  <div
-    class="mt-5 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl"
-  >
-    <div
-      class="px-4 py-5 flex items-center md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none drn"
-    >
-      <div class="w-full">
-        <label for="search" class="sr-only">Search</label>
-        <div class="relative">
-          <div
-            class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-              class="h-5 w-5 text-gray-400"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </div>
-          <input
-            [(ngModel)]="searchText"
-            (input)="onSearch()"
-            id="search"
-            name="search"
-            type="search"
-            placeholder="Buscar Alunos"
-            class="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-          />
-        </div>
-      </div>
-    </div>
-    <!-- overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl -->
-    <ul class="divide-y divide-gray-100">
-      <li
-        *ngFor="let student of filteredStudents | async | slice: 0 : 6"
-        class="relative transition-colors duration-300 flex justify-between gap-x-6 px-4 py-5 sm:px-6 hover:bg-gray-50 cursor-pointer"
-        [title]="getStudentTitle()"
-        (click)="edit(student)"
-      >
-        <div class="flex min-w-0 gap-x-4">
-          <img
-            alt=""
-            [src]="student.image"
-            class="h-12 w-12 flex-none rounded-full bg-gray-50"
-          />
-          <div class="min-w-0 flex-auto">
-            <p class="text-sm font-semibold leading-6 text-gray-900">
-              <a [href]=""
-                ><span class="absolute inset-x-0 -top-px bottom-0"></span
-                >{{ student.name }}</a
-              >
-            </p>
-            <p class="mt-1 flex text-xs leading-5 text-gray-500">
-              <a
-                href="mailto:leslie.alexanderexample.com"
-                class="relative truncate hover:underline"
-                >{{ student.email }}</a
-              >
-            </p>
-          </div>
-        </div>
-        <div class="flex flex-shrink-0 items-center gap-x-4">
-          <div class="hidden sm:flex sm:flex-col sm:items-end">
-            <p class="text-sm leading-6 text-gray-900">
-              {{ student.address?.city }} / {{ student.address?.state }}
-            </p>
-            <p class="mt-1 text-xs leading-5 text-gray-500">
-              {{ student.phone }}
-            </p>
-          </div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            aria-hidden="true"
-            class="h-5 w-5 flex-none text-gray-400"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-        </div>
-      </li>
-    </ul>
-  </div>
-</div>

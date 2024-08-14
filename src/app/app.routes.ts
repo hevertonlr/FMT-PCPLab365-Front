@@ -10,9 +10,6 @@ import { TeachersListComponent } from './pages/teachers-list/teachers-list.compo
 import { GradesListComponent } from './pages/grades-list/grades-list.component';
 import { StudentRegistrationComponent } from './pages/student-registration/student-registration.component';
 import { Profile } from './shared/enums/profile';
-import { TeacherRegistrationComponent } from './pages/teacher-registration/teacher-registration.component';
-import { SchoolClassRegistrationComponent } from './pages/schoolclass-registration/schoolclass-registration.component';
-import { GradeRegistrationComponent } from './pages/grade-registration/grade-registration.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -31,7 +28,7 @@ export const routes: Routes = [
   },
   {
     path: 'teacher',
-    component: TeacherRegistrationComponent,
+    component: TeachersComponent,
     title: 'Cadastro de Docente',
     canActivate: [AuthGuard],
     data: {
@@ -55,7 +52,7 @@ export const routes: Routes = [
   },
   {
     path: 'schoolclasse',
-    component: SchoolClassRegistrationComponent,
+    component: SchoolClassesComponent,
     title: 'Cadastro de Turma',
     canActivate: [AuthGuard],
     data: {
@@ -67,7 +64,7 @@ export const routes: Routes = [
   },
   {
     path: 'grade',
-    component: GradeRegistrationComponent,
+    component: GradesComponent,
     title: 'Cadastro de Notas',
     canActivate: [AuthGuard],
     data: {
@@ -92,7 +89,7 @@ export const routes: Routes = [
   {
     path: 'grades',
     component: GradesListComponent,
-    title: 'Notas',
+    title: 'Minhas Notas',
     canActivate: [AuthGuard],
     data: {
       name: 'Notas',

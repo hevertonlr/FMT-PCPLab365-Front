@@ -26,7 +26,10 @@ export class SidebarComponent {
       (route) =>
         route.path !== 'login' &&
         route.path &&
-        (this.isAdm() ? true : route.path !== 'usuarios'),
+        (!route.data?.['allowedProfiles'] ||
+          route.data?.['allowedProfiles']?.includes(
+            this.authService.getCurrentUser()?.profile,
+          )),
     );
     this.open = false;
   }
@@ -34,7 +37,7 @@ export class SidebarComponent {
     this.open = !this.open;
     this.sidebarToggled.emit();
   };
-  isAdm = () =>
+  logger = () =>
     this.authService.getTokenContent<User>()?.profile == Profile.Administrator;
   logout = () => {
     this.router.navigate(['/login']);

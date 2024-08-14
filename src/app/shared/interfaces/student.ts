@@ -1,5 +1,6 @@
 import { Gender } from '../enums/gender';
 import { Address } from './address';
+import { SchoolClass } from './schoolclass';
 
 export interface Student {
   id: string;
@@ -14,5 +15,5 @@ export interface Student {
   placeofbirth: string;
   address?: Address;
   image: string;
-  class: string[];
+  class: SchoolClass[];
 }
