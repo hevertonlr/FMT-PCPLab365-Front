@@ -33,12 +33,12 @@ export class BaseService<T> {
       .post<T>(this.API_URL, JSON.stringify(item))
       .pipe(catchError(this.handleError));
 
-  update = (id: number, item: T): Observable<T> =>
+  update = (id: string, item: T): Observable<T> =>
     this.http
       .put<T>(`${this.API_URL}/${id}`, JSON.stringify(item))
       .pipe(catchError(this.handleError));
 
-  delete = (id: number): Observable<void> =>
+  delete = (id: string): Observable<void> =>
     this.http
       .delete<void>(`${this.API_URL}/${id}`)
       .pipe(catchError(this.handleError));

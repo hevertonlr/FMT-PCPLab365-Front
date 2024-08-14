@@ -99,7 +99,7 @@
             {{ getInputErrors("name") }}
           </p>
         </div>
-        <div class="sm:col-span-3">
+        <div class="sm:col-span-2">
           <label
             for="gender"
             class="block text-sm font-medium leading-6 text-gray-900"
@@ -126,7 +126,37 @@
             {{ getInputErrors("gender") }}
           </p>
         </div>
-        <div class="sm:col-span-3">
+        <div class="sm:col-span-2">
+          <label
+            for="civilState"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Gênero</label
+          >
+          <div class="mt-2">
+            <select
+              id="civilState"
+              name="civilState"
+              appValidationStyle
+              formControlName="civilState"
+              class="form-input"
+            >
+              <option value="" disabled>Selecione o estado civil</option>
+              <option
+                *ngFor="let civilState of civilStates"
+                [value]="civilState.value"
+              >
+                {{ civilState.value }}
+              </option>
+            </select>
+          </div>
+          <p
+            *ngIf="isValid('civilState') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("civilState") }}
+          </p>
+        </div>
+        <div class="sm:col-span-2">
           <label
             for="birthday"
             class="block text-sm font-medium leading-6 text-gray-900"
@@ -893,8 +923,9 @@
   >
     <button
       type="button"
-      class="rounded-md bg-red-600/20 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600/20"
-      disabled
+      class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm disabled:bg-red-200 enabled:cursor-pointer enabled:hover:bg-red-500 enabled:focus-visible:outline enabled:focus-visible:outline-2 enabled:focus-visible:outline-offset-2 enabled:focus-visible:outline-red-600"
+      [disabled]="!deleteEnable"
+      (click)="onDelete(editObject)"
     >
       Deletar
     </button>

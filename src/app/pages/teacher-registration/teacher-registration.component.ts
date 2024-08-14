@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
   heroCog6Tooth,
@@ -21,15 +22,15 @@ import {
   heroUserCircleSolid,
 } from '@ng-icons/heroicons/solid';
 import { ValidationStyleDirective } from 'app/shared/directives/validation-style.directive';
-import { SchoolClass } from 'app/shared/interfaces/schoolclass';
 import { Teacher } from 'app/shared/interfaces/teacher';
 import { FormUtilsService } from 'app/shared/services/form-utils.service';
-import SchoolClassService from 'app/shared/services/schoolclass.service';
 import { TeacherService } from 'app/shared/services/teacher.service';
 import { ToastService } from 'app/shared/services/toast.service';
 import { ValidationService } from 'app/shared/services/validation.service';
 import { ViaCepService } from 'app/shared/services/via-cep.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
+import { map } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-teacher-registration',
@@ -70,8 +71,10 @@ export class TeacherRegistrationComponent implements OnInit {
   editObject: Teacher;
   form: FormGroup;
   selectedTab = 0;
+  deleteEnable: boolean = false;
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private service: TeacherService,
     private toastService: ToastService,
@@ -129,22 +132,10 @@ export class TeacherRegistrationComponent implements OnInit {
       ],
       gender: ['', Validators.required],
       birthday: ['', Validators.required],
-      cpf: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(/^(\d{3})(\d{3})(\d{3})(\d{2})$/),
-        ],
-      ],
+      cpf: ['', [Validators.required, Validators.minLength(11)]],
       rg: ['', [Validators.required, Validators.maxLength(20)]],
       civilState: ['', Validators.required],
-      phone: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(/^(\d{2})\D*(\d{5}|\d{4})\D*(\d{4})$/),
-        ],
-      ],
+      phone: ['', [Validators.required, Validators.minLength(10)]],
       email: ['', Validators.email],
       password: ['', [Validators.required, Validators.minLength(8)]],
       placeofbirth: [
@@ -170,14 +161,17 @@ export class TeacherRegistrationComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    this.deleteEnable = false;
     const state = history.state;
     if (state?.teacher) {
+      this.deleteEnable = true;
       this.editObject = state?.teacher as Teacher;
       // this.imagePreview = this.editObject.image;
       this.form.patchValue(this.editObject);
       this.formUtilsService.markAllAsDirty(this.form);
     }
   }
+
   onSubmit = () => {
     this.formUtilsService.enableAllFields(this.form);
     if (this.form.invalid) {
@@ -185,6 +179,9 @@ export class TeacherRegistrationComponent implements OnInit {
         'warning',
         'Atenção!',
         'Revise o formulário!',
+      );
+      console.log(
+        this.validationService.getErrorMessages(this.form, this.fieldAliases),
       );
       this.formUtilsService.markAllAsDirty(this.form);
       this.formUtilsService.disableAllFields(this.form, [
@@ -206,6 +203,7 @@ export class TeacherRegistrationComponent implements OnInit {
               'Successo!',
               'Registro atualizado com sucesso.',
             );
+            this.form.reset();
           });
       } else {
         delete this.form.value.id;
@@ -215,6 +213,7 @@ export class TeacherRegistrationComponent implements OnInit {
             'Successo!',
             'Registro criado com sucesso.',
           );
+          this.form.reset();
         });
       }
     } catch (error) {
@@ -274,6 +273,27 @@ export class TeacherRegistrationComponent implements OnInit {
         }
         this.isLoading = false;
       },
+    });
+  };
+
+  onDelete = (teacher: Teacher) => {
+    Swal.fire({
+      title: 'Confirma a exclusão deste Docente?',
+      showCancelButton: true,
+      confirmButtonText: 'Sim',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.delete(teacher.id).subscribe(() => {
+          Swal.fire(
+            'Excluido!',
+            'Docente excluído com sucesso',
+            'success',
+          ).then(() => {
+            this.form.reset();
+            this.router.navigate(['/teacher']);
+          });
+        });
+      }
     });
   };
 

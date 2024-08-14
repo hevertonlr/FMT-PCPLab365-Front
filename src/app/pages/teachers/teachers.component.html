@@ -1,1 +1,86 @@
-<p>teachers works!</p>
+<div class="isolate px-6 lg:px-0">
+  <h2
+    class="text-2xl font-medium leading-7 text-orange-500 sm:truncate sm:text-3xl sm:tracking-tight"
+  >
+    Listagem de Docentes cadastrados
+  </h2>
+  <div class="mt-4 pb-6 border-b-2 border-b-gray-300">
+    <label for="search">Filtrar</label>
+    <div class="pt-2 mb-2 relative mx-auto text-gray-600">
+      <input
+        (keydown.enter)="onSearch()"
+        class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none form-input"
+        type="search"
+        name="search"
+        [(ngModel)]="searchInput"
+        placeholder="Id, Nome ou E-mail"
+      />
+      <button
+        type="submit"
+        (click)="onSearch()"
+        class="absolute right-0 top-0 mt-5 mr-4"
+      >
+        <svg
+          class="text-gray-600 h-4 w-4 fill-current"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          id="Capa_1"
+          x="0px"
+          y="0px"
+          viewBox="0 0 56.966 56.966"
+          style="enable-background: new 0 0 56.966 56.966"
+          xml:space="preserve"
+          width="512px"
+          height="512px"
+        >
+          <path
+            d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <ul
+    class="grid grid-cols-1 mt-5 gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 mb-8"
+  >
+    <li
+      *ngFor="let teacher of filteredTeachers | async"
+      class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
+    >
+      <div class="flex w-full items-center justify-between space-x-6 p-6">
+        <div class="flex-1 truncate">
+          <div class="flex items-center space-x-3">
+            <span class="text-bold text-xl text-orange-500"
+              >#{{ teacher.id }}</span
+            >
+            <h3 class="truncate text-sm font-medium text-blue-800">
+              {{ teacher.name }}
+            </h3>
+          </div>
+          <p class="mt-1 truncate text-sm text-gray-500">
+            {{ teacher.email }}
+          </p>
+          <p class="mt-1 truncate text-sm text-gray-500">
+            {{ teacher.phone }}
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="-mt-px flex divide-x divide-gray-200">
+          <div class="flex w-0 flex-1">
+            <a
+              [href]=""
+              (click)="onEdit(teacher)"
+              class="relative transition-colors duration-300 group cursor-pointer hover:bg-indigo-600 hover:text-white -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-700"
+            >
+              <ng-icon size="1.25rem" name="heroEye"></ng-icon>
+              Ver mais
+            </a>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

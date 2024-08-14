@@ -4,7 +4,7 @@ import { SchoolSubject } from '../enums/schoolsubject';
 import { Address } from './address';
 
 export interface Teacher {
-  id: number;
+  id: string;
   name: string;
   gender: Gender;
   birthday: Date;

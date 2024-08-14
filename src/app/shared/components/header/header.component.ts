@@ -7,13 +7,20 @@ import { AuthService } from 'app/shared/services/auth.service';
 import { TitleService } from 'app/shared/services/title.service';
 import { Subscription } from 'rxjs';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { heroUserCircleSolid } from '@ng-icons/heroicons/solid';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, CommonModule, SidebarComponent],
+  imports: [RouterModule, CommonModule, SidebarComponent, NgIconComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
+  providers: [
+    provideIcons({
+      heroUserCircleSolid,
+    }),
+  ],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild(SidebarComponent) sidebarComponent!: SidebarComponent;

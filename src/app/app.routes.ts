@@ -6,10 +6,12 @@ import { GradesComponent } from './pages/grades/grades.component';
 import { StudentsComponent } from './pages/students/students.component';
 import { SchoolClassesComponent } from './pages/schoolclasses/schoolclasses.component';
 import { TeachersComponent } from './pages/teachers/teachers.component';
-import { TeachersListComponent } from './pages/teachers-list/teachers-list.component';
 import { GradesListComponent } from './pages/grades-list/grades-list.component';
 import { StudentRegistrationComponent } from './pages/student-registration/student-registration.component';
 import { Profile } from './shared/enums/profile';
+import { SchoolClassRegistrationComponent } from './pages/schoolclass-registration/schoolclass-registration.component';
+import { TeacherRegistrationComponent } from './pages/teacher-registration/teacher-registration.component';
+import { GradeRegistrationComponent } from './pages/grade-registration/grade-registration.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -28,7 +30,7 @@ export const routes: Routes = [
   },
   {
     path: 'teacher',
-    component: TeachersComponent,
+    component: TeacherRegistrationComponent,
     title: 'Cadastro de Docente',
     canActivate: [AuthGuard],
     data: {
@@ -52,7 +54,7 @@ export const routes: Routes = [
   },
   {
     path: 'schoolclasse',
-    component: SchoolClassesComponent,
+    component: SchoolClassRegistrationComponent,
     title: 'Cadastro de Turma',
     canActivate: [AuthGuard],
     data: {
@@ -64,7 +66,7 @@ export const routes: Routes = [
   },
   {
     path: 'grade',
-    component: GradesComponent,
+    component: GradeRegistrationComponent,
     title: 'Cadastro de Notas',
     canActivate: [AuthGuard],
     data: {
@@ -76,7 +78,7 @@ export const routes: Routes = [
   },
   {
     path: 'teachers',
-    component: TeachersListComponent,
+    component: TeachersComponent,
     title: 'Docentes',
     canActivate: [AuthGuard],
     data: {

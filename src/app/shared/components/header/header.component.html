@@ -59,11 +59,20 @@
             type="button"
           >
             <span class="sr-only">Abrir menu do Usuário</span>
+
             <img
-              alt=""
+              *ngIf="userImage; else defaultIcon"
               [src]="userImage"
-              class="h-8 w-8 rounded-full bg-gray-50"
+              alt="Profile"
+              class="h-8 w-8 rounded-full"
             />
+            <ng-template #defaultIcon>
+              <ng-icon
+                color="#d1d5db"
+                size="2rem"
+                name="heroUserCircleSolid"
+              ></ng-icon>
+            </ng-template>
             <span class="hidden lg:flex lg:items-center">
               <span
                 aria-hidden="true"
