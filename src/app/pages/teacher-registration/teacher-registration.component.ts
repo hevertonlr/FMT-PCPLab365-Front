@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -22,19 +21,18 @@ import {
   heroUserCircleSolid,
 } from '@ng-icons/heroicons/solid';
 import { ValidationStyleDirective } from 'app/shared/directives/validation-style.directive';
-import { Gender } from 'app/shared/enums/gender';
 import { SchoolClass } from 'app/shared/interfaces/schoolclass';
-import { Student } from 'app/shared/interfaces/student';
+import { Teacher } from 'app/shared/interfaces/teacher';
 import { FormUtilsService } from 'app/shared/services/form-utils.service';
 import SchoolClassService from 'app/shared/services/schoolclass.service';
-import { StudentService } from 'app/shared/services/student.service';
+import { TeacherService } from 'app/shared/services/teacher.service';
 import { ToastService } from 'app/shared/services/toast.service';
 import { ValidationService } from 'app/shared/services/validation.service';
 import { ViaCepService } from 'app/shared/services/via-cep.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 @Component({
-  selector: 'app-student-registration',
+  selector: 'app-teacher-registration',
   standalone: true,
   imports: [
     CommonModule,
@@ -45,8 +43,8 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
     NgxMaskDirective,
     NgxMaskPipe,
   ],
-  templateUrl: './student-registration.component.html',
-  styleUrl: './student-registration.component.scss',
+  templateUrl: './teacher-registration.component.html',
+  styleUrl: './teacher-registration.component.scss',
   providers: [
     provideIcons({
       heroUsers,
@@ -60,46 +58,38 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
     }),
   ],
 })
-export class StudentRegistrationComponent implements OnInit {
-  imagePreview: string | ArrayBuffer | null = null;
+export class TeacherRegistrationComponent implements OnInit {
+  // imagePreview: string | ArrayBuffer | null = null;
+  schoolSubjects: { key: string; value: string }[];
+  civilStates: { key: string; value: string }[];
   tabs: { label: string; icon: string }[] = [];
   genders: { key: string; value: string }[];
   fieldAliases: { [key: string]: string };
-  schoolClasses: SchoolClass[] = [];
+
   isLoading: boolean = false;
-  editObject: Student;
+  editObject: Teacher;
   form: FormGroup;
   selectedTab = 0;
 
   constructor(
     private fb: FormBuilder,
-    private service: StudentService,
+    private service: TeacherService,
     private toastService: ToastService,
     private viaCepService: ViaCepService,
     private formUtilsService: FormUtilsService,
     private validationService: ValidationService,
-    private schoolclassService: SchoolClassService,
   ) {
     this.genders = this.formUtilsService.getAllGenders();
-    this.schoolclassService.getAll().subscribe({
-      next: (data) => {
-        this.schoolClasses = data;
-      },
-      error: (error) => {
-        this.toastService.showToast(
-          'error',
-          'Erro!',
-          'Ocorreu um erro ao buscar as Turmas',
-        );
-        console.error('SchoolClass fetching error:', error);
-      },
-    });
+    this.civilStates = this.formUtilsService.getAllCivilStates();
+    this.schoolSubjects = this.formUtilsService.getAllSchoolSubjects();
+
     this.fieldAliases = {
       name: 'Nome',
       gender: 'Gênero',
       birthday: 'Data de Nascimento',
       cpf: 'CPF',
       rg: 'RG',
+      civilState: 'Estado Civil',
       phone: 'Telefone',
       email: 'E-mail',
       password: 'Senha',
@@ -111,9 +101,22 @@ export class StudentRegistrationComponent implements OnInit {
       'address.complement': 'Complemento',
       'address.neighborhood': 'Bairro',
       'address.referencePoint': 'Ponto de Referência',
-      image: 'Imagem do Perfil',
       class: 'Turma',
     };
+    this.tabs = [
+      {
+        label: 'Perfil',
+        icon: 'heroIdentification',
+      },
+      {
+        label: 'Endereço',
+        icon: 'heroHomeModern',
+      },
+      {
+        label: 'Configurações',
+        icon: 'heroCog6Tooth',
+      },
+    ];
     this.form = this.fb.group({
       id: [''],
       name: [
@@ -134,6 +137,7 @@ export class StudentRegistrationComponent implements OnInit {
         ],
       ],
       rg: ['', [Validators.required, Validators.maxLength(20)]],
+      civilState: ['', Validators.required],
       phone: [
         '',
         [
@@ -161,34 +165,19 @@ export class StudentRegistrationComponent implements OnInit {
         neighborhood: [{ value: '', disabled: true }],
         referencePoint: [''],
       }),
-      image: ['', Validators.required],
-      class: [[], Validators.required],
+      // image: ['', Validators.required],
+      schoolSubjects: [[], Validators.required],
     });
-    this.tabs = [
-      {
-        label: 'Perfil',
-        icon: 'heroIdentification',
-      },
-      {
-        label: 'Endereço',
-        icon: 'heroHomeModern',
-      },
-      {
-        label: 'Configurações',
-        icon: 'heroCog6Tooth',
-      },
-    ];
   }
   ngOnInit(): void {
     const state = history.state;
-    if (state?.student) {
-      this.editObject = state?.student as Student;
-      this.imagePreview = this.editObject.image;
+    if (state?.teacher) {
+      this.editObject = state?.teacher as Teacher;
+      // this.imagePreview = this.editObject.image;
       this.form.patchValue(this.editObject);
       this.formUtilsService.markAllAsDirty(this.form);
     }
   }
-
   onSubmit = () => {
     this.formUtilsService.enableAllFields(this.form);
     if (this.form.invalid) {
@@ -276,19 +265,20 @@ export class StudentRegistrationComponent implements OnInit {
     });
   };
 
-  handleFileInput = (event: Event) => {
-    const file = (event.target as HTMLInputElement).files?.item(0);
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imagePreview = reader.result;
-        this.form.get('image')?.setValue(reader.result?.toString());
-      };
-      reader.readAsDataURL(file);
-    } else {
-      this.imagePreview = null;
-    }
-  };
+  // handleFileInput = (event: Event) => {
+  //   const file = (event.target as HTMLInputElement).files?.item(0);
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       this.imagePreview = reader.result;
+  //       this.form.get('image')?.setValue(reader.result?.toString());
+  //     };
+  //     reader.readAsDataURL(file);
+  //   } else {
+  //     this.imagePreview = null;
+  //   }
+  // }
+
   inputTransformFn = (value: unknown): string =>
     typeof value === 'string' ? value.toUpperCase() : String(value);
 

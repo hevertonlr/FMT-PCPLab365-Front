@@ -10,6 +10,7 @@ import { TeachersListComponent } from './pages/teachers-list/teachers-list.compo
 import { GradesListComponent } from './pages/grades-list/grades-list.component';
 import { StudentRegistrationComponent } from './pages/student-registration/student-registration.component';
 import { Profile } from './shared/enums/profile';
+import { TeacherRegistrationComponent } from './pages/teacher-registration/teacher-registration.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -28,7 +29,7 @@ export const routes: Routes = [
   },
   {
     path: 'teacher',
-    component: TeachersComponent,
+    component: TeacherRegistrationComponent,
     title: 'Cadastro de Docente',
     canActivate: [AuthGuard],
     data: {

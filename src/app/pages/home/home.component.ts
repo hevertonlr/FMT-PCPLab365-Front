@@ -68,10 +68,8 @@ export class HomeComponent implements OnInit {
     return profile == Profile.Administrator ? 'Ver Mais' : 'Lançar Nota';
   };
 
-  onSearch = () => {
-    this.searchService.updateSearchTerm(this.searchText);
-  };
-  edit(student: Student): void {
+  onSearch = () => this.searchService.updateSearchTerm(this.searchText);
+
+  edit = (student: Student) =>
     this.router.navigate(['/student'], { state: { student } });
-  }
 }

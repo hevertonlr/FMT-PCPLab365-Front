@@ -23,11 +23,11 @@
       </div>
       <div class="hidden border-r md:block">
         <!-- <h2 class="text-base font-semibold leading-7 text-gray-900">
-          Personal Information
-        </h2>
-        <p class="mt-1 text-sm leading-6 text-gray-600">
-          Use a permanent address where you can receive mail.
-        </p> -->
+            Personal Information
+          </h2>
+          <p class="mt-1 text-sm leading-6 text-gray-600">
+            Use a permanent address where you can receive mail.
+          </p> -->
 
         <div class="flex flex-col space-y-4">
           <button
@@ -84,7 +84,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('name') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -153,7 +153,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('birthday') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -195,7 +195,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('cpf') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -240,7 +240,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('rg') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -282,7 +282,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('placeofbirth') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -324,7 +324,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('email') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -366,7 +366,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('phone') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -381,7 +381,7 @@
             {{ getInputErrors("phone") }}
           </p>
         </div>
-        <div class="col-span-full">
+        <!-- <div class="col-span-full">
           <label
             for="image"
             class="block text-sm font-medium leading-6 text-gray-900"
@@ -426,7 +426,7 @@
           >
             {{ getInputErrors("image") }}
           </p>
-        </div>
+        </div> -->
       </div>
       <!-- class="grid grid-cols-1 gap-6 sm:grid-cols-6 md:col-span-3" -->
       <div
@@ -464,7 +464,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('address.cep') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -519,7 +519,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('address.state') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -565,7 +565,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('address.city') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -612,7 +612,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('address.street') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -658,7 +658,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('address.neighborhood') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -702,7 +702,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('address.number') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -746,7 +746,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('address.complement') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -790,7 +790,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('address.referencePoint') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -812,33 +812,33 @@
       >
         <div class="sm:col-span-3">
           <label
-            for="class"
+            for="schoolSubjects"
             class="block text-sm font-medium leading-6 text-gray-900"
-            >Turmas</label
+            >Matérias</label
           >
           <div class="relative mt-2">
             <select
-              id="class"
-              name="class"
+              id="schoolSubjects"
+              name="schoolSubjects"
               appValidationStyle
-              formControlName="class"
+              formControlName="schoolSubjects"
               class="form-input"
               multiple
             >
-              <option value="" disabled>Selecione a Turma</option>
+              <option value="" disabled>Selecione a matéria</option>
               <option
-                *ngFor="let schoolclass of schoolClasses"
-                [value]="schoolclass.id"
+                *ngFor="let schoolSubject of schoolSubjects"
+                [value]="schoolSubject.value"
               >
-                {{ schoolclass.name }}
+                {{ schoolSubject.value }}
               </option>
             </select>
           </div>
           <p
-            *ngIf="isValid('class') === false"
+            *ngIf="isValid('schoolSubjects') === false"
             class="pt-2 -mb-2 text-sm text-red-600"
           >
-            {{ getInputErrors("class") }}
+            {{ getInputErrors("schoolSubjects") }}
           </p>
         </div>
         <div class="hidden sm:block sm:col-span-3"></div>
@@ -870,7 +870,7 @@
                 }}"
                 size="1.25rem"
                 name="
-                      {{
+                        {{
                   isValid('password') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
@@ -891,9 +891,6 @@
   <div
     class="flex items-center justify-end gap-x-6 pt-4 border-t-2 border-gradient-to-r gradient-base"
   >
-    <!-- <button type="button" class="text-sm font-semibold leading-6 text-gray-900">
-      Cancelar
-    </button> -->
     <button
       type="button"
       class="rounded-md bg-red-600/20 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600/20"
