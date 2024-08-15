@@ -236,8 +236,9 @@
   >
     <button
       type="button"
-      class="rounded-md bg-red-600/20 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600/20"
-      disabled
+      class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm disabled:bg-red-200 enabled:cursor-pointer enabled:hover:bg-red-500 enabled:focus-visible:outline enabled:focus-visible:outline-2 enabled:focus-visible:outline-offset-2 enabled:focus-visible:outline-red-600"
+      [disabled]="!deleteEnable"
+      (click)="onDelete(editObject)"
     >
       Deletar
     </button>

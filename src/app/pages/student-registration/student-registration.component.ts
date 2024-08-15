@@ -8,6 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
   heroCog6Tooth,
@@ -32,6 +33,7 @@ import { ToastService } from 'app/shared/services/toast.service';
 import { ValidationService } from 'app/shared/services/validation.service';
 import { ViaCepService } from 'app/shared/services/via-cep.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-student-registration',
@@ -70,8 +72,10 @@ export class StudentRegistrationComponent implements OnInit {
   editObject: Student;
   form: FormGroup;
   selectedTab = 0;
+  deleteEnable: boolean = false;
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private service: StudentService,
     private toastService: ToastService,
@@ -180,8 +184,10 @@ export class StudentRegistrationComponent implements OnInit {
     ];
   }
   ngOnInit(): void {
+    this.deleteEnable = false;
     const state = history.state;
     if (state?.student) {
+      this.deleteEnable = true;
       this.editObject = state?.student as Student;
       this.imagePreview = this.editObject.image;
       this.form.patchValue(this.editObject);
@@ -308,4 +314,24 @@ export class StudentRegistrationComponent implements OnInit {
 
   outputTransformFn = (value: string | number | null | undefined): string =>
     value ? String(value).toUpperCase() : '';
+  onDelete = (student: Student) => {
+    Swal.fire({
+      title: 'Confirma a exclusão deste Registro?',
+      showCancelButton: true,
+      confirmButtonText: 'Sim',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.delete(student.id).subscribe(() => {
+          Swal.fire(
+            'Excluido!',
+            'Registro excluído com sucesso',
+            'success',
+          ).then(() => {
+            this.form.reset();
+            this.router.navigate(['/home']);
+          });
+        });
+      }
+    });
+  };
 }

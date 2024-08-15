@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
   heroUsers,
@@ -34,6 +35,7 @@ import { ValidationService } from 'app/shared/services/validation.service';
 import { ViaCepService } from 'app/shared/services/via-cep.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-schoolclass-registration',
@@ -72,8 +74,10 @@ export class SchoolClassRegistrationComponent implements OnInit {
   editObject: SchoolClass;
   form: FormGroup;
   selectedTab = 0;
+  deleteEnable: boolean = false;
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private service: SchoolClassService,
     private toastService: ToastService,
@@ -135,8 +139,10 @@ export class SchoolClassRegistrationComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    this.deleteEnable = false;
     const state = history.state;
     if (state?.schoolclass) {
+      this.deleteEnable = true;
       this.editObject = state?.schoolclass as SchoolClass;
       this.form.patchValue(this.editObject);
       this.formUtilsService.markAllAsDirty(this.form);
@@ -199,4 +205,24 @@ export class SchoolClassRegistrationComponent implements OnInit {
   isActive = (tabIndex: number) => this.selectedTab === tabIndex;
   isValid = (inputName: string) =>
     this.validationService.isValid(this.form, inputName);
+  onDelete = (item: SchoolClass) => {
+    Swal.fire({
+      title: 'Confirma a exclusão deste Registro?',
+      showCancelButton: true,
+      confirmButtonText: 'Sim',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.delete(item.id).subscribe(() => {
+          Swal.fire(
+            'Excluido!',
+            'Registro excluído com sucesso',
+            'success',
+          ).then(() => {
+            this.form.reset();
+            this.router.navigate(['/home']);
+          });
+        });
+      }
+    });
+  };
 }

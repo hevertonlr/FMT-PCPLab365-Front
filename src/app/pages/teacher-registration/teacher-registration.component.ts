@@ -290,7 +290,7 @@ export class TeacherRegistrationComponent implements OnInit {
             'success',
           ).then(() => {
             this.form.reset();
-            this.router.navigate(['/teacher']);
+            this.router.navigate(['/home']);
           });
         });
       }

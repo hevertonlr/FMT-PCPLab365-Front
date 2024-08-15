@@ -6,7 +6,6 @@ import { GradesComponent } from './pages/grades/grades.component';
 import { StudentsComponent } from './pages/students/students.component';
 import { SchoolClassesComponent } from './pages/schoolclasses/schoolclasses.component';
 import { TeachersComponent } from './pages/teachers/teachers.component';
-import { GradesListComponent } from './pages/grades-list/grades-list.component';
 import { StudentRegistrationComponent } from './pages/student-registration/student-registration.component';
 import { Profile } from './shared/enums/profile';
 import { SchoolClassRegistrationComponent } from './pages/schoolclass-registration/schoolclass-registration.component';
@@ -90,7 +89,7 @@ export const routes: Routes = [
   },
   {
     path: 'grades',
-    component: GradesListComponent,
+    component: GradesComponent,
     title: 'Minhas Notas',
     canActivate: [AuthGuard],
     data: {
