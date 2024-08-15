@@ -1,0 +1,909 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input type="hidden" name="id" formControlName="id" />
+
+  <div class="space-y-12">
+    <div
+      class="grid grid-cols-1 gap-x-8 gap-y-10 border-gray-900/10 pb-5 md:grid-cols-4"
+    >
+      <div class="md:hidden pb-4 border-b-4 border-gradient-to-r gradient-base">
+        <label for="tabs" class="sr-only">Select a tab</label
+        ><select
+          id="tabs"
+          name="tabs"
+          class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+        >
+          <option
+            *ngFor="let tab of tabs; let i = index"
+            [value]="i"
+            [attr.selected]="isActive(i)"
+          >
+            {{ tab.label }}
+          </option>
+        </select>
+      </div>
+      <div class="hidden border-r md:block">
+        <!-- <h2 class="text-base font-semibold leading-7 text-gray-900">
+          Personal Information
+        </h2>
+        <p class="mt-1 text-sm leading-6 text-gray-600">
+          Use a permanent address where you can receive mail.
+        </p> -->
+
+        <div class="flex flex-col space-y-4">
+          <button
+            type="button"
+            *ngFor="let tab of tabs; let i = index"
+            class="group transition-colors duration-300 px-4 py-2 flex gap-x-3 items-center rounded-l-md"
+            [ngClass]="{
+              'border-r-2 border-blue-800 bg-gray-50 text-blue-800  shadow-inner':
+                selectedTab === i,
+              'text-gray-600 hover:text-blue-800 hover:bg-gray-50 border-transparent hover:border-gray-300':
+                selectedTab !== i,
+            }"
+            (click)="selectTab(i)"
+          >
+            <ng-icon
+              [ngClass]="{
+                'text-gray-400 group-hover:text-orange-500': !isActive(i),
+                'text-orange-500': isActive(i),
+              }"
+              class="-ml-0.5 h-6 w-6 transition-colors duration-300"
+              size="1.5rem"
+              name="{{ tab.icon }}"
+            ></ng-icon>
+            {{ tab.label }}
+          </button>
+        </div>
+      </div>
+      <div
+        *ngIf="isActive(0)"
+        class="grid grid-cols-1 gap-6 sm:grid-cols-6 md:col-span-3"
+      >
+        <div class="col-span-full">
+          <label
+            for="name"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Nome Completo</label
+          >
+          <div class="relative mt-2">
+            <input
+              id="name"
+              name="name"
+              appValidationStyle
+              formControlName="name"
+              type="text"
+              class="form-input"
+            />
+            <div
+              *ngIf="isValid('name') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('name') === true ? 'text-green-500' : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('name') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('name') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("name") }}
+          </p>
+        </div>
+        <div class="sm:col-span-3">
+          <label
+            for="gender"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Gênero</label
+          >
+          <div class="mt-2">
+            <select
+              id="gender"
+              name="gender"
+              appValidationStyle
+              formControlName="gender"
+              class="form-input"
+            >
+              <option value="" disabled>Selecione o gênero</option>
+              <option *ngFor="let gender of genders" [value]="gender.value">
+                {{ gender.value }}
+              </option>
+            </select>
+          </div>
+          <p
+            *ngIf="isValid('gender') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("gender") }}
+          </p>
+        </div>
+        <div class="sm:col-span-3">
+          <label
+            for="birthday"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Data de Nascimento</label
+          >
+          <div class="relative mt-2">
+            <input
+              id="birthday"
+              name="birthday"
+              appValidationStyle
+              formControlName="birthday"
+              type="date"
+              class="form-input"
+            />
+            <div
+              *ngIf="isValid('birthday') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('birthday') === true
+                    ? 'text-green-500'
+                    : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('birthday') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('birthday') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("birthday") }}
+          </p>
+        </div>
+        <div class="sm:col-span-2 sm:col-start-1">
+          <label
+            for="cpf"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >CPF</label
+          >
+          <div class="relative mt-2">
+            <input
+              id="cpf"
+              name="cpf"
+              appValidationStyle
+              formControlName="cpf"
+              type="text"
+              mask="000.000.000-00"
+              placeholder="123.456.789-00"
+              class="form-input"
+            />
+            <div
+              *ngIf="isValid('cpf') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('cpf') === true ? 'text-green-500' : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('cpf') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('cpf') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("cpf") }}
+          </p>
+        </div>
+        <div class="sm:col-span-2">
+          <label
+            for="rg"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >UF expedição - RG</label
+          >
+          <div class="relative mt-2">
+            <input
+              id="rg"
+              name="rg"
+              appValidationStyle
+              formControlName="rg"
+              type="text"
+              class="form-input"
+              placeholder="UF-000.000.000-00"
+              [inputTransformFn]="inputTransformFn"
+              [outputTransformFn]="outputTransformFn"
+              mask="SS-0*"
+              [dropSpecialCharacters]="false"
+            />
+            <div
+              *ngIf="isValid('rg') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('rg') === true ? 'text-green-500' : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('rg') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('rg') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("rg") }}
+          </p>
+        </div>
+        <div class="sm:col-span-2">
+          <label
+            for="placeofbirth"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Naturalidade</label
+          >
+          <div class="relative mt-2">
+            <input
+              id="placeofbirth"
+              name="placeofbirth"
+              appValidationStyle
+              formControlName="placeofbirth"
+              type="text"
+              class="form-input"
+            />
+            <div
+              *ngIf="isValid('placeofbirth') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('placeofbirth') === true
+                    ? 'text-green-500'
+                    : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('placeofbirth') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('placeofbirth') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("placeofbirth") }}
+          </p>
+        </div>
+
+        <div class="sm:col-span-4">
+          <label
+            for="email"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Endereço de E-mail</label
+          >
+          <div class="relative mt-2">
+            <input
+              id="email"
+              name="email"
+              appValidationStyle
+              formControlName="email"
+              type="email"
+              placeholder="you@example.com"
+              class="form-input"
+            />
+            <div
+              *ngIf="isValid('email') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('email') === true ? 'text-green-500' : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('email') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('email') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("email") }}
+          </p>
+        </div>
+        <div class="sm:col-span-2">
+          <label
+            for="phone"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Telefone</label
+          >
+          <div class="relative mt-2">
+            <input
+              id="phone"
+              name="phone"
+              appValidationStyle
+              formControlName="phone"
+              type="text"
+              mask="(00) 00000-0000||(00) 0000-0000"
+              placeholder="(12) 34567-8900"
+              class="form-input"
+            />
+            <div
+              *ngIf="isValid('phone') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('phone') === true ? 'text-green-500' : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('phone') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('phone') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("phone") }}
+          </p>
+        </div>
+        <div class="col-span-full">
+          <label
+            for="image"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Imagem</label
+          >
+          <div class="mt-2">
+            <div class="mt-2 flex items-center gap-x-3">
+              <img
+                *ngIf="imagePreview; else defaultIcon"
+                [src]="imagePreview"
+                alt="Profile"
+                class="h-12 w-12 rounded-full"
+              />
+              <ng-template #defaultIcon>
+                <ng-icon
+                  color="#d1d5db"
+                  size="3rem"
+                  name="heroUserCircleSolid"
+                ></ng-icon>
+              </ng-template>
+
+              <button
+                type="button"
+                class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                (click)="fileInput.click()"
+              >
+                Alterar
+              </button>
+              <input type="hidden" name="image" formControlName="image" />
+              <input
+                type="file"
+                class="hidden"
+                (change)="handleFileInput($event)"
+                accept="image/*"
+                #fileInput
+              />
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('image') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("image") }}
+          </p>
+        </div>
+      </div>
+      <!-- class="grid grid-cols-1 gap-6 sm:grid-cols-6 md:col-span-3" -->
+      <div
+        *ngIf="isActive(1)"
+        class="grid grid-cols-1 gap-6 sm:grid-cols-12 md:col-span-3"
+        formGroupName="address"
+      >
+        <div class="sm:col-span-3">
+          <label
+            for="cep"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >CEP</label
+          >
+          <div class="relative mt-2">
+            <input
+              id="cep"
+              name="cep"
+              appValidationStyle
+              formControlName="cep"
+              type="text"
+              mask="00000-000"
+              placeholder="12345-678"
+              class="form-input pr-10"
+              (blur)="findCep()"
+            />
+            <div
+              *ngIf="isValid('address.cep') !== undefined && !isLoading"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('address.cep') === true
+                    ? 'text-green-500'
+                    : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('address.cep') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+            <div
+              *ngIf="isLoading"
+              class="absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <svg class="animate-spin h-5 w-5 text-indigo-500" alt="">
+                <use xlink:href="assets/images/icons.svg#loading"></use>
+              </svg>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('address.cep') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("address.cep") }}
+          </p>
+        </div>
+        <div class="hidden sm:block sm:col-span-9"></div>
+        <div class="sm:col-span-2">
+          <label
+            for="state"
+            class="block text-sm font-medium leading-6 text-gray-900"
+          >
+            UF
+          </label>
+          <div class="relative mt-2">
+            <input
+              id="state"
+              name="state"
+              appValidationStyle
+              formControlName="state"
+              type="text"
+              class="form-input"
+              placeholder="UF"
+              [readonly]="isFieldBlocked('state')"
+              [ngClass]="{ blocked: isFieldBlocked('state') }"
+            />
+            <div
+              *ngIf="isValid('address.state') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('address.state') === true
+                    ? 'text-green-500'
+                    : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('address.state') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('address.state') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("address.state") }}
+          </p>
+        </div>
+        <div class="sm:col-span-10">
+          <label
+            for="city"
+            class="block text-sm font-medium leading-6 text-gray-900"
+          >
+            Cidade
+          </label>
+          <div class="relative mt-2">
+            <input
+              id="city"
+              name="city"
+              appValidationStyle
+              formControlName="city"
+              placeholder="Nome da Cidade"
+              type="text"
+              class="form-input"
+              [readonly]="isFieldBlocked('city')"
+              [ngClass]="{ blocked: isFieldBlocked('city') }"
+            />
+            <div
+              *ngIf="isValid('address.city') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('address.city') === true
+                    ? 'text-green-500'
+                    : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('address.city') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('address.city') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("address.city") }}
+          </p>
+        </div>
+
+        <div class="sm:col-span-full">
+          <label
+            for="street"
+            class="block text-sm font-medium leading-6 text-gray-900"
+          >
+            Endereço
+          </label>
+          <div class="relative mt-2">
+            <input
+              id="street"
+              name="street"
+              appValidationStyle
+              formControlName="street"
+              type="text"
+              placeholder="Rua, Avenida, Beco, Servidáo, etc."
+              class="form-input"
+              [readonly]="isFieldBlocked('street')"
+              [ngClass]="{ blocked: isFieldBlocked('street') }"
+            />
+            <div
+              *ngIf="isValid('address.street') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('address.street') === true
+                    ? 'text-green-500'
+                    : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('address.street') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('address.street') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("address.street") }}
+          </p>
+        </div>
+        <div class="sm:col-span-3">
+          <label
+            for="neighborhood"
+            class="block text-sm font-medium leading-6 text-gray-900"
+          >
+            Bairro
+          </label>
+          <div class="relative mt-2">
+            <input
+              id="neighborhood"
+              name="neighborhood"
+              appValidationStyle
+              formControlName="neighborhood"
+              type="text"
+              placeholder="Nome do Bairro"
+              class="form-input"
+              [readonly]="isFieldBlocked('neighborhood')"
+              [ngClass]="{ blocked: isFieldBlocked('neighborhood') }"
+            />
+            <div
+              *ngIf="isValid('address.neighborhood') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('address.neighborhood') === true
+                    ? 'text-green-500'
+                    : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('address.neighborhood') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('address.neighborhood') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("address.neighborhood") }}
+          </p>
+        </div>
+        <div class="sm:col-span-2">
+          <label
+            for="number"
+            class="block text-sm font-medium leading-6 text-gray-900"
+          >
+            Número
+          </label>
+          <div class="relative mt-2">
+            <input
+              id="number"
+              name="number"
+              appValidationStyle
+              formControlName="number"
+              placeholder="1234"
+              type="text"
+              class="form-input"
+            />
+            <div
+              *ngIf="isValid('address.number') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('address.number') === true
+                    ? 'text-green-500'
+                    : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('address.number') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('address.number') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("address.number") }}
+          </p>
+        </div>
+        <div class="sm:col-span-7">
+          <label
+            for="complement"
+            class="block text-sm font-medium leading-6 text-gray-900"
+          >
+            Complemento
+          </label>
+          <div class="relative mt-2">
+            <input
+              id="complement"
+              name="complement"
+              appValidationStyle
+              formControlName="complement"
+              placeholder="Casa, Apartamento, Bloco, etc."
+              type="text"
+              class="form-input"
+            />
+            <div
+              *ngIf="isValid('address.complement') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('address.complement') === true
+                    ? 'text-green-500'
+                    : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('address.complement') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('address.complement') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("address.complement") }}
+          </p>
+        </div>
+        <div class="sm:col-span-full">
+          <label
+            for="referencePoint"
+            class="block text-sm font-medium leading-6 text-gray-900"
+          >
+            Ponto de referência
+          </label>
+          <div class="relative mt-2">
+            <input
+              id="referencePoint"
+              name="referencePoint"
+              appValidationStyle
+              formControlName="referencePoint"
+              placeholder="Auxilio para entregas a domicílio"
+              type="text"
+              class="form-input"
+            />
+            <div
+              *ngIf="isValid('address.referencePoint') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('address.referencePoint') === true
+                    ? 'text-green-500'
+                    : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('address.referencePoint') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('address.referencePoint') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("address.referencePoint") }}
+          </p>
+        </div>
+      </div>
+      <div
+        *ngIf="isActive(2)"
+        class="grid grid-cols-1 gap-6 sm:grid-cols-6 md:col-span-3"
+      >
+        <div class="sm:col-span-3">
+          <label
+            for="class"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Turmas</label
+          >
+          <div class="relative mt-2">
+            <select
+              id="class"
+              name="class"
+              appValidationStyle
+              formControlName="class"
+              class="form-input"
+              multiple
+            >
+              <option value="" disabled>Selecione a Turma</option>
+              <option
+                *ngFor="let schoolclass of schoolClasses"
+                [value]="schoolclass.id"
+              >
+                {{ schoolclass.name }}
+              </option>
+            </select>
+          </div>
+          <p
+            *ngIf="isValid('class') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("class") }}
+          </p>
+        </div>
+        <div class="hidden sm:block sm:col-span-3"></div>
+        <div class="sm:col-span-2">
+          <label
+            for="password"
+            class="block text-sm font-medium leading-6 text-gray-900"
+          >
+            Senha
+          </label>
+          <div class="relative mt-2">
+            <input
+              id="password"
+              name="password"
+              appValidationStyle
+              formControlName="password"
+              type="password"
+              class="form-input"
+            />
+            <div
+              *ngIf="isValid('password') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('password') === true
+                    ? 'text-green-500'
+                    : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                      {{
+                  isValid('password') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('password') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("password") }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="flex items-center justify-end gap-x-6 pt-4 border-t-2 border-gradient-to-r gradient-base"
+  >
+    <button
+      type="button"
+      class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm disabled:bg-red-200 enabled:cursor-pointer enabled:hover:bg-red-500 enabled:focus-visible:outline enabled:focus-visible:outline-2 enabled:focus-visible:outline-offset-2 enabled:focus-visible:outline-red-600"
+      [disabled]="!deleteEnable"
+      (click)="onDelete(editObject)"
+    >
+      Deletar
+    </button>
+    <button
+      type="submit"
+      class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+    >
+      Salvar
+    </button>
+  </div>
+</form>

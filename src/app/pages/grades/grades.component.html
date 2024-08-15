@@ -1,0 +1,76 @@
+<div class="isolate px-6 lg:px-0">
+  <h2
+    class="text-2xl font-medium leading-7 text-orange-500 sm:truncate sm:text-3xl sm:tracking-tight"
+  >
+    Listagem de Notas cadastradas
+  </h2>
+
+  <table class="table-auto min-w-full divide-gray-300">
+    <thead>
+      <tr>
+        <th
+          scope="col"
+          class="py-3.5 pl-4 pr-3 text-start text-sm font-semibold text-gray-900 sm:pl-0"
+        >
+          #
+        </th>
+        <th
+          scope="col"
+          class="py-3.5 pl-4 pr-3 text-start text-sm font-semibold text-gray-900 sm:pl-0"
+        >
+          Nome
+        </th>
+        <th
+          scope="col"
+          class="hidden px-3 py-3.5 text-start text-sm font-semibold text-gray-900 lg:table-cell"
+        >
+          Data
+        </th>
+
+        <th
+          scope="col"
+          class="hidden px-3 py-3.5 text-start text-sm font-semibold text-gray-900 sm:table-cell"
+        >
+          Matéria
+        </th>
+        <th
+          scope="col"
+          class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900"
+        >
+          Nota
+        </th>
+      </tr>
+    </thead>
+    <tbody class="divide-gray-300 divide-y bg-white">
+      <tr *ngFor="let grade of grades | async">
+        <td class="px-3 py-4 text-sm text-gray-500">{{ grade.id }}</td>
+        <td
+          class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-0"
+        >
+          {{ grade.testname }}
+          <dl class="font-normal lg:hidden">
+            <dt class="sr-only">Nome</dt>
+            <dd class="mt-1 truncate text-gray-700">{{ grade.testdate }}</dd>
+            <dt class="sr-only md:hidden">Data</dt>
+            <dd class="mt-1 truncate text-gray-500 md:hidden">
+              {{ grade.testdate | date: "dd/MM/yyyy" }}
+            </dd>
+            <dt class="sr-only sm:hidden">Matéria</dt>
+            <dd class="mt-1 truncate text-gray-500 sm:hidden">
+              {{ grade.schoolSubject }}
+            </dd>
+          </dl>
+        </td>
+        <td class="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
+          {{ grade.testdate | date: "dd/MM/yyyy" }}
+        </td>
+        <td class="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">
+          {{ grade.schoolSubject }}
+        </td>
+        <td class="px-3 py-4 text-sm text-gray-500 text-center">
+          {{ grade.testgrade }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

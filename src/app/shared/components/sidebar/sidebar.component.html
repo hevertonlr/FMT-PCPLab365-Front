@@ -1,0 +1,154 @@
+<div
+  [ngClass]="{
+    invisible: !open,
+    visible: open,
+  }"
+  class="relative z-10 transition-[visibility] duration-300 lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col lg:visible"
+  tabindex="-1"
+  aria-modal="true"
+>
+  <div
+    [ngClass]="{
+      'opacity-0 ': !open,
+    }"
+    class="fixed inset-0 bg-gray-900/80 transition-opacity duration-300 ease-linear lg:invisible"
+    aria-hidden="true"
+  ></div>
+  <div class="fixed inset-0 flex lg:max-w-72">
+    <div
+      [ngClass]="{
+        '-translate-x-full': !open,
+        'mr-16': open,
+      }"
+      class="relative flex w-full max-w-80 flex-1 transform transition duration-300 ease-in-out lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col lg:translate-x-0"
+    >
+      <div
+        [ngClass]="{
+          'opacity-0': !open,
+          visible: open,
+        }"
+        class="absolute left-full top-0 flex w-16 justify-center pt-5 duration-300 ease-in-out lg:invisible"
+      >
+        <button (click)="toggleSidebar()" type="button" class="-m-2.5 p-2.5">
+          <span class="sr-only">Fechar barra lateral</span>
+          <svg class="h-6 w-6 text-white" alt="">
+            <use xlink:href="assets/images/icons.svg#close"></use>
+          </svg>
+        </button>
+      </div>
+      <div
+        class="flex flex-grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4 lg:border-r lg:border-gray-200 border-gradient-to-b gradient-base"
+      >
+        <div
+          class="flex py-5 flex-shrink-0 items-center text-gray-700 gap-x-3 font-semibold text-base border-b-4 border-gradient-to-r gradient-base"
+        >
+          <img alt="labPCP" src="assets/images/logo.svg" class="h-6 w-auto" />
+          <!-- <svg class="h-6 w-24 text-gray-700 inline-flex" alt="">
+            <use xlink:href="assets/images/icons.svg#logo-name"></use>
+          </svg> -->
+          <span>LabPCP</span>
+        </div>
+        <nav class="flex flex-1 flex-col">
+          <ul class="flex flex-1 flex-col gap-y-7">
+            <!-- <li>
+              <ul class="-m-2 space-y-1">
+                <li>
+                  <a
+                    href="#"
+                    class="transition-colors duration-300 text-gray-700 hover:bg-gray-50 hover:text-indigo-600 group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
+                  >
+                    <svg
+                      class="transition-colors duration-300 text-gray-400 group-hover:text-indigo-600 h-6 w-6 flex-shrink-0"
+                      alt=""
+                    >
+                      <use xlink:href="assets/images/icons.svg#chat-pie"></use>
+                    </svg>
+                    Atividades Avaliativas
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="transition-colors duration-300 text-gray-700 hover:bg-gray-50 hover:text-indigo-600 group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
+                  >
+                    <svg
+                      class="transition-colors duration-300 text-gray-400 group-hover:text-indigo-600 h-6 w-6 flex-shrink-0"
+                      alt=""
+                    >
+                      <use xlink:href="assets/images/icons.svg#calendar"></use>
+                    </svg>
+                    Solicitações
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="transition-colors duration-300 text-gray-700 hover:bg-gray-50 hover:text-indigo-600 group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
+                  >
+                    <svg
+                      class="transition-colors duration-300 text-gray-400 group-hover:text-indigo-600 h-6 w-6 flex-shrink-0"
+                      alt=""
+                    >
+                      <use xlink:href="assets/images/icons.svg#book-open"></use>
+                    </svg>
+                    Biblioteca Online
+                  </a>
+                </li>
+              </ul>
+            </li> -->
+            <li>
+              <!-- <div class="text-xs font-semibold leading-6 text-gray-400">
+                Páginas
+              </div> -->
+              <ul class="-m-2 mt-2 space-y-1">
+                <li *ngFor="let route of routes">
+                  <a
+                    [ngClass]="
+                      rla.isActive
+                        ? 'bg-gray-50 text-blue-800'
+                        : 'text-gray-700'
+                    "
+                    [routerLink]="route.path"
+                    [routerLinkActive]="['bg-gray-50', 'text-blue-800']"
+                    #rla="routerLinkActive"
+                    class="transition-colors duration-300 hover:bg-gray-50 hover:text-blue-800 group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
+                  >
+                    <svg
+                      [ngClass]="
+                        rla.isActive ? 'text-orange-500' : 'text-gray-400'
+                      "
+                      class="transition-colors duration-300 text-gray-400 group-hover:text-orange-500 h-6 w-6 flex-shrink-0"
+                      alt=""
+                    >
+                      <use
+                        [attr.xlink:href]="
+                          'assets/images/icons.svg#' + route.data?.['icon']
+                        "
+                      ></use>
+                    </svg>
+                    {{ route.data?.["name"] }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="mt-auto">
+              <a
+                [href]=""
+                (click)="logout()"
+                class="transition-colors duration-300 group -m-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600 cursor-pointer"
+              >
+                <svg
+                  class="transition-colors duration-300 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-orange-500"
+                  alt=""
+                >
+                  <use xlink:href="assets/images/icons.svg#logout"></use>
+                </svg>
+                Sair
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

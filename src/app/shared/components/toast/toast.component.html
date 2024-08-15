@@ -1,0 +1,62 @@
+<div
+  class="pointer-events-none fixed inset-0 flex items-end lg:items-start z-20"
+>
+  <div class="flex w-full flex-col items-center space-y-4 lg:items-end">
+    <div
+      *ngFor="let toast of toasts"
+      class="toast {{
+        toast.type
+      }} pointer-events-auto w-full max-w-96 overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition 
+      opacity-0
+      data-[enter]:transform  
+      lg:data-[enter]:translate-y-2 
+      lg:data-[enter]:-translate-x-2
+      data-[enter]:-translate-y-8  
+      data-[enter]:duration-500 
+      data-[enter]:opacity-100 
+      data-[enter]:ease-linear
+
+
+      lg:data-[leave]:-translate-y-2 
+      data-[leave]:translate-y-2 
+      data-[leave]:duration-100 
+      data-[leave]:ease-in 
+      data-[leave]:opacity-0 
+
+      
+      
+      data-[closed]:invisible"
+      [attr.data-enter]="toast.enter ? '' : null"
+      [attr.data-leave]="toast.leave ? '' : null"
+      [attr.data-closed]="!toast.show ? '' : null"
+    >
+      <div class="p-4">
+        <div class="flex items-start">
+          <div class="flex-shrink-0">
+            <ng-icon
+              [className]="'toast-icon'"
+              size="1.5rem"
+              [name]="toast.icon"
+            ></ng-icon>
+          </div>
+          <div class="ml-3 w-0 flex-1 pt-0.5">
+            <p class="text-sm font-medium text-gray-900">{{ toast.title }}</p>
+            <p class="mt-1 text-sm text-gray-500">
+              {{ toast.message }}
+            </p>
+          </div>
+          <div class="ml-4 flex flex-shrink-0">
+            <button
+              type="button"
+              class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:text-indigo-500 focus:ring-offset-2"
+              (click)="removeToast(toast)"
+            >
+              <span class="sr-only">Close</span>
+              <ng-icon size="1.25rem" name="heroXMark"></ng-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

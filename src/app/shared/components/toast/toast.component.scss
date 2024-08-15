@@ -1,0 +1,30 @@
+.toast {
+  &.success {
+    .toast {
+      &-icon {
+        @apply text-green-400;
+      }
+    }
+  }
+  &.error {
+    .toast {
+      &-icon {
+        @apply text-red-400;
+      }
+    }
+  }
+  &.warning {
+    .toast {
+      &-icon {
+        @apply text-yellow-400;
+      }
+    }
+  }
+  &.info {
+    .toast {
+      &-icon {
+        @apply text-blue-400;
+      }
+    }
+  }
+}

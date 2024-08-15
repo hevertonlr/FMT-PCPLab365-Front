@@ -1,0 +1,180 @@
+<div class="flex min-h-svh flex-col bg-white">
+  <div class="flex min-h-full flex-1">
+    <div
+      class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24 z-[1] shadow-sm shadow-black border-r-4 border-gradient-to-b gradient-base"
+    >
+      <div class="mx-auto w-full max-w-96 lg:w-96">
+        <div>
+          <svg class="h-10 w-10 mr-3 inline-flex" alt="">
+            <use xlink:href="assets/images/icons.svg#logo-icon"></use>
+          </svg>
+          <svg class="h-6 w-28 text-gray-600 inline-flex" alt="">
+            <use xlink:href="assets/images/icons.svg#logo-name"></use>
+          </svg>
+          <h2
+            class="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900"
+          >
+            Faça login em sua conta
+          </h2>
+          <p class="mt-2 text-sm leading-6 text-gray-500">
+            Não é cadastrado?
+            <a
+              [href]=""
+              (click)="notImplemented()"
+              class="font-semibold text-indigo-600 hover:text-indigo-500 cursor-pointer"
+              >Cadastre-se</a
+            >
+          </p>
+        </div>
+        <div class="mt-10">
+          <div>
+            <form
+              [formGroup]="form"
+              action="#"
+              method="POST"
+              class="space-y-6"
+              (ngSubmit)="onSubmit()"
+            >
+              <div>
+                <label
+                  for="email"
+                  class="block text-sm font-medium leading-6 text-gray-900"
+                  >E-mail</label
+                >
+                <div class="relative mt-2 rounded-md shadow-sm">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    formControlName="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    appValidationStyle
+                    class="form-input"
+                    required="true"
+                  />
+                  <div
+                    *ngIf="isValid('email') !== undefined"
+                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+                  >
+                    <ng-icon
+                      className="{{
+                        isValid('email') === true
+                          ? 'text-green-500'
+                          : 'text-red-500'
+                      }}"
+                      size="1.25rem"
+                      name="
+                      {{
+                        isValid('email') === true
+                          ? 'heroCheckCircleSolid'
+                          : 'heroExclamationCircleSolid'
+                      }}"
+                    ></ng-icon>
+                  </div>
+                </div>
+                <div class="h-5">
+                  <p
+                    *ngIf="isValid('email') === false"
+                    class="leading-10 text-sm text-red-600"
+                  >
+                    {{ getInputErrors("email") }}
+                  </p>
+                </div>
+              </div>
+              <div>
+                <label
+                  for="password"
+                  class="block text-sm font-medium leading-6 text-gray-900"
+                  >Senha</label
+                >
+                <div class="relative mt-2 rounded-md shadow-sm">
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    formControlName="password"
+                    appValidationStyle
+                    autocomplete="current-password"
+                    class="form-input"
+                    required="true"
+                  />
+                  <div
+                    *ngIf="isValid('password') !== undefined"
+                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+                  >
+                    <ng-icon
+                      className="{{
+                        isValid('password') === true
+                          ? 'text-green-500'
+                          : 'text-red-500'
+                      }}"
+                      size="1.25rem"
+                      name="
+                      {{
+                        isValid('password') === true
+                          ? 'heroCheckCircleSolid'
+                          : 'heroExclamationCircleSolid'
+                      }}"
+                    ></ng-icon>
+                  </div>
+                </div>
+                <div class="h-5">
+                  <p
+                    *ngIf="isValid('password') === false"
+                    class="leading-10 text-sm text-red-600"
+                  >
+                    {{ getInputErrors("password") }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <input
+                    id="remember-me"
+                    name="remember-me"
+                    formControlName="rememberMe"
+                    type="checkbox"
+                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                  /><label
+                    for="remember-me"
+                    class="ml-3 block text-sm leading-6 text-gray-700"
+                    >Lembre-me</label
+                  >
+                </div>
+                <div class="text-sm leading-6">
+                  <a
+                    [href]=""
+                    (click)="notImplemented()"
+                    class="cursor-pointer font-semibold text-indigo-600 hover:text-indigo-500"
+                    >Esqueceu sua senha?</a
+                  >
+                </div>
+              </div>
+
+              <div>
+                <button
+                  type="submit"
+                  class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >
+                  Entrar
+                </button>
+              </div>
+              <div class="h-32">
+                <app-alert></app-alert>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="relative hidden w-0 flex-1 lg:block">
+      <img
+        alt=""
+        [src]="bgimg"
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+{
+  "/viacep": {
+    "target": "https://viacep.com.br/ws",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/viacep": ""
+    }
+  },
+  "/opencep": {
+    "target": "https://opencep.com/v1",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/opencep": ""
+    }
+  }
+}
