@@ -2,13 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { routes } from 'app/app.routes';
-import { User } from 'app/shared/interfaces/user';
 import { AuthService } from 'app/shared/services/auth.service';
 import { TitleService } from 'app/shared/services/title.service';
 import { Subscription } from 'rxjs';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { heroUserCircleSolid } from '@ng-icons/heroicons/solid';
+import { NgIconComponent } from '@ng-icons/core';
 
 @Component({
   selector: 'app-header',
@@ -16,11 +14,6 @@ import { heroUserCircleSolid } from '@ng-icons/heroicons/solid';
   imports: [RouterModule, CommonModule, SidebarComponent, NgIconComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
-  providers: [
-    provideIcons({
-      heroUserCircleSolid,
-    }),
-  ],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild(SidebarComponent) sidebarComponent!: SidebarComponent;
@@ -59,10 +52,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.logout();
   };
   getLoggedUser = () => {
-    const { image, name } =
-      this.authService.getTokenContent<User>() ?? ({} as User);
-    this.userName = name;
-    this.userImage = image;
+    const user = this.authService.getCurrentUser();
+    this.userName = user.name;
+    this.userImage = user.image;
   };
   callToggleSidebar = () => this.sidebarComponent.toggleSidebar();
 }

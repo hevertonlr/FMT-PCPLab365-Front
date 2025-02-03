@@ -8,19 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import {
-  heroCog6Tooth,
-  heroEnvelope,
-  heroHomeModern,
-  heroIdentification,
-  heroUsers,
-} from '@ng-icons/heroicons/outline';
-import {
-  heroCheckCircleSolid,
-  heroExclamationCircleSolid,
-  heroUserCircleSolid,
-} from '@ng-icons/heroicons/solid';
+import { NgIconComponent } from '@ng-icons/core';
 import { ValidationStyleDirective } from 'app/shared/directives/validation-style.directive';
 import { Teacher } from 'app/shared/interfaces/teacher';
 import { FormUtilsService } from 'app/shared/services/form-utils.service';
@@ -29,8 +17,12 @@ import { ToastService } from 'app/shared/services/toast.service';
 import { ValidationService } from 'app/shared/services/validation.service';
 import { ViaCepService } from 'app/shared/services/via-cep.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
-import { map } from 'rxjs';
+import { map, Observable, Subject } from 'rxjs';
 import Swal from 'sweetalert2';
+import { Tools } from 'app/shared/utils/tools';
+import { SchoolsubjectService } from 'app/shared/services/schoolsubject.service';
+import { SchoolSubject } from 'app/shared/interfaces/schoolsubject';
+import { DateFormatPipe } from 'app/shared/pipes/dateformat.pipe';
 
 @Component({
   selector: 'app-teacher-registration',
@@ -43,25 +35,15 @@ import Swal from 'sweetalert2';
     ValidationStyleDirective,
     NgxMaskDirective,
     NgxMaskPipe,
+    DateFormatPipe,
   ],
   templateUrl: './teacher-registration.component.html',
   styleUrl: './teacher-registration.component.scss',
-  providers: [
-    provideIcons({
-      heroUsers,
-      heroIdentification,
-      heroEnvelope,
-      heroHomeModern,
-      heroCog6Tooth,
-      heroUserCircleSolid,
-      heroCheckCircleSolid,
-      heroExclamationCircleSolid,
-    }),
-  ],
 })
 export class TeacherRegistrationComponent implements OnInit {
-  // imagePreview: string | ArrayBuffer | null = null;
-  schoolSubjects: { key: string; value: string }[];
+  imagePreview: string | ArrayBuffer | null = null;
+  // subjects: { key: string; value: string }[];
+  subjects: Observable<SchoolSubject[]>;
   civilStates: { key: string; value: string }[];
   tabs: { label: string; icon: string }[] = [];
   genders: { key: string; value: string }[];
@@ -72,6 +54,7 @@ export class TeacherRegistrationComponent implements OnInit {
   form: FormGroup;
   selectedTab = 0;
   deleteEnable: boolean = false;
+  private dateFormatPipe = new DateFormatPipe();
 
   constructor(
     private router: Router,
@@ -81,10 +64,12 @@ export class TeacherRegistrationComponent implements OnInit {
     private viaCepService: ViaCepService,
     private formUtilsService: FormUtilsService,
     private validationService: ValidationService,
+    private subjectService: SchoolsubjectService,
   ) {
     this.genders = this.formUtilsService.getAllGenders();
     this.civilStates = this.formUtilsService.getAllCivilStates();
-    this.schoolSubjects = this.formUtilsService.getAllSchoolSubjects();
+    // this.subjects = this.formUtilsService.getAllSchoolSubjects();
+    this.subjects = this.subjectService.getAll();
 
     this.fieldAliases = {
       name: 'Nome',
@@ -96,7 +81,7 @@ export class TeacherRegistrationComponent implements OnInit {
       phone: 'Telefone',
       email: 'E-mail',
       password: 'Senha',
-      placeofbirth: 'Naturalidade',
+      nationality: 'Naturalidade',
       'address.cep': 'CEP',
       'address.city': 'Cidade',
       'address.uf': 'UF',
@@ -104,7 +89,12 @@ export class TeacherRegistrationComponent implements OnInit {
       'address.complement': 'Complemento',
       'address.neighborhood': 'Bairro',
       'address.referencePoint': 'Ponto de Referência',
+      'user.username': 'Usuário',
+      'user.name': 'Nome',
+      'user.email': 'E-mail',
+      'user.password': 'Senha',
       class: 'Turma',
+      subjects: 'Matérias',
     };
     this.tabs = [
       {
@@ -136,17 +126,24 @@ export class TeacherRegistrationComponent implements OnInit {
       rg: ['', [Validators.required, Validators.maxLength(20)]],
       civilState: ['', Validators.required],
       phone: ['', [Validators.required, Validators.minLength(10)]],
-      email: ['', Validators.email],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      placeofbirth: [
+      user: this.fb.group({
+        id: [''],
+        username: ['', Validators.required],
+        name: [''],
+        email: ['', Validators.email],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        image: [''],
+      }),
+      nationality: [
         '',
         [
           Validators.required,
-          Validators.minLength(8),
+          // Validators.minLength(8),
           Validators.maxLength(64),
         ],
       ],
       address: this.fb.group({
+        id: [''],
         cep: ['', Validators.required],
         city: [{ value: '', disabled: true }],
         state: [{ value: '', disabled: true }],
@@ -157,7 +154,7 @@ export class TeacherRegistrationComponent implements OnInit {
         referencePoint: [''],
       }),
       // image: ['', Validators.required],
-      schoolSubjects: [[], Validators.required],
+      subjects: [[]],
     });
   }
   ngOnInit(): void {
@@ -169,12 +166,28 @@ export class TeacherRegistrationComponent implements OnInit {
       // this.imagePreview = this.editObject.image;
       this.form.patchValue(this.editObject);
       this.formUtilsService.markAllAsDirty(this.form);
+      this.editValidators();
     }
+    this.onChanges();
   }
 
+  onChanges = () =>
+    this.form.get('name')?.valueChanges.subscribe((val) => {
+      const usernameField = this.form.get('user.username');
+      if (usernameField?.value === '') {
+        usernameField?.setValue(Tools.generateSlug(val), { emitEvent: false });
+      }
+      const nameField = this.form.get('user.name');
+      if (nameField?.value === '') {
+        nameField?.setValue(val, { emitEvent: false });
+      }
+    });
+
   onSubmit = () => {
+    this.formUtilsService.getFormValidationErrors(this.form);
     this.formUtilsService.enableAllFields(this.form);
     if (this.form.invalid) {
+      console.log(this.form);
       this.toastService.showToast(
         'warning',
         'Atenção!',
@@ -193,6 +206,14 @@ export class TeacherRegistrationComponent implements OnInit {
       ]);
       return;
     }
+    const birthdayControl = this.form.get('birthday');
+    if (birthdayControl) {
+      const formattedDate = this.dateFormatPipe.transform(
+        birthdayControl.value,
+      );
+      birthdayControl.setValue(formattedDate);
+    }
+
     try {
       if (this.form.get('id')?.value !== '') {
         this.service
@@ -239,8 +260,17 @@ export class TeacherRegistrationComponent implements OnInit {
       inputName,
       this.fieldAliases,
     );
+  changeTab = (event: Event) => {
+    const target = event.target as HTMLSelectElement;
+    this.selectedTab = Number(target.value);
+  };
   selectTab = (tabIndex: number) => (this.selectedTab = tabIndex);
   isActive = (tabIndex: number) => this.selectedTab === tabIndex;
+  nextTab = () =>
+    this.selectedTab < this.tabs.length - 1
+      ? (this.selectedTab += 1)
+      : this.onSubmit();
+
   isValid = (inputName: string) =>
     this.validationService.isValid(this.form, inputName);
   isFieldBlocked = (field: string): boolean =>
@@ -297,23 +327,34 @@ export class TeacherRegistrationComponent implements OnInit {
     });
   };
 
-  // handleFileInput = (event: Event) => {
-  //   const file = (event.target as HTMLInputElement).files?.item(0);
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       this.imagePreview = reader.result;
-  //       this.form.get('image')?.setValue(reader.result?.toString());
-  //     };
-  //     reader.readAsDataURL(file);
-  //   } else {
-  //     this.imagePreview = null;
-  //   }
-  // }
+  handleFileInput = (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.item(0);
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result;
+        this.form.get('user.image')?.setValue(reader.result?.toString());
+      };
+      reader.readAsDataURL(file);
+    } else {
+      this.imagePreview = null;
+    }
+  };
 
   inputTransformFn = (value: unknown): string =>
     typeof value === 'string' ? value.toUpperCase() : String(value);
 
   outputTransformFn = (value: string | number | null | undefined): string =>
     value ? String(value).toUpperCase() : '';
+
+  editValidators = () => {
+    if (this.editObject != null) {
+      this.form.get('user.password')?.clearValidators();
+      // this.form.get('user.password')?.setValidators([Validators.email]);
+
+      // Update validity after changing validators
+      this.form.get('user.password')?.updateValueAndValidity();
+      // this.form.get('email')?.updateValueAndValidity();
+    }
+  };
 }

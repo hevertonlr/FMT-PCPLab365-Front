@@ -1,10 +1,10 @@
 <div class="flex min-h-svh flex-col bg-white">
   <div class="flex min-h-full flex-1">
     <div
-      class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24 z-[1] shadow-sm shadow-black border-r-4 border-gradient-to-b gradient-base"
+      class="flex flex-1 flex-col justify-start px-4 pt-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24 z-[1] shadow-sm shadow-black border-r-4 border-gradient-to-b gradient-base"
     >
       <div class="mx-auto w-full max-w-96 lg:w-96">
-        <div>
+        <div class="mt-16">
           <svg class="h-10 w-10 mr-3 inline-flex" alt="">
             <use xlink:href="assets/images/icons.svg#logo-icon"></use>
           </svg>
@@ -16,23 +16,25 @@
           >
             Faça login em sua conta
           </h2>
+          
+        </div>
+        <div class=" flex-row min-h-[400px]">
+          <div *ngIf="showLoginForm"  class="login-form flex-col" 
+          [ngClass]="{ 'animate-fadeIn': showLoginForm, 'animate-fadeOut': !showLoginForm }">
           <p class="mt-2 text-sm leading-6 text-gray-500">
             Não é cadastrado?
             <a
               [href]=""
-              (click)="notImplemented()"
-              class="font-semibold text-indigo-600 hover:text-indigo-500 cursor-pointer"
-              >Cadastre-se</a
-            >
+              (click)="toggleForm()"
+              class="font-semibold text-indigo-600 hover:text-indigo-500 cursor-pointer">
+              Cadastre-se
+              </a>
           </p>
-        </div>
-        <div class="mt-10">
-          <div>
             <form
               [formGroup]="form"
               action="#"
               method="POST"
-              class="space-y-6"
+              class="mt-10 space-y-6"
               (ngSubmit)="onSubmit()"
             >
               <div>
@@ -161,10 +163,91 @@
                   Entrar
                 </button>
               </div>
-              <div class="h-32">
-                <app-alert></app-alert>
-              </div>
             </form>
+          </div>
+          <div *ngIf="!showLoginForm"  class="register-form flex-col" 
+          [ngClass]="{ 'animate-fadeIn': !showLoginForm, 'animate-fadeOut': showLoginForm }">
+          <p class="mt-2 text-sm leading-6 text-gray-500">
+            Já é cadastrado?
+            <a
+              [href]=""
+              (click)="toggleForm()"
+              class="font-semibold text-indigo-600 hover:text-indigo-500 cursor-pointer">
+              Faça login
+              </a>
+          </p>
+            <form class="mt-10" method="POST" action="#">
+              <div>
+                  <label for="email" class="block text-sm font-medium leading-5  text-gray-700">Nome</label>
+                  <div class="mt-1 relative rounded-md shadow-sm">
+                      <input id="name" name="name" placeholder="John Doe" type="text" required=""
+                          class="form-input">
+                      <div class="hidden absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                          <svg class="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                              <path fill-rule="evenodd"
+                                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                  clip-rule="evenodd">
+                              </path>
+                          </svg>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="mt-6">
+                  <label for="username" class="block text-sm font-medium leading-5 text-gray-700">Username</label>
+                  <div class="mt-1 flex rounded-md shadow-sm">
+                      <input id="username" name="username" placeholder="john" type="text" required class="form-input">
+                  </div>
+              </div>
+
+              <div class="mt-6">
+                  <label for="email" class="block text-sm font-medium leading-5 text-gray-700">
+                      E-mail
+                  </label>
+                  <div class="mt-1 relative rounded-md shadow-sm">
+                      <input id="email" name="email" placeholder="user@example.com" type="email"
+                          required=""
+                          class="form-input">
+                      <div class="hidden absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                          <svg class="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                              <path fill-rule="evenodd"
+                                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                  clip-rule="evenodd"></path>
+                          </svg>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="mt-6">
+                  <label for="password" class="block text-sm font-medium leading-5 text-gray-700">
+                      Senha
+                  </label>
+                  <div class="mt-1 rounded-md shadow-sm">
+                      <input id="password" name="password" type="password" required class="form-input">
+                  </div>
+              </div>
+
+              <div class="mt-6">
+                  <label for="password_confirmation" class="block text-sm font-medium leading-5 text-gray-700">
+                      Confirme a senha
+                  </label>
+                  <div class="mt-1 rounded-md shadow-sm">
+                      <input id="password_confirmation" name="password_confirmation" type="password" required class="form-input">
+                  </div>
+              </div>
+
+              <div class="mt-6">
+                  <span class="block w-full rounded-md shadow-sm">
+                      <button type="submit"
+                          class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                          Criar conta
+                      </button>
+                  </span>
+              </div>
+          </form>
+          </div>
+          <div class="mt-2 h-32">
+            <app-alert></app-alert>
           </div>
         </div>
       </div>

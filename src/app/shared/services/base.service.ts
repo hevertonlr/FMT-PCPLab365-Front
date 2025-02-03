@@ -1,17 +1,19 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
 import { catchError, forkJoin, map, Observable, throwError } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BaseService<T> {
-  public API_URL = `${environment.apiUrl}`;
+  public API_URL = `${environment.apiBackURl}`;
+
   constructor(protected http: HttpClient) {}
 
   getOne = (id: string): Observable<T> =>
-    this.http.get<T>(this.API_URL + `/${id}`);
+    this.http.get<T>(this.API_URL + `/${id}`).pipe(catchError(this.handleError));
 
   getAll = (): Observable<T[]> =>
     this.http.get<T[]>(this.API_URL).pipe(catchError(this.handleError));
@@ -57,7 +59,7 @@ export class BaseService<T> {
       .delete<void>(`${this.API_URL}/${id}`)
       .pipe(catchError(this.handleError));
 
-  private handleError(error: HttpErrorResponse): Observable<never> {
+  public handleError(error: HttpErrorResponse): Observable<never> {
     console.error('An error occurred:', error);
     return throwError(() => 'Something went wrong. Please try again later.');
   }

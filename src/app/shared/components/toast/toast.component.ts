@@ -1,13 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import {
-  heroCheckCircle,
-  heroExclamationCircle,
-  heroExclamationTriangle,
-  heroXCircle,
-  heroXMark,
-} from '@ng-icons/heroicons/outline';
+import { NgIconComponent } from '@ng-icons/core';
 import { Toast } from 'app/shared/interfaces/toast';
 import { ToastService } from 'app/shared/services/toast.service';
 import { Subscription } from 'rxjs';
@@ -18,15 +11,6 @@ import { Subscription } from 'rxjs';
   imports: [CommonModule, NgIconComponent],
   templateUrl: './toast.component.html',
   styleUrl: './toast.component.scss',
-  providers: [
-    provideIcons({
-      heroExclamationTriangle,
-      heroXCircle,
-      heroCheckCircle,
-      heroExclamationCircle,
-      heroXMark,
-    }),
-  ],
 })
 export class ToastComponent implements OnInit, OnDestroy {
   toasts: Toast[] = [];

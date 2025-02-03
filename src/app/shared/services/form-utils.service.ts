@@ -15,11 +15,22 @@ export class FormUtilsService {
       if (control instanceof FormGroup) {
         Object.keys(control.controls).forEach((subKey) => {
           control.get(subKey)?.enable();
+          control.get(subKey)?.markAsTouched();
         });
       } else {
         control?.enable();
       }
     });
+  getFormValidationErrors = (form: FormGroup) => {
+    Object.keys(form.controls).forEach((field) => {
+      const control = form.get(field);
+      if (control?.errors) {
+        Object.keys(control.errors).forEach((error) => {
+          console.log(`Field: ${field}, Error: ${error}`);
+        });
+      }
+    });
+  };
 
   disableAllFields = (
     form: FormGroup,
@@ -53,7 +64,7 @@ export class FormUtilsService {
     const addressGroup = form.get('address') as FormGroup;
     Object.keys(addressGroup.controls).forEach((field) => {
       const control = addressGroup.get(field);
-      console.log(field);
+      // console.log(field);
       if (field === 'cep' || field === 'referencePoint') return;
 
       control?.value ? control?.disable() : control?.enable();
@@ -62,17 +73,17 @@ export class FormUtilsService {
 
   getAllGenders = () =>
     Object.keys(Gender).map((key) => ({
-      key,
+      key: key.toUpperCase(),
       value: Gender[key as keyof typeof Gender],
     }));
   getAllCivilStates = () =>
     Object.keys(CivilState).map((key) => ({
-      key,
+      key: key.toUpperCase(),
       value: CivilState[key as keyof typeof CivilState],
     }));
   getAllSchoolSubjects = () =>
     Object.keys(SchoolSubject).map((key) => ({
-      key,
+      key: key.toUpperCase(),
       value: SchoolSubject[key as keyof typeof SchoolSubject],
     }));
 }

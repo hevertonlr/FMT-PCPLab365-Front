@@ -143,7 +143,7 @@
           <div class="flex min-w-0 gap-x-4">
             <img
               alt=""
-              [src]="student.image"
+              [src]="student.user.image"
               class="h-12 w-12 flex-none rounded-full bg-gray-50"
             />
             <div class="min-w-0 flex-auto">
@@ -165,7 +165,7 @@
           <div class="flex flex-shrink-0 items-center gap-x-4">
             <div class="hidden sm:flex sm:flex-col sm:items-end">
               <p class="text-sm leading-6 text-gray-900">
-                {{ student.address?.city }} / {{ student.address?.state }}
+                {{ student?.address?.city }} / {{ student?.address?.state }}
               </p>
               <p class="mt-1 text-xs leading-5 text-gray-500">
                 {{ student.phone }}

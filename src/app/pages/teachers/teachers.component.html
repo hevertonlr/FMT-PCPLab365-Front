@@ -60,7 +60,7 @@
             </h3>
           </div>
           <p class="mt-1 truncate text-sm text-gray-500">
-            {{ teacher.email }}
+            {{ teacher.user.email }}
           </p>
           <p class="mt-1 truncate text-sm text-gray-500">
             {{ teacher.phone }}
@@ -81,6 +81,37 @@
           </div>
         </div>
       </div>
+
+      <div class="max-w-sm mx-auto bg-white rounded-lg overflow-hidden shadow-lg">
+        <div class="border-b px-4 pb-6">
+            <div class="text-center my-4">
+                <img class="h-32 w-32 rounded-full border-4 border-white mx-auto my-4"
+                    src="https://randomuser.me/api/portraits/women/21.jpg" alt="">
+                <div class="py-2">
+                    <h3 class="font-bold text-2xl text-blue-800 mb-1">{{ teacher.name }}</h3>
+                    <div class="inline-flex text-gray-700 items-center">
+                        <ng-icon size="1.25rem" [className]="'text-gray-400 mr-1'" name="heroEnvelope"></ng-icon>
+                        {{ teacher.user.email }}
+                    </div>
+                    <div class="inline-flex text-gray-700 items-center">
+                      <ng-icon size="1.25rem" [className]="'text-gray-400 mr-1'" name="heroPhone"></ng-icon>
+                      {{ teacher.phone }}
+                  </div>
+                </div>
+            </div>
+            <div class="flex gap-2 px-2">
+              <a href="#" aria-describedby="tier-startup" class="bg-indigo-600 text-white shadow-sm bto hk ky agd px-3 py-2 text-center text-sm font-semibold car cat cba">Buy plan</a>
+                <button
+                    class="flex-1 rounded-full bg-blue-600 text-white antialiased font-bold hover:bg-blue-800 px-4 py-2">
+                    Follow
+                </button>
+                <button
+                    class="flex-1 rounded-full border-2 border-gray-400 font-semibold text-black px-4 py-2">
+                    Message
+                </button>
+            </div>
+        </div>
+    </div>
     </li>
   </ul>
 </div>

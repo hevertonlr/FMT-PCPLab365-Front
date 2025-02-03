@@ -11,6 +11,7 @@
           id="tabs"
           name="tabs"
           class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+          (change)="changeTab($event)"
         >
           <option
             *ngFor="let tab of tabs; let i = index"
@@ -298,7 +299,7 @@
           </p>
         </div>
 
-        <div class="sm:col-span-4">
+        <div class="sm:col-span-4" formGroupName="user">
           <label
             for="email"
             class="block text-sm font-medium leading-6 text-gray-900"
@@ -333,10 +334,10 @@
             </div>
           </div>
           <p
-            *ngIf="isValid('email') === false"
+            *ngIf="isValid('user.email') === false"
             class="pt-2 -mb-2 text-sm text-red-600"
           >
-            {{ getInputErrors("email") }}
+            {{ getInputErrors("user.email") }}
           </p>
         </div>
         <div class="sm:col-span-2">
@@ -388,7 +389,7 @@
             >Imagem</label
           >
           <div class="mt-2">
-            <div class="mt-2 flex items-center gap-x-3">
+            <div class="mt-2 flex items-center gap-x-3" formGroupName="user">
               <img
                 *ngIf="imagePreview; else defaultIcon"
                 [src]="imagePreview"
@@ -842,7 +843,7 @@
           </p>
         </div>
         <div class="hidden sm:block sm:col-span-3"></div>
-        <div class="sm:col-span-2">
+        <div class="sm:col-span-2" formGroupName="user">
           <label
             for="password"
             class="block text-sm font-medium leading-6 text-gray-900"

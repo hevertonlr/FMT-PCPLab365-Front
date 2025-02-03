@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SchoolClass } from '../interfaces/schoolclass';
 import { BaseService } from './base.service';
+import { SchoolSubject } from '../interfaces/schoolsubject';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export default class SchoolClassService extends BaseService<SchoolClass> {
+export class SchoolsubjectService extends BaseService<SchoolSubject> {
+
   constructor(protected override http: HttpClient) {
     super(http);
-    this.API_URL += 'turmas';
-  }
+    this.API_URL += 'materias';
+   }
 }

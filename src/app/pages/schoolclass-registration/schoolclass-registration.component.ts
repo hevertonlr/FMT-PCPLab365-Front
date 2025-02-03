@@ -8,19 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import {
-  heroUsers,
-  heroEnvelope,
-  heroHomeModern,
-  heroCog6Tooth,
-  heroFolder,
-} from '@ng-icons/heroicons/outline';
-import {
-  heroUserCircleSolid,
-  heroCheckCircleSolid,
-  heroExclamationCircleSolid,
-} from '@ng-icons/heroicons/solid';
+import { NgIconComponent } from '@ng-icons/core';
 import { ValidationStyleDirective } from 'app/shared/directives/validation-style.directive';
 import { Profile } from 'app/shared/enums/profile';
 import { SchoolClass } from 'app/shared/interfaces/schoolclass';
@@ -32,7 +20,6 @@ import SchoolClassService from 'app/shared/services/schoolclass.service';
 import { TeacherService } from 'app/shared/services/teacher.service';
 import { ToastService } from 'app/shared/services/toast.service';
 import { ValidationService } from 'app/shared/services/validation.service';
-import { ViaCepService } from 'app/shared/services/via-cep.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -51,18 +38,6 @@ import Swal from 'sweetalert2';
   ],
   templateUrl: './schoolclass-registration.component.html',
   styleUrl: './schoolclass-registration.component.scss',
-  providers: [
-    provideIcons({
-      heroUsers,
-      heroFolder,
-      heroEnvelope,
-      heroHomeModern,
-      heroCog6Tooth,
-      heroUserCircleSolid,
-      heroCheckCircleSolid,
-      heroExclamationCircleSolid,
-    }),
-  ],
 })
 export class SchoolClassRegistrationComponent implements OnInit {
   tabs: { label: string; icon: string }[] = [];

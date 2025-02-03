@@ -2,15 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { heroPencilMini, heroTrashMini } from '@ng-icons/heroicons/mini';
-import {
-  heroEye,
-  heroPencil,
-  heroPencilSquare,
-  heroTrash,
-} from '@ng-icons/heroicons/outline';
-import { heroPencilSolid, heroTrashSolid } from '@ng-icons/heroicons/solid';
+import { NgIconComponent } from '@ng-icons/core';
 import { Teacher } from 'app/shared/interfaces/teacher';
 import { TeacherService } from 'app/shared/services/teacher.service';
 import { map, Observable } from 'rxjs';
@@ -21,17 +13,6 @@ import { map, Observable } from 'rxjs';
   imports: [CommonModule, FormsModule, ReactiveFormsModule, NgIconComponent],
   templateUrl: './teachers.component.html',
   styleUrl: './teachers.component.scss',
-  providers: [
-    provideIcons({
-      heroTrash,
-      heroTrashSolid,
-      heroTrashMini,
-      heroPencil,
-      heroPencilSquare,
-      heroPencilMini,
-      heroEye,
-    }),
-  ],
 })
 export class TeachersComponent {
   searchInput: string = '';

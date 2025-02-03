@@ -1,13 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { heroXMark } from '@ng-icons/heroicons/outline';
-import {
-  heroCheckCircleSolid,
-  heroExclamationCircleSolid,
-  heroExclamationTriangleSolid,
-  heroXCircleSolid,
-} from '@ng-icons/heroicons/solid';
+import { NgIconComponent } from '@ng-icons/core';
 import { AlertService } from 'app/shared/services/alert.service';
 
 @Component({
@@ -16,15 +9,6 @@ import { AlertService } from 'app/shared/services/alert.service';
   imports: [CommonModule, NgIconComponent],
   templateUrl: './alert.component.html',
   styleUrl: './alert.component.scss',
-  providers: [
-    provideIcons({
-      heroExclamationTriangleSolid,
-      heroXCircleSolid,
-      heroCheckCircleSolid,
-      heroExclamationCircleSolid,
-      heroXMark,
-    }),
-  ],
 })
 export class AlertComponent implements OnInit, OnDestroy {
   private autoCloseTimer: any;

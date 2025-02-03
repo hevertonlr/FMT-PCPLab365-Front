@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -9,21 +8,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import {
-  heroCog6Tooth,
-  heroEnvelope,
-  heroHomeModern,
-  heroIdentification,
-  heroUsers,
-} from '@ng-icons/heroicons/outline';
-import {
-  heroCheckCircleSolid,
-  heroExclamationCircleSolid,
-  heroUserCircleSolid,
-} from '@ng-icons/heroicons/solid';
+import { NgIconComponent } from '@ng-icons/core';
 import { ValidationStyleDirective } from 'app/shared/directives/validation-style.directive';
-import { Gender } from 'app/shared/enums/gender';
 import { SchoolClass } from 'app/shared/interfaces/schoolclass';
 import { Student } from 'app/shared/interfaces/student';
 import { FormUtilsService } from 'app/shared/services/form-utils.service';
@@ -49,18 +35,6 @@ import Swal from 'sweetalert2';
   ],
   templateUrl: './student-registration.component.html',
   styleUrl: './student-registration.component.scss',
-  providers: [
-    provideIcons({
-      heroUsers,
-      heroIdentification,
-      heroEnvelope,
-      heroHomeModern,
-      heroCog6Tooth,
-      heroUserCircleSolid,
-      heroCheckCircleSolid,
-      heroExclamationCircleSolid,
-    }),
-  ],
 })
 export class StudentRegistrationComponent implements OnInit {
   imagePreview: string | ArrayBuffer | null = null;
@@ -145,8 +119,11 @@ export class StudentRegistrationComponent implements OnInit {
           Validators.pattern(/^(\d{2})\D*(\d{5}|\d{4})\D*(\d{4})$/),
         ],
       ],
-      email: ['', Validators.email],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      user: this.fb.group({
+        email: ['', Validators.email],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        image: ['', Validators.required],
+      }),
       placeofbirth: [
         '',
         [
@@ -165,7 +142,6 @@ export class StudentRegistrationComponent implements OnInit {
         neighborhood: [{ value: '', disabled: true }],
         referencePoint: [''],
       }),
-      image: ['', Validators.required],
       class: [[], Validators.required],
     });
     this.tabs = [
@@ -188,8 +164,9 @@ export class StudentRegistrationComponent implements OnInit {
     const state = history.state;
     if (state?.student) {
       this.deleteEnable = true;
+      console.log(state.student);
       this.editObject = state?.student as Student;
-      this.imagePreview = this.editObject.image;
+      this.imagePreview = this.editObject.user.image;
       this.form.patchValue(this.editObject);
       this.formUtilsService.markAllAsDirty(this.form);
     }
@@ -259,6 +236,10 @@ export class StudentRegistrationComponent implements OnInit {
       inputName,
       this.fieldAliases,
     );
+  changeTab = (event: Event) => {
+    const target = event.target as HTMLSelectElement;
+    this.selectedTab = Number(target.value);
+  };
   selectTab = (tabIndex: number) => (this.selectedTab = tabIndex);
   isActive = (tabIndex: number) => this.selectedTab === tabIndex;
   isValid = (inputName: string) =>
@@ -302,7 +283,7 @@ export class StudentRegistrationComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result;
-        this.form.get('image')?.setValue(reader.result?.toString());
+        this.form.get('user.image')?.setValue(reader.result?.toString());
       };
       reader.readAsDataURL(file);
     } else {

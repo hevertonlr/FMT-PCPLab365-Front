@@ -1,20 +1,11 @@
 import { CivilState } from '../enums/civilstate';
-import { Gender } from '../enums/gender';
 import { SchoolSubject } from '../enums/schoolsubject';
-import { Address } from './address';
+import { Person } from './person';
+import { User } from './user';
 
-export interface Teacher {
-  id: string;
-  name: string;
-  gender: Gender;
-  birthday: Date;
-  cpf: string;
-  rg: string;
+export interface Teacher extends Person {
   civilState: CivilState;
-  phone: string;
-  email: string;
-  password: string;
   nationality: string;
-  address: Address;
   schoolSubjects: SchoolSubject[];
+  user: User;
 }

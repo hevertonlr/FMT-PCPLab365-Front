@@ -8,20 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import {
-  heroUsers,
-  heroFolder,
-  heroEnvelope,
-  heroHomeModern,
-  heroCog6Tooth,
-  heroArrowTrendingUp,
-} from '@ng-icons/heroicons/outline';
-import {
-  heroUserCircleSolid,
-  heroCheckCircleSolid,
-  heroExclamationCircleSolid,
-} from '@ng-icons/heroicons/solid';
+import { NgIconComponent } from '@ng-icons/core';
 import { ValidationStyleDirective } from 'app/shared/directives/validation-style.directive';
 import { Profile } from 'app/shared/enums/profile';
 import { Grade } from 'app/shared/interfaces/grade';
@@ -53,19 +40,6 @@ import Swal from 'sweetalert2';
   ],
   templateUrl: './grade-registration.component.html',
   styleUrl: './grade-registration.component.scss',
-  providers: [
-    provideIcons({
-      heroUsers,
-      heroFolder,
-      heroArrowTrendingUp,
-      heroEnvelope,
-      heroHomeModern,
-      heroCog6Tooth,
-      heroUserCircleSolid,
-      heroCheckCircleSolid,
-      heroExclamationCircleSolid,
-    }),
-  ],
 })
 export class GradeRegistrationComponent {
   schoolSubjects: { key: string; value: string }[];

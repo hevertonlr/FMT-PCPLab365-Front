@@ -11,6 +11,7 @@
           id="tabs"
           name="tabs"
           class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+          (change)="changeTab($event)"
         >
           <option
             *ngFor="let tab of tabs; let i = index"
@@ -114,7 +115,7 @@
               class="form-input"
             >
               <option value="" disabled>Selecione o gênero</option>
-              <option *ngFor="let gender of genders" [value]="gender.value">
+              <option *ngFor="let gender of genders" [value]="gender.key">
                 {{ gender.value }}
               </option>
             </select>
@@ -130,7 +131,7 @@
           <label
             for="civilState"
             class="block text-sm font-medium leading-6 text-gray-900"
-            >Gênero</label
+            >Estado Civil</label
           >
           <div class="mt-2">
             <select
@@ -143,7 +144,7 @@
               <option value="" disabled>Selecione o estado civil</option>
               <option
                 *ngFor="let civilState of civilStates"
-                [value]="civilState.value"
+                [value]="civilState.key"
               >
                 {{ civilState.value }}
               </option>
@@ -287,33 +288,33 @@
         </div>
         <div class="sm:col-span-2">
           <label
-            for="placeofbirth"
+            for="nationality"
             class="block text-sm font-medium leading-6 text-gray-900"
             >Naturalidade</label
           >
           <div class="relative mt-2">
             <input
-              id="placeofbirth"
-              name="placeofbirth"
+              id="nationality"
+              name="nationality"
               appValidationStyle
-              formControlName="placeofbirth"
+              formControlName="nationality"
               type="text"
               class="form-input"
             />
             <div
-              *ngIf="isValid('placeofbirth') !== undefined"
+              *ngIf="isValid('nationality') !== undefined"
               class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
             >
               <ng-icon
                 className="{{
-                  isValid('placeofbirth') === true
+                  isValid('nationality') === true
                     ? 'text-green-500'
                     : 'text-red-500'
                 }}"
                 size="1.25rem"
                 name="
                         {{
-                  isValid('placeofbirth') === true
+                  isValid('nationality') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
                 }}"
@@ -321,14 +322,14 @@
             </div>
           </div>
           <p
-            *ngIf="isValid('placeofbirth') === false"
+            *ngIf="isValid('nationality') === false"
             class="pt-2 -mb-2 text-sm text-red-600"
           >
-            {{ getInputErrors("placeofbirth") }}
+            {{ getInputErrors("nationality") }}
           </p>
         </div>
 
-        <div class="sm:col-span-4">
+        <div class="sm:col-span-4" formGroupName="user">
           <label
             for="email"
             class="block text-sm font-medium leading-6 text-gray-900"
@@ -345,17 +346,17 @@
               class="form-input"
             />
             <div
-              *ngIf="isValid('email') !== undefined"
+              *ngIf="isValid('user.email') !== undefined"
               class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
             >
               <ng-icon
                 className="{{
-                  isValid('email') === true ? 'text-green-500' : 'text-red-500'
+                  isValid('user.email') === true ? 'text-green-500' : 'text-red-500'
                 }}"
                 size="1.25rem"
                 name="
                         {{
-                  isValid('email') === true
+                  isValid('user.email') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
                 }}"
@@ -363,10 +364,10 @@
             </div>
           </div>
           <p
-            *ngIf="isValid('email') === false"
+            *ngIf="isValid('user.email') === false"
             class="pt-2 -mb-2 text-sm text-red-600"
           >
-            {{ getInputErrors("email") }}
+            {{ getInputErrors("user.email") }}
           </p>
         </div>
         <div class="sm:col-span-2">
@@ -411,7 +412,7 @@
             {{ getInputErrors("phone") }}
           </p>
         </div>
-        <!-- <div class="col-span-full">
+        <div class="col-span-full" formGroupName="user">
           <label
             for="image"
             class="block text-sm font-medium leading-6 text-gray-900"
@@ -422,7 +423,7 @@
               <img
                 *ngIf="imagePreview; else defaultIcon"
                 [src]="imagePreview"
-                alt="Profile"
+                alt="Profile Image"
                 class="h-12 w-12 rounded-full"
               />
               <ng-template #defaultIcon>
@@ -451,12 +452,12 @@
             </div>
           </div>
           <p
-            *ngIf="isValid('image') === false"
+            *ngIf="isValid('user.image') === false"
             class="pt-2 -mb-2 text-sm text-red-600"
           >
-            {{ getInputErrors("image") }}
+            {{ getInputErrors("user.image") }}
           </p>
-        </div> -->
+        </div>
       </div>
       <!-- class="grid grid-cols-1 gap-6 sm:grid-cols-6 md:col-span-3" -->
       <div
@@ -464,6 +465,7 @@
         class="grid grid-cols-1 gap-6 sm:grid-cols-12 md:col-span-3"
         formGroupName="address"
       >
+      <input type="hidden" name="id" formControlName="id" />
         <div class="sm:col-span-3">
           <label
             for="cep"
@@ -842,37 +844,82 @@
       >
         <div class="sm:col-span-3">
           <label
-            for="schoolSubjects"
+            for="subjects"
             class="block text-sm font-medium leading-6 text-gray-900"
             >Matérias</label
           >
           <div class="relative mt-2">
             <select
-              id="schoolSubjects"
-              name="schoolSubjects"
+              id="subjects"
+              name="subjects"
               appValidationStyle
-              formControlName="schoolSubjects"
+              formControlName="subjects"
               class="form-input"
               multiple
             >
               <option value="" disabled>Selecione as matérias</option>
               <option
-                *ngFor="let schoolSubject of schoolSubjects"
-                [value]="schoolSubject.value"
+                *ngFor="let schoolSubject of subjects | async"
+                [value]="schoolSubject.id"
               >
-                {{ schoolSubject.value }}
+                {{ schoolSubject.name }}
               </option>
             </select>
           </div>
           <p
-            *ngIf="isValid('schoolSubjects') === false"
+            *ngIf="isValid('subjects') === false"
             class="pt-2 -mb-2 text-sm text-red-600"
           >
-            {{ getInputErrors("schoolSubjects") }}
+            {{ getInputErrors("subjects") }}
           </p>
         </div>
         <div class="hidden sm:block sm:col-span-3"></div>
-        <div class="sm:col-span-2">
+        <div class="sm:col-span-2" formGroupName="user">
+          <input type="hidden" name="id" formControlName="id" />
+          <input type="hidden" name="name" formControlName="name" />
+          <label
+            for="username"
+            class="block text-sm font-medium leading-6 text-gray-900"
+          >
+            Usuário
+          </label>
+          <div class="relative mt-2">
+            <input
+              id="username"
+              name="username"
+              appValidationStyle
+              formControlName="username"
+              type="text"
+              class="form-input"
+            />
+            <div
+              *ngIf="isValid('user.username') !== undefined"
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+            >
+              <ng-icon
+                className="{{
+                  isValid('user.username') === true
+                    ? 'text-green-500'
+                    : 'text-red-500'
+                }}"
+                size="1.25rem"
+                name="
+                        {{
+                  isValid('user.username') === true
+                    ? 'heroCheckCircleSolid'
+                    : 'heroExclamationCircleSolid'
+                }}"
+              ></ng-icon>
+            </div>
+          </div>
+          <p
+            *ngIf="isValid('user.username') === false"
+            class="pt-2 -mb-2 text-sm text-red-600"
+          >
+            {{ getInputErrors("user.username") }}
+          </p>
+        </div>
+        <div class="sm:col-span-2" formGroupName="user">
           <label
             for="password"
             class="block text-sm font-medium leading-6 text-gray-900"
@@ -889,19 +936,19 @@
               class="form-input"
             />
             <div
-              *ngIf="isValid('password') !== undefined"
+              *ngIf="isValid('user.password') !== undefined"
               class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
             >
               <ng-icon
                 className="{{
-                  isValid('password') === true
+                  isValid('user.password') === true
                     ? 'text-green-500'
                     : 'text-red-500'
                 }}"
                 size="1.25rem"
                 name="
                         {{
-                  isValid('password') === true
+                  isValid('user.password') === true
                     ? 'heroCheckCircleSolid'
                     : 'heroExclamationCircleSolid'
                 }}"
@@ -909,10 +956,10 @@
             </div>
           </div>
           <p
-            *ngIf="isValid('password') === false"
+            *ngIf="isValid('user.password') === false"
             class="pt-2 -mb-2 text-sm text-red-600"
           >
-            {{ getInputErrors("password") }}
+            {{ getInputErrors("user.password") }}
           </p>
         </div>
       </div>
@@ -930,10 +977,11 @@
       Deletar
     </button>
     <button
-      type="submit"
+      type="button"
       class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-    >
-      Salvar
+      (click)="nextTab()"
+    > 
+    {{ selectedTab === tabs.length - 1 ? 'Salvar' : 'Próximo' }}
     </button>
   </div>
 </form>

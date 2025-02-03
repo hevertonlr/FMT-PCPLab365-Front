@@ -1,19 +1,9 @@
-import { Gender } from '../enums/gender';
-import { Address } from './address';
+import { Person } from './person';
 import { SchoolClass } from './schoolclass';
+import { User } from './user';
 
-export interface Student {
-  id: string;
-  name: string;
-  gender: Gender;
-  birthday: Date;
-  cpf: string;
-  rg: string;
-  phone: string;
-  email?: string;
-  password: string;
+export interface Student extends Person{
   placeofbirth: string;
-  address?: Address;
-  image: string;
-  class: SchoolClass[];
+  classroom: SchoolClass[];
+  user: User;
 }

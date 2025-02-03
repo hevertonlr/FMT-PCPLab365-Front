@@ -23,13 +23,14 @@ export class SidebarComponent {
     private authService: AuthService,
   ) {
     this.routes = this.router.config.filter(
-      (route) =>
-        route.path !== 'login' &&
+      (route) => {
+        return route.path !== 'login' &&
         route.path &&
         (!route.data?.['allowedProfiles'] ||
           route.data?.['allowedProfiles']?.includes(
             this.authService.getCurrentUser()?.profile,
-          )),
+          ));
+        }
     );
     this.open = false;
   }

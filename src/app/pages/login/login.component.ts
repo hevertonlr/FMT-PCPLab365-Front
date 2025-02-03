@@ -14,12 +14,7 @@ import { AlertComponent } from 'app/shared/components/alert/alert.component';
 import { ValidationService } from 'app/shared/services/validation.service';
 import { AlertService } from 'app/shared/services/alert.service';
 import { StorageService } from 'app/shared/services/storage.service';
-import { NgIconComponent, provideIcons } from '@ng-icons/core';
-
-import {
-  heroCheckCircleSolid,
-  heroExclamationCircleSolid,
-} from '@ng-icons/heroicons/solid';
+import { NgIconComponent } from '@ng-icons/core';
 import { ToastService } from 'app/shared/services/toast.service';
 
 @Component({
@@ -35,14 +30,9 @@ import { ToastService } from 'app/shared/services/toast.service';
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  providers: [
-    provideIcons({
-      heroExclamationCircleSolid,
-      heroCheckCircleSolid,
-    }),
-  ],
 })
 export class LoginComponent implements OnInit {
+  showLoginForm: boolean = true;
   bgimg: string = `assets/images/backgrounds/bg${Math.floor(
     Math.random() * 5 + 1,
   )}.jpg`;
@@ -72,7 +62,7 @@ export class LoginComponent implements OnInit {
       ],
       password: [
         sessionStorage.getItem('password') ?? '',
-        [Validators.required, Validators.minLength(6)],
+        [Validators.required, Validators.minLength(5)],
       ],
       rememberMe: [sessionStorage.getItem('rememberMe')],
     });
@@ -120,6 +110,8 @@ export class LoginComponent implements OnInit {
 
   isValid = (inputName: string) =>
     this.validationService.isValid(this.form, inputName);
+
+  toggleForm = () => (this.showLoginForm = !this.showLoginForm);
 
   private remember = () => {
     const { email, password, rememberMe } = this.form.value;

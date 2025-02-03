@@ -99,4 +99,16 @@ export const routes: Routes = [
       allowedProfiles: [Profile.Student],
     },
   },
+  {
+    path: 'students',
+    component: StudentsComponent,
+    title: 'Alunos',
+    canActivate: [AuthGuard],
+    data: {
+      name: 'Alunos',
+      icon: 'users',
+      breadcrumb: 'Alunos',
+      allowedProfiles: [Profile.Administrator],
+    },
+  },
 ];
